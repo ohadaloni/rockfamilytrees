@@ -1,0 +1,25 @@
+#!/bin/csh -f
+# Copyright (c) Ohad Aloni 2020. All rights reserved.
+# # Released under http://www.theora.com/license.txt (BSD)
+
+set V=/var/www/vhosts
+set TAS=$V/tas.theora.com
+set rft=$V/rockfamilytrees.theora.com
+set ss=/home/ohad/source/scripts
+set path=( $TAS/scripts $ss $path )
+
+source $TAS/conf/dbCredentials.env
+set loginArgs=(  -u$M_USER -p$M_PASSWORD )
+
+cd $rft
+
+set opts=( --complete-insert --skip-quote-names --lock-tables=FALSE --extended-insert=FALSE )
+
+set db=rft
+set file=rft.sql
+
+mysqldump $loginArgs $opts $db \
+		| fgrep -v 'Dump completed on'\
+		| sed 's/AUTO_INCREMENT=[0-9]*//' \
+		> $file
+git commit -m dbBackup $file |& egrep -v 'On branch master|nothing to commit|master.*dbBackup'
