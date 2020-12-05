@@ -30515,8 +30515,8 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472418,NULL,'899574',NULL,'2018-09-05',5,'2018-09-05',324);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472419,NULL,'901236',NULL,'2020-05-13',38,'2020-09-03',64);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472420,NULL,'511748',NULL,'2020-07-13',18,'2020-07-13',27);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',6);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472422,NULL,'601101',NULL,'2020-09-01',11,'2020-09-01',5);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',7);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472422,NULL,'601101',NULL,'2020-09-01',11,'2020-09-01',6);
 /*!40000 ALTER TABLE users ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
