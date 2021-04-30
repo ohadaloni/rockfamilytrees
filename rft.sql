@@ -30403,7 +30403,7 @@ CREATE TABLE users (
 
 LOCK TABLES users WRITE;
 /*!40000 ALTER TABLE users DISABLE KEYS */;
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (1,'ohad','285875','superAdmin','2010-05-01',159,'2011-06-28',1474);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (1,'ohad','285875','superAdmin','2010-05-01',159,'2011-06-28',1475);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472385,'keith','554663',NULL,'2010-05-01',2,'2010-05-01',1);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (3,'Francis','694111',NULL,'2010-05-01',2,'2010-05-01',776);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (4,'Staff Aureus','688731','Admin','2010-05-01',69,'2010-05-01',809);
