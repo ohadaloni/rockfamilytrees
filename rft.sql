@@ -10673,6 +10673,11 @@ INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALU
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10750,'Testing',0,0,'2020-08-26',472421);
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10751,'Ffffffffffff',0,0,'2020-08-26',472421);
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10752,'Rrrrrrrrrrrrrrrrrr',0,0,'2020-08-26',472421);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10753,'Mike Portnoy',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10754,'Neal Morse',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10755,'Jac Bico',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10756,'Fred Gehring',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10757,'Felix Maginn',0,0,'2021-05-20',472423);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25284,6 +25289,14 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14847,2038,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14848,2071,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14849,2072,4254,'2020-09-03',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14850,2073,10753,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14851,2073,10754,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14852,2073,5492,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14853,2073,6100,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14854,2073,2781,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14855,2074,10755,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14856,2074,10756,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14857,2074,10757,'2021-05-20',NULL);
 /*!40000 ALTER TABLE bandArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -27307,6 +27320,8 @@ INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES
 INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES (2070,'The Persuasions',0,0,'2020-09-01',472422);
 INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES (2071,'Syndicats',0,0,'2020-09-01',472422);
 INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES (2072,'Edwin Birdsong Band 1970',0,0,'2020-09-03',472419);
+INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES (2073,'Yellow Matter Custard',0,0,'2021-05-20',472423);
+INSERT INTO bands (id, name, visits, androidVisits, createdOn, createdBy) VALUES (2074,'The Analogues',0,0,'2021-05-20',472423);
 /*!40000 ALTER TABLE bands ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29831,6 +29846,14 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12069,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12070,472421,10750,'2020-08-26');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12071,472421,10751,'2020-08-26');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12072,472421,10752,'2020-08-26');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12073,472423,10753,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12074,472423,10754,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12075,472423,5492,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12076,472423,6100,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12077,472423,2781,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12078,472423,10755,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12079,472423,10756,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12080,472423,10757,'2021-05-20');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30326,6 +30349,8 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2003,472422,207
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2004,472422,2038,'2020-09-01');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2005,472422,2071,'2020-09-01');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2006,472419,2072,'2020-09-03');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2007,472423,2073,'2021-05-20');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2008,472423,2074,'2021-05-20');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30517,6 +30542,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472420,NULL,'511748',NULL,'2020-07-13',18,'2020-07-13',31);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',11);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472422,NULL,'601101',NULL,'2020-09-01',11,'2020-09-01',14);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472423,NULL,'714566',NULL,'2021-05-20',15,'2021-05-20',0);
 /*!40000 ALTER TABLE users ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
