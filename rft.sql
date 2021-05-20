@@ -10678,6 +10678,9 @@ INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALU
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10755,'Jac Bico',0,0,'2021-05-20',472423);
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10756,'Fred Gehring',0,0,'2021-05-20',472423);
 INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10757,'Felix Maginn',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10758,'Diederik Nomden',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10759,'Bart Van Poppel',0,0,'2021-05-20',472423);
+INSERT INTO artists (id, name, visits, androidVisits, createdOn, createdBy) VALUES (10760,'Jan Van Der Meij',0,0,'2021-05-20',472423);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25297,6 +25300,9 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14855,2074,10755,'2021-05-20',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14856,2074,10756,'2021-05-20',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14857,2074,10757,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14858,2074,10758,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14859,2074,10759,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14860,2074,10760,'2021-05-20',NULL);
 /*!40000 ALTER TABLE bandArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29854,6 +29860,9 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12077,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12078,472423,10755,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12079,472423,10756,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12080,472423,10757,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12081,472423,10758,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12082,472423,10759,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12083,472423,10760,'2021-05-20');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30542,7 +30551,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472420,NULL,'511748',NULL,'2020-07-13',18,'2020-07-13',31);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',11);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472422,NULL,'601101',NULL,'2020-09-01',11,'2020-09-01',14);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472423,NULL,'714566',NULL,'2021-05-20',15,'2021-05-20',0);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472423,NULL,'714566',NULL,'2021-05-20',21,'2021-05-20',0);
 /*!40000 ALTER TABLE users ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
