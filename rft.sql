@@ -25286,7 +25286,6 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14837,2066,4254,'2020-07-19',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14842,680,10750,'2020-08-26',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14843,2067,5917,'2020-09-01',NULL);
-INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14844,2068,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14845,2069,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14846,2070,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14847,2038,5917,'2020-09-01',NULL);
