@@ -30514,7 +30514,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (123736,'Jeff Kircher','913101',NULL,'2010-06-12',11,'2010-06-12',284);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472386,'Jim Hopkins','893787',NULL,'2010-06-12',9,'2010-06-12',526);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472387,'Eric Howarth','974307',NULL,'2010-06-12',54,'2010-06-12',650);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472388,'Shannon Rogers','321666',NULL,'2010-06-12',66,'2010-06-12',338);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472388,'Shannon Rogers','321666',NULL,'2010-06-12',66,'2010-06-12',339);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472389,'Ronda Blackwell','367001',NULL,'2010-06-12',4,'2010-06-12',179);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472390,'Julia Arons','241571',NULL,'2010-06-12',92,'2010-06-12',256);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472391,'Roberta Jacks','522280',NULL,'2010-06-12',91,'2010-06-12',503);
@@ -30547,7 +30547,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472418,NULL,'899574',NULL,'2018-09-05',5,'2018-09-05',341);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472419,NULL,'901236',NULL,'2020-05-13',38,'2020-09-03',72);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472420,NULL,'511748',NULL,'2020-07-13',18,'2020-07-13',34);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',14);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472421,NULL,'778350',NULL,'2020-08-26',8,'2020-08-26',15);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472422,NULL,'601101',NULL,'2020-09-01',11,'2020-09-01',17);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (472423,NULL,'714566',NULL,'2021-05-20',21,'2021-05-20',4);
 /*!40000 ALTER TABLE users ENABLE KEYS */;
