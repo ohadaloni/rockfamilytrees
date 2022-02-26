@@ -30447,7 +30447,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (10,'Neo','824681','superAdmin','2010-05-09',20991,'2011-08-26',1786);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (11,'Crimson','848705',NULL,'2010-05-09',1,'2010-05-09',502);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (12,'Bronze','760976',NULL,'2010-05-09',1,'2010-05-09',729);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (13,'Angie','671665',NULL,'2010-05-10',89,'2010-05-11',609);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (13,'Angie','671665',NULL,'2010-05-10',89,'2010-05-11',610);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (14,'Klaus','234921',NULL,'2010-05-15',0,NULL,663);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (15,'Ulanda','618880',NULL,'2010-05-15',2,'2010-05-15',178);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (16,'homer','194586',NULL,'2010-05-15',1,'2010-05-15',144);
@@ -30487,7 +30487,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (50,'Timothy Lawrence','143737',NULL,'2010-06-02',21,'2010-06-02',332);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (51,'Felina Amster','398813',NULL,'2010-06-02',52,'2010-06-02',473);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (52,'Rita Class','577325',NULL,'2010-06-02',30,'2010-06-02',310);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (53,'Mark Tyger','518873',NULL,'2010-06-02',46,'2010-06-02',278);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (53,'Mark Tyger','518873',NULL,'2010-06-02',46,'2010-06-02',279);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (54,'Dean Brush','522047',NULL,'2010-06-02',38,'2010-06-02',448);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (55,'Sam Waters','186551',NULL,'2010-06-02',63,'2010-06-02',464);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (56,'Roger Brewster','267879',NULL,'2010-06-02',107,'2010-06-02',474);
