@@ -16,7 +16,8 @@ if (
 }
 /*------------------------------------------------------------*/
 require_once("rftConfig.php");
-require_once("../M.theora.com/mfiles.php");
+$mdir = M_DIR ;
+require_once("$mdir/mfiles.php");
 require_once("Rft.class.php");
 /*------------------------------------------------------------*/
 $Mview = new Mview();
