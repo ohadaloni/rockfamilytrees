@@ -44,6 +44,8 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	private function setMeta($title, $words) {
+		if ( ! $words )
+			return;
 		$wordsList = implode(", ", $words);
 		$this->Mview->assign("metaTitle", $title);
 		$this->Mview->assign("metaKeywords", "$title, $wordsList");
@@ -347,7 +349,7 @@ class Rft extends Mcontroller {
 			'latelyActive' => $this->latelyActive(),
 		));
 		if ( $this->user['id'] != $rftId )
-			$this->Mmodel->_sql("update users set visits = visits + 1 where id = $rftId");
+			$this->updateVisits("users", $rftId);
 		return(true);
 	}
 	/*------------------------------*/
@@ -415,6 +417,8 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private function wordList($rows, $fname) {
 		$ret = array();
+		if ( ! $rows )
+			return($ret);
 		foreach ( $rows as $row )
 			$ret[] = $row[$fname];
 		return($ret);
@@ -438,7 +442,7 @@ class Rft extends Mcontroller {
 			"artists" => $artists,
 			"isFavorite" => $isFavorite,
 		));
-		/*	$this->Mmodel->_sql("update bands set visits = visits + 1 where id = $bandId");	*/
+		$this->updateVisits("bands", $bandId);
 	}
 	/*------------------------------------------------------------*/
 	public function artist($artistId = null) {
@@ -459,7 +463,39 @@ class Rft extends Mcontroller {
 			"bands" => $bands,
 			"isFavorite" => $isFavorite,
 		));
-		/*	$this->Mmodel->_sql("update artists set visits = visits + 1 where id = $artistId");	*/
+		$this->updateVisits("artists", $artistId);
+	}
+	/*------------------------------------------------------------*/
+	/*------------------------------------------------------------*/
+	private function updateVisits($tname, $rowId) {
+		$today = date("Y-m-d");
+		$now = date("Y-m-d H:i:s");
+		$conds = "tname = '$tname' and rowId = $rowId";
+		$sql = "select * from visits where $conds";
+		$row = $this->Mmodel->getRow($sql);
+		if ( $row ) {
+			$this->Mmodel->dbUpdate("visits", $row['id'], array(
+				'visits' => $row['visits'] + 1,
+				'updated' => $today,
+				'updateTime' => $now,
+			));
+		} else {
+			$this->Mmodel->dbInsert("visits", array(
+				'tname' => $tname,
+				'rowId' => $rowId,
+				'visits' => 1,
+				'updated' => $today,
+				'updateTime' => $now,
+			));
+		}
+		$sql = "select visits from visits where $conds";
+		$newVisits = $this->Mmodel->getInt($sql);
+		if ( $newVisits < 10 ) // per tname, $rowId
+			return;
+		$this->Mmodel->sql("delete from visits where $conds");
+		$sql = "update $tname set visits = visits + $newVisits where id = $rowId";
+		$this->Mmodel->sql($sql);
+		error_log("updateVisits: $sql");
 	}
 	/*------------------------------------------------------------*/
 	private function canonize($str) {
