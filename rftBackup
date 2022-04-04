@@ -13,7 +13,8 @@ set loginArgs=(  -u$M_USER -p$M_PASSWORD )
 
 cd $rft
 
-set opts=( --complete-insert --skip-quote-names --lock-tables=FALSE --extended-insert=FALSE )
+set ignOpts=(  --ignore-table=rft.visits )
+set opts=( --complete-insert --skip-quote-names --lock-tables=FALSE --extended-insert=FALSE $ignOpts )
 
 set db=rft
 set file=rft.sql
