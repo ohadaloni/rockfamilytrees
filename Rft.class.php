@@ -742,7 +742,6 @@ class Rft extends Mcontroller {
 			"band" => $band,
 			"artists" => $artists,
 		));
-		$this->Mmodel->_sql("update bands set androidVisits = androidVisits + 1 where id = $bandId");
 	}
 	/*------------------------------------------------------------*/
 	public function androidArtist($artistId = null) {
@@ -755,7 +754,6 @@ class Rft extends Mcontroller {
 			"artist" => $artist,
 			"bands" => $bands,
 		));
-		$this->Mmodel->_sql("update artists set androidVisits = androidVisits + 1 where id = $artistId");
 	}
 	/*------------------------------------------------------------*/
 	public function androidShowArtistNotFound($artist) {
