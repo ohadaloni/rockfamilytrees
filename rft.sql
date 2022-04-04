@@ -3590,7 +3590,7 @@ INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3584,'Steve
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3585,'Brad Cole',67,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3586,'Yo-Yo Ma',1,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3587,'Ennio Morricone',1,'2010-09-05',10);
-INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3588,'Andre Rieu',140,'2010-09-05',10);
+INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3588,'Andre Rieu',141,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3589,'Mirusia Louwerse',201,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3590,'Suzan Erens',151,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3591,'Kalki Schrijvers',177,'2010-09-05',10);
@@ -3601,7 +3601,7 @@ INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3595,'Vince
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3596,'Els Mercken',140,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3597,'Boris Goldenblank',146,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3598,'Diana Morsinkhof',143,'2010-09-05',10);
-INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3599,'Freya Cremers',121,'2010-09-05',10);
+INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3599,'Freya Cremers',122,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3600,'Kremi Mineva',121,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3601,'Lin Jong',121,'2010-09-05',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (3602,'Frank Steijns',124,'2010-09-05',10);
@@ -10496,7 +10496,7 @@ INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10573,'Chri
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10574,'Rotny Ford',137,'2010-11-27',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10575,'Ivan McRoy',149,'2010-11-27',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10576,'Jason Epperley',141,'2010-11-27',10);
-INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10577,'Dan Bach',128,'2010-11-27',10);
+INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10577,'Dan Bach',138,'2010-11-27',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10578,'Shane Long',167,'2010-11-27',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10579,'Brandon Eisenbeis',178,'2010-11-27',10);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (10580,'Adam Goldberg',173,'2010-12-19',10);
@@ -25966,7 +25966,7 @@ INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (1212,'The Mak
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (677,'The Boomtang Boys',10,'2010-09-05',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (678,'Hot Butter',7,'2010-09-05',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (679,'Smokie',9,'2010-09-05',10);
-INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (680,'The Johann Strauss Orchestra',954,'2010-09-05',10);
+INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (680,'The Johann Strauss Orchestra',964,'2010-09-05',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (681,'Love And Rockets',32,'2010-09-05',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (682,'Kilburn & The High Roads',51,'2010-09-08',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (683,'999',34,'2010-09-08',10);
@@ -27253,7 +27253,7 @@ INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (1998,'Shaken 
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (1999,'Skankin\' Pickle',198,'2010-11-27',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2000,'The Silencers',185,'2010-11-27',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2001,'Nocturne',224,'2010-11-27',10);
-INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2002,'Basic Radio',177,'2010-11-27',10);
+INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2002,'Basic Radio',187,'2010-11-27',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2003,'Liverpool Express',184,'2010-12-19',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2004,'Frankie Goes To Hollywood',185,'2010-12-24',10);
 INSERT INTO bands (id, name, visits, createdOn, createdBy) VALUES (2005,'Phoenix',182,'2010-12-31',10);
@@ -30474,7 +30474,7 @@ INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) 
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (39,'Julie Klein','968181',NULL,'2010-05-22',19,'2010-05-22',464);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (40,'Marlon Barrimore','451146',NULL,'2010-05-22',85,'2010-05-22',567);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (41,'Ritchie Horse','787500',NULL,'2010-05-22',26,'2010-05-22',248);
-INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (42,'Steve Coltrane','392536',NULL,'2010-05-22',62,'2010-05-22',1650);
+INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (42,'Steve Coltrane','392536',NULL,'2010-05-22',62,'2010-05-22',1660);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (43,'Stewart Holmes','519922',NULL,'2010-05-22',16,'2010-05-22',512);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (44,'John Taylor','699154',NULL,'2010-05-23',1,'2010-05-23',608);
 INSERT INTO users (id, avatar, passwd, status, created, numOps, lastOp, visits) VALUES (45,'Mike Huntington','601174',NULL,'2010-05-25',1,'2010-05-25',10);
