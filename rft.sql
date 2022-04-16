@@ -1422,7 +1422,7 @@ INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1399,'Mark 
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1400,'Vince Martell',154,'2010-06-05',67);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1401,'Peter French',152,'2010-06-05',67);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1402,'Duane Hitchings',150,'2010-06-05',67);
-INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1403,'Werner Fritzschings',462,'2010-06-05',67);
+INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1403,'Werner Fritzschings',472,'2010-06-05',67);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1404,'Rusty Day',145,'2010-06-05',67);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1405,'Randy Pratt',155,'2010-06-05',67);
 INSERT INTO artists (id, name, visits, createdOn, createdBy) VALUES (1406,'Jimmy Kunes',150,'2010-06-05',67);
