@@ -48,12 +48,12 @@ function rftBindAll(context)
 	$("#changeArtistForm", context).validate({errorClass: "validateErrors"});
 
 	$(".androidArtist", context).click(function() {
-		url = "?action=androidArtist&artistId=" + this.id ;
+		url = "/rft/androidArtist&artistId=" + this.id ;
 		document.location = url;
 	});
 
 	$(".androidBand", context).click(function() {
-		url = "?action=androidBand&bandId=" + this.id ;
+		url = "/rft/androidBand&bandId=" + this.id ;
 		document.location = url;
 	});
 }
@@ -84,7 +84,7 @@ function addBand() {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addBand&bandName=" + escape(band) + captchaArg();
+	window.location.href = "/rft/addBand&bandName=" + escape(band) + captchaArg();
 }
 /*------------------------------------------------------------*/
 function addArtist() {
@@ -93,7 +93,7 @@ function addArtist() {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addArtist&artistName=" + escape(artist) + captchaArg();
+	window.location.href = "/rft/addArtist&artistName=" + escape(artist) + captchaArg();
 }
 /*------------------------------------------------------------*/
 function addArtistToBand(bandId, bandName) {
@@ -103,14 +103,14 @@ function addArtistToBand(bandId, bandName) {
 	if ( typeof(captchaSet) == 'undefined' ) {
 		// if the captcha is not set then there is a trusted user in session
 		// ajax the result to the bandArtists div
-		hrf = "?action=addArtistToBand&bandId=" + bandId + "&artistName=" + escape(artistName);
+		hrf = "/rft/addArtistToBand&bandId=" + bandId + "&artistName=" + escape(artistName);
 		$("#bandArtists").html('<img border="0" src="images/ajax-loader.gif" />');
 		$("#bandArtists").load(hrf, rftBind);
 		return;
 	}
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addArtistToBand&bandId=" + bandId + "&artistName=" + escape(artistName) + captchaArg();
+	window.location.href = "/rft/addArtistToBand&bandId=" + bandId + "&artistName=" + escape(artistName) + captchaArg();
 }
 /*------------------------------------------------------------*/
 function addBandToArtist(artistId, artistName) {
@@ -120,7 +120,7 @@ function addBandToArtist(artistId, artistName) {
 	if ( typeof(captchaSet) == 'undefined' ) {
 		// if the captcha is not set then there is a trusted user in session
 		// ajax the result to the artistBands div
-		hrf = "?action=addBandToArtist&artistId=" + artistId + "&bandName=" + escape(bandName);
+		hrf = "/rft/addBandToArtist&artistId=" + artistId + "&bandName=" + escape(bandName);
 		$("#artistBands").html('<img border="0" src="images/ajax-loader.gif" />');
 		$("#artistBands").load(hrf, rftBind);
 		return;
@@ -128,13 +128,13 @@ function addBandToArtist(artistId, artistName) {
 
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addBandToArtist&artistId=" + artistId + "&bandName=" + escape(bandName) + captchaArg();
+	window.location.href = "/rft/addBandToArtist&artistId=" + artistId + "&bandName=" + escape(bandName) + captchaArg();
 }
 /*------------------------------------------------------------*/
 function unBandArtist(bandId, artistId, page) {
 	if ( ! verifyCaptcha() )
 		return;
-	hrf = "?action=unBandArtist&bandId=" + bandId + "&artistId=" + artistId + "&page=" + page;
+	hrf = "/rft/unBandArtist&bandId=" + bandId + "&artistId=" + artistId + "&page=" + page;
 	if ( page == 'band' )
 		selector = "#bandArtists";
 	else
@@ -147,19 +147,19 @@ function unBandArtist(bandId, artistId, page) {
 function follow(userId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=follow&userId=" + userId + captchaArg();
+	window.location.href = "/rft/follow&userId=" + userId + captchaArg();
 }
 /*------------------------------------------------------------*/
 function addArtistToFavorites(artistId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addArtistToFavorites&artistId=" + artistId + captchaArg() ;
+	window.location.href = "/rft/addArtistToFavorites&artistId=" + artistId + captchaArg() ;
 }
 /*------------------------------------------------------------*/
 function addBandToFavorites(bandId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=addBandToFavorites&bandId=" + bandId + captchaArg() ;
+	window.location.href = "/rft/addBandToFavorites&bandId=" + bandId + captchaArg() ;
 }
 /*------------------------------------------------------------*/
 function changeBand(bandId, previousName) {
@@ -168,7 +168,7 @@ function changeBand(bandId, previousName) {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=changeBand&bandId=" + bandId + "&bandName=" + escape(newName) ;
+	window.location.href = "/rft/changeBand&bandId=" + bandId + "&bandName=" + escape(newName) ;
 }
 /*------------------------------------------------------------*/
 function changeArtist(artistId, previousName) {
@@ -177,24 +177,24 @@ function changeArtist(artistId, previousName) {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=changeArtist&artistId=" + artistId + "&artistName=" + escape(newName) ;
+	window.location.href = "/rft/changeArtist&artistId=" + artistId + "&artistName=" + escape(newName) ;
 }
 /*------------------------------------------------------------*/
 function deleteBand(bandId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=deleteBand&bandId=" + bandId;
+	window.location.href = "/rft/deleteBand&bandId=" + bandId;
 }
 /*------------------------------------------------------------*/
 function deleteArtist(artistId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=deleteArtist&artistId=" + artistId;
+	window.location.href = "/rft/deleteArtist&artistId=" + artistId;
 }
 /*------------------------------------------------------------*/
 function invertStatus(userId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "?action=invertStatus&userId=" + userId;
+	window.location.href = "/rft/invertStatus&userId=" + userId;
 }
 /*------------------------------------------------------------*/

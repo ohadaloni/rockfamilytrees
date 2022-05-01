@@ -11,7 +11,7 @@
 			<tr class="rftRow">
 				<td>
 					{$followee.id|avatar}
-					<a href="?action=userHome&amp;userId={$followee.id}"><img width="16" height="16" border="0" src="images/home.png"
+					<a href="/rft/userHome?userId={$followee.id}"><img width="16" height="16" border="0" src="/images/home.png"
 							alt="{$followee.id|avatar}'s home" title="{$followee.id|avatar}'s home" /></a>
 				</td>
 			</tr>
@@ -27,7 +27,7 @@
 			<tr class="rftRow">
 				<td>
 					{$follower.id|avatar}
-					<a href="?action=userHome&amp;userId={$follower.id}"><img width="16" height="16" border="0" src="images/home.png"
+					<a href="/rft/userHome?userId={$follower.id}"><img width="16" height="16" border="0" src="/images/home.png"
 							alt="{$follower.id|avatar}'s home" title="{$follower.id|avatar}'s home" /></a>
 				</td>
 			</tr>
@@ -43,7 +43,7 @@
 			<tr class="rftRow">
 				<td>
 					{$popularUser.id|avatar}
-					<a href="?action=userHome&amp;userId={$popularUser.id}"><img width="16" height="16" border="0" src="images/home.png"
+					<a href="/rft/userHome?userId={$popularUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
 							alt="{$popularUser.id|avatar}'s home" title="{$popularUser.id|avatar}'s home"/></a>
 				</td>
 			</tr>
@@ -59,7 +59,7 @@
 			<tr class="rftRow">
 				<td>
 					{$activeUser.id|avatar}
-					<a href="?action=userHome&amp;userId={$activeUser.id}"><img width="16" height="16" border="0" src="images/home.png"
+					<a href="/rft/userHome?userId={$activeUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
 							alt="{$activeUser.id|avatar}'s home" title="{$activeUser.id|avatar}'s home"/></a>
 				</td>
 			</tr>
@@ -75,7 +75,7 @@
 			<tr class="rftRow">
 				<td>
 					{$lAtiveUser.id|avatar}
-					<a href="?action=userHome&amp;userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="images/home.png"
+					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
 							alt="{$lAtiveUser.id|avatar}'s home" title="{$lAtiveUser.id|avatar}'s home"/></a>
 				</td>
 			</tr>
