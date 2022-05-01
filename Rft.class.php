@@ -4,8 +4,8 @@ class Rft extends Mcontroller {
 	private $user = null;
 	private $adminNumOps = 50 ;
 	/*------------------------------------------------------------*/
-	public function __construct($Mmodel = null, $Mview = null) {
-		parent::__construct($Mmodel, $Mview);
+	public function __construct() {
+		parent::__construct();
 		$this->init();
 		$this->setUser();
 		$this->preAuthenticate();
