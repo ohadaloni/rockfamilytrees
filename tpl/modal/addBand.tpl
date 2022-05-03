@@ -1,5 +1,5 @@
 <h4>Add Band</h4>
-<form method="post" class="validateForm" id="addBandForm" action="/rft/addBand">
+<form method="post" id="addBandForm" action="/rft/addBand">
 <table border="0" class="center">
 	<tr class="rftFormRow">
 		<td>
