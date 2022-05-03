@@ -13,7 +13,6 @@
 	<script type="text/javascript" src="/js/jquery.hoverClass.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="/css/rft.css"></link>
-	<script type="text/javascript" src="/js/jquery.validate.js"></script>
 	<script type="text/javascript" src="/js/rft.js"></script>
 </head>
 <body>
