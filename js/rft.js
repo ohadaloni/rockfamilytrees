@@ -38,15 +38,6 @@ function rftBindAll(context)
 		$(this).addClass("keepHilited");
 	});
 
-	$(".validateForm", context).validate({errorClass: "validateErrors"});
-	/* must bind the validation separetaly to forms appearing on the same page */
-	/* or the plugin gets confused */
-	$("#switchUserForm", context).validate({errorClass: "validateErrors"});
-	$("#changeAvatarForm", context).validate({errorClass: "validateErrors"});
-	$("#searchForm", context).validate({errorClass: "validateErrors"});
-	$("#newArtistForm", context).validate({errorClass: "validateErrors"});
-	$("#changeArtistForm", context).validate({errorClass: "validateErrors"});
-
 	$(".androidArtist", context).click(function() {
 		url = "/rft/androidArtist&artistId=" + this.id ;
 		document.location = url;
