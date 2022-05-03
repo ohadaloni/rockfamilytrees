@@ -23,7 +23,6 @@
 	<script type="text/javascript" src="/js/jquery-tooltip/jquery.tooltip.js"></script>
 	<script type="text/javascript" src="/js/jquery.imgToolTip.js"></script>
 	<script type="text/javascript" src="/js/jquery.showImage.js"></script>
-	<script type="text/javascript" src="/js/jquery.validate.js"></script>
 	<link rel="stylesheet" type="text/css" href="/js/jquery-tooltip/jquery.tooltip.css"></link>
 	<script type="text/javascript" src="/js/rft.js"></script>
 </head>
