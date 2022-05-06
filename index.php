@@ -3,6 +3,7 @@
 session_start();
 /*------------------------------------------------------------*/
 date_default_timezone_set("Asia/Jerusalem");
+$startTime = time();
 /*------------------------------------------------------------*/
 $ua = @$_SERVER['HTTP_USER_AGENT'];
 if (
@@ -20,9 +21,11 @@ $mdir = M_DIR ;
 require_once("$mdir/mfiles.php");
 require_once("Rft.class.php");
 /*------------------------------------------------------------*/
+global $Mview;
+global $Mmodel;
 $Mview = new Mview();
 $Mmodel = new Mmodel();
-$rft = new Rft($Mmodel, $Mview);
+$rft = new Rft($startTime);
 $rft->control();
 /*------------------------------------------------------------*/
 ?>
