@@ -1,11 +1,13 @@
 <?php
 /*------------------------------------------------------------*/
 class Rft extends Mcontroller {
+	private $startTime;
 	private $user = null;
 	private $adminNumOps = 50 ;
 	/*------------------------------------------------------------*/
-	public function __construct() {
+	public function __construct($startTime) {
 		parent::__construct();
+		$this->startTime = $startTime;
 		$this->init();
 		$this->setUser();
 		$this->preAuthenticate();
@@ -69,8 +71,10 @@ class Rft extends Mcontroller {
 		}
 
 		$this->Mview->showTpl($tpl, $args);
-		if ( ! $wrapperSent  )
+		if ( ! $wrapperSent  ) {
+			$this->Mview->runningTime($this->startTime);
 			$this->Mview->showTpl("footer.tpl");
+		}
 		$wrapperSent = true;
 	}
 	/*------------------------------------------------------------*/
