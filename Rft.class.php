@@ -15,6 +15,24 @@ class Rft extends Mcontroller {
 		$this->Mview->assign('adminNumOps', $this->adminNumOps);
 	}
 	/*------------------------------------------------------------*/
+	protected function before() {
+		parent::before();
+		header('Content-type: text/html; charset=UTF-8');
+		if ( stristr($this->action, "android") )
+			$this->Mview->showTpl("androidHeader.tpl");
+		else
+			$this->Mview->showTpl("header.tpl");
+	}
+	/*------------------------------------------------------------*/
+	protected function after() {
+		parent::after();
+		$this->Mview->runningTime($this->startTime);
+		if ( stristr($this->action, "android") )
+			$this->Mview->showTpl("androidFooter.tpl");
+		else
+			$this->Mview->showTpl("footer.tpl");
+	}
+	/*------------------------------------------------------------*/
 	private function init() {
 		$tables = array(
 			"users",
@@ -58,28 +76,8 @@ class Rft extends Mcontroller {
 		$this->Mview->assign("searchQuery", "wikipedia +\"$title\" $searchWordList");
 	}
 	/*------------------------------------------------------------*/
-	private function showTpl($tpl, $args = null) {
-		static $wrapperSent = false;
-		static $headerSent = false;
-
-		if ( ! $headerSent ) {
-			header('Content-type: text/html; charset=UTF-8');
-			$headerSent = true;
-		}
-		if ( ! $wrapperSent  ) {
-			$this->Mview->showTpl("header.tpl");
-		}
-
-		$this->Mview->showTpl($tpl, $args);
-		if ( ! $wrapperSent  ) {
-			$this->Mview->runningTime($this->startTime);
-			$this->Mview->showTpl("footer.tpl");
-		}
-		$wrapperSent = true;
-	}
-	/*------------------------------------------------------------*/
 	public function help() {
-		$this->showTpl("help.tpl");
+		$this->Mview->showTpl("help.tpl");
 	}
 	/*------------------------------------------------------------*/
 	private function _addArtistToFavorites($rftId, $artistId) {
@@ -261,7 +259,7 @@ class Rft extends Mcontroller {
 		$bands = $this->Mmodel->getRows("select * from bands order by visits desc limit 20");
 		$artists = $this->Mmodel->getRows("select * from artists order by visits desc limit 20");
 		$this->setTitle("Visitor");
-		$this->showTpl("home.tpl", array(
+		$this->Mview->showTpl("home.tpl", array(
 			'bands' => $bands,
 			'artists' => $artists,
 			'mostPopular' => $this->mostPopular(),
@@ -441,7 +439,7 @@ class Rft extends Mcontroller {
 			$isFavorite = $this->Mmodel->getInt("select id from favoriteBands where rftId = $userId and bandId = $bandId");
 		} else
 			$isFavorite = false;
-		$this->showTpl("band.tpl", array(
+		$this->Mview->showTpl("band.tpl", array(
 			"band" => $band,
 			"artists" => $artists,
 			"isFavorite" => $isFavorite,
@@ -462,7 +460,7 @@ class Rft extends Mcontroller {
 			$isFavorite = $this->Mmodel->getInt("select id from favoriteArtists where rftId = $userId and artistId = $artistId");
 		} else
 			$isFavorite = false;
-		$this->showTpl("artist.tpl", array(
+		$this->Mview->showTpl("artist.tpl", array(
 			"artist" => $artist,
 			"bands" => $bands,
 			"isFavorite" => $isFavorite,
@@ -628,7 +626,7 @@ class Rft extends Mcontroller {
 		$bands = $this->Mmodel->getRows("select * from bands where name like '%$searchTerm%' order by name limit 30");
 		$artists = $this->Mmodel->getRows("select * from artists where name like '%$searchTerm%' order by name limit 30");
 		$searchedUsers = $this->Mmodel->getRows("select * from users where avatar like '%$searchTerm%' order by avatar limit 30");
-		$this->showTpl("search.tpl", array(
+		$this->Mview->showTpl("search.tpl", array(
 			"bands" => $bands,
 			"artists" => $artists,
 			"searchedUsers" => $searchedUsers,
@@ -756,29 +754,12 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	/*------------------------------------------------------------*/
 	/*------------------------------------------------------------*/
-	private function showAndroidTpl($tpl, $args = null) {
-		static $wrapperSent = false;
-		static $headerSent = false;
-
-		if ( ! $headerSent ) {
-			header('Content-type: text/html; charset=UTF-8');
-			$headerSent = true;
-		}
-		if ( ! $wrapperSent )
-			$this->Mview->showTpl("androidHeader.tpl");
-
-		$this->Mview->showTpl($tpl, $args);
-		if ( ! $wrapperSent )
-			$this->Mview->showTpl("androidFooter.tpl");
-		$wrapperSent = true;
-	}
-	/*------------------------------------------------------------*/
 	public function androidBand() {
 		$bandId = $_REQUEST['bandId'];
 		$band = $this->Mmodel->getRow("select * from bands where id = $bandId");
 		$this->setTitle($band['name']);
 		$artists = $this->Mmodel->getRows("select a.* from artists a, bandArtists ba where a.id = ba.artistId and ba.bandId = $bandId order by a.name");
-		$this->showAndroidTpl("androidBand.tpl", array(
+		$this->Mview->showTpl("androidBand.tpl", array(
 			"band" => $band,
 			"artists" => $artists,
 		));
@@ -790,7 +771,7 @@ class Rft extends Mcontroller {
 		$artist = $this->Mmodel->getRow("select * from artists where id = $artistId");
 		$this->setTitle($artist['name']);
 		$bands = $this->Mmodel->getRows("select b.* from bands b, bandArtists ba where b.id = ba.bandId and ba.artistId = $artistId order by b.name");
-		$this->showAndroidTpl("androidArtist.tpl", array(
+		$this->Mview->showTpl("androidArtist.tpl", array(
 			"artist" => $artist,
 			"bands" => $bands,
 		));
@@ -798,7 +779,7 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	public function androidShowArtistNotFound($artist) {
 		$beatlesId = $this->Mmodel->getInt("select id from bands where name = 'The Beatles'");
-		$this->showAndroidTpl("androidArtistNotFound.tpl", array(
+		$this->Mview->showTpl("androidArtistNotFound.tpl", array(
 			'artist' => $artist,
 			'beatlesId' => $beatlesId,
 		));
