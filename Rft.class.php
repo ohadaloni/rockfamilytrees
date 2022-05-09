@@ -1,13 +1,12 @@
 <?php
 /*------------------------------------------------------------*/
 class Rft extends Mcontroller {
-	private $startTime;
+	/*------------------------------------------------------------*/
 	private $user = null;
 	private $adminNumOps = 50 ;
 	/*------------------------------------------------------------*/
-	public function __construct($startTime) {
+	public function __construct() {
 		parent::__construct();
-		$this->startTime = $startTime;
 		$this->init();
 		$this->setUser();
 		$this->preAuthenticate();
@@ -26,7 +25,6 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	protected function after() {
 		parent::after();
-		$this->Mview->runningTime($this->startTime);
 		if ( stristr($this->action, "android") )
 			$this->Mview->showTpl("androidFooter.tpl");
 		else
