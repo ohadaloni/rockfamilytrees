@@ -89,7 +89,7 @@ class Rft extends Mcontroller {
 			));
 	}
 	/*------------------------------*/
-	function addArtistToFavorites() {
+	public function addArtistToFavorites() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -102,7 +102,7 @@ class Rft extends Mcontroller {
 		$this->userHome($rftId);
 	}
 	/*------------------------------*/
-	function removeFavoriteArtist() {
+	public function removeFavoriteArtist() {
 		$rftId = $_SESSION['rftId'];
 		$artistId = $_REQUEST['artistId'];
 		$sql = "delete from favoriteArtists where rftId = $rftId and artistId = $artistId";
@@ -113,7 +113,7 @@ class Rft extends Mcontroller {
 		$this->userHome($rftId);
 	}
 	/*------------------------------*/
-	function removeFavoriteBand() {
+	public function removeFavoriteBand() {
 		$rftId = $_SESSION['rftId'];
 		$bandId = $_REQUEST['bandId'];
 		$sql = "delete from favoriteBands where rftId = $rftId and bandId = $bandId";
@@ -133,7 +133,7 @@ class Rft extends Mcontroller {
 			));
 	}
 	/*------------------------------*/
-	function addBandToFavorites() {
+	public function addBandToFavorites() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -146,7 +146,7 @@ class Rft extends Mcontroller {
 		$this->userHome($rftId);
 	}
 	/*------------------------------*/
-	function unfollow() {
+	public function unfollow() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -158,7 +158,7 @@ class Rft extends Mcontroller {
 		$this->userHome($rftId);
 	}
 	/*------------------------------*/
-	function follow() {
+	public function follow() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -195,7 +195,7 @@ class Rft extends Mcontroller {
 		return(true);
 	}
 	/*----------------------------------------*/
-	function validateUser() {
+	public function validateUser() {
 		// the logic is in the templates and the js code
 		// this prevents spoofing by typing urls or programatically
 		// trying to bypass into the db
@@ -222,7 +222,7 @@ class Rft extends Mcontroller {
 		 return(true);
 	}
 	/*----------------------------------------*/
-	function setUser($rftId = null) {
+	public function setUser($rftId = null) {
 		if ( $rftId ) {
 			// switch user to this rftId
 			$_SESSION['rftId'] = $rftId;
@@ -366,7 +366,7 @@ class Rft extends Mcontroller {
 	 * prepare for athentication
 	 * set a captcha if there is no user id
 	 */
-	function preAuthenticate() {
+	public function preAuthenticate() {
 		if ( isset($_SESSION['rftId']) )
 			return;
 		if ( isset($_SESSION['captchaSet']) )
@@ -633,7 +633,7 @@ class Rft extends Mcontroller {
 		));
 	}
 	/*------------------------------------------------------------*/
-	function addBandArtist($bandId, $artistId) {
+	public function addBandArtist($bandId, $artistId) {
 		$id = $this->Mmodel->getInt("select id from bandArtists where bandId = $bandId and artistId = $artistId");
 		if ( $id )
 			return($id);
@@ -679,7 +679,7 @@ class Rft extends Mcontroller {
 			$this->artist($artistId);
 	}
 	/*------------------------------------------------------------*/
-	function deleteBand() {
+	public function deleteBand() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -702,7 +702,7 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	function deleteArtist() {
+	public function deleteArtist() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
@@ -725,7 +725,7 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	function invertStatus() {
+	public function invertStatus() {
 		if ( ! $this->validateUser() ) {
 			$this->home();
 			return;
