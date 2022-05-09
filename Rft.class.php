@@ -338,7 +338,7 @@ class Rft extends Mcontroller {
 		$this->setTitle("{$homeUser['avatar']}'s home");
 		$homeUser['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
 		$homeUser['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
-		$this->showtpl("home.tpl", array(
+		$this->Mview->showtpl("home.tpl", array(
 			'homeUser' => $homeUser,
 			'bands' => $this->userBands($rftId),
 			'artists' => $this->userArtists($rftId),
