@@ -24,9 +24,10 @@ require_once("Rft.class.php");
 /*------------------------------------------------------------*/
 global $Mview;
 global $Mmodel;
-$Mview = new Mview();
-$Mmodel = new Mmodel();
-$rft = new Rft($startTime);
+$Mview = new Mview;
+$Mmodel = new Mmodel;
+$rft = new Rft;
+$rft->setStartTime($startTime);
 $rft->control();
 /*------------------------------------------------------------*/
 ?>
