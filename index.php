@@ -3,7 +3,8 @@
 session_start();
 /*------------------------------------------------------------*/
 date_default_timezone_set("Asia/Jerusalem");
-$startTime = time();
+/*------------------------------------------------------------*/
+$startTime = microtime(true);
 /*------------------------------------------------------------*/
 $ua = @$_SERVER['HTTP_USER_AGENT'];
 if (
