@@ -1,3 +1,0 @@
-</div> {* rftMain *}
-</body>
-</html>
