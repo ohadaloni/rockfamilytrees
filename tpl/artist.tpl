@@ -51,9 +51,9 @@
 			{$artist.createdBy|nickname}
 			{if $artist.createdBy != $smarty.session.rftId}
 				<a href="/rft/userHome?userId={$artist.createdBy}"><img width="16" height="16" border="0" src="/images/home.png"
-					alt="{$artist.createdBy|nickname}'s home" title="{$artist.createdBy|avatar}'s home" /></a>
+					alt="{$artist.createdBy|nickname}'s home" title="{$artist.createdBy|nickname}'s home" /></a>
 				<a href="javascript:follow({$artist.createdBy})"><img width="16" height="16" border="0" src="/images/follow.png"
-					alt="Follow {$artist.createdBy|avatar}" title="Follow {$artist.createdBy|avatar}"/></a>
+					alt="Follow {$artist.createdBy|nickname}" title="Follow {$artist.createdBy|nickname}"/></a>
 			{/if}
 		</td>
 	</tr>
