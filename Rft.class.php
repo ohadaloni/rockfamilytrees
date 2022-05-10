@@ -236,7 +236,7 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	public function changenickname() {
+	public function changeNickname() {
 		$rftId = $_SESSION['rftId'];
 		$nickname = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['nickname'])));
 		if ( $nickname ) {
@@ -248,13 +248,12 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	private function visitorHome() {
-		$bands = $this->Mmodel->getRows("select * from bands order by visits desc limit 20");
-		$artists = $this->Mmodel->getRows("select * from artists order by visits desc limit 20");
+		$bands = $this->Mmodel->getRows("select * from bands order by name limit 20");
+		$artists = $this->Mmodel->getRows("select * from artists order by name limit 20");
 		$this->setTitle("Visitor");
 		$this->Mview->showTpl("home.tpl", array(
 			'bands' => $bands,
 			'artists' => $artists,
-			'mostPopular' => $this->mostPopular(),
 			'mostActive' => $this->mostActive(),
 			'latelyActive' => $this->latelyActive(),
 		));
@@ -265,9 +264,8 @@ class Rft extends Mcontroller {
 		$favorites = $this->Mmodel->getRows("select * from bands where id in ( $favInSql ) order by name");
 		$myLatest = $this->Mmodel->getRows("select * from bands where createdBy = $rftId and id not in ( $favInSql ) order by id desc limit 10");
 		// it is very unlikely for a latest to also be most popular
-		$popular = $this->Mmodel->getRows("select * from bands where id not in ( $favInSql ) and createdBy != $rftId order by visits desc limit 5");
 		$latest = $this->Mmodel->getRows("select * from bands where id not in ( $favInSql ) and createdBy != $rftId order by id desc limit 5");
-		return(array_merge($favorites, $myLatest, $popular, $latest));
+		return(array_merge($favorites, $myLatest, $latest));
 	}
 	/*------------------------------*/
 	private function userArtists($rftId) {
@@ -275,9 +273,8 @@ class Rft extends Mcontroller {
 		$favorites = $this->Mmodel->getRows("select * from artists where id in ( $favInSql ) order by name");
 		$myLatest = $this->Mmodel->getRows("select * from artists where createdBy = $rftId and id not in ( $favInSql ) order by id desc limit 10");
 		// it is very unlikely for a latest to also be most popular
-		$popular = $this->Mmodel->getRows("select * from artists where id not in ( $favInSql ) and createdBy != $rftId order by visits desc limit 5");
 		$latest = $this->Mmodel->getRows("select * from artists where id not in ( $favInSql ) and createdBy != $rftId order by id desc limit 5");
-		return(array_merge($favorites, $myLatest, $popular, $latest));
+		return(array_merge($favorites, $myLatest, $latest));
 	}
 	/*------------------------------*/
 	private function followers($rftId) {
@@ -290,12 +287,6 @@ class Rft extends Mcontroller {
 		$sql = "select u.* from users u, followees f where u.id = f.followee and f.rftId = $rftId order by id desc";
 		$followees = $this->Mmodel->getRows($sql);
 		return($followees);
-	}
-	/*------------------------------*/
-	private function mostPopular() {
-		$sql = "select * from users order by visits desc limit 5";
-		$users = $this->Mmodel->getRows($sql);
-		return($users);
 	}
 	/*------------------------------*/
 	private function mostActive() {
@@ -338,12 +329,9 @@ class Rft extends Mcontroller {
 			'artists' => $this->userArtists($rftId),
 			'followees' => $this->followees($rftId),
 			'followers' => $this->followers($rftId),
-			'mostPopular' => $this->mostPopular(),
 			'mostActive' => $this->mostActive(),
 			'latelyActive' => $this->latelyActive(),
 		));
-		if ( $this->user['id'] != $rftId )
-			$this->updateVisits("users", $rftId);
 		return(true);
 	}
 	/*------------------------------*/
@@ -436,7 +424,6 @@ class Rft extends Mcontroller {
 			"artists" => $artists,
 			"isFavorite" => $isFavorite,
 		));
-		$this->updateVisits("bands", $bandId);
 	}
 	/*------------------------------------------------------------*/
 	public function artist($artistId = null) {
@@ -457,40 +444,8 @@ class Rft extends Mcontroller {
 			"bands" => $bands,
 			"isFavorite" => $isFavorite,
 		));
-		$this->updateVisits("artists", $artistId);
 	}
 	/*------------------------------------------------------------*/
-	/*------------------------------------------------------------*/
-	private function updateVisits($tname, $rowId) {
-		$today = date("Y-m-d");
-		$now = date("Y-m-d H:i:s");
-		$conds = "tname = '$tname' and rowId = $rowId";
-		$sql = "select * from visits where $conds";
-		$row = $this->Mmodel->getRow($sql);
-		if ( $row ) {
-			$this->Mmodel->dbUpdate("visits", $row['id'], array(
-				'visits' => $row['visits'] + 1,
-				'updated' => $today,
-				'updateTime' => $now,
-			));
-		} else {
-			$this->Mmodel->dbInsert("visits", array(
-				'tname' => $tname,
-				'rowId' => $rowId,
-				'visits' => 1,
-				'updated' => $today,
-				'updateTime' => $now,
-			));
-		}
-		$sql = "select visits from visits where $conds";
-		$newVisits = $this->Mmodel->getInt($sql);
-		if ( $newVisits < 10 ) // per tname, $rowId
-			return;
-		$this->Mmodel->sql("delete from visits where $conds");
-		$sql = "update $tname set visits = visits + $newVisits where id = $rowId";
-		$this->Mmodel->sql($sql);
-		error_log("updateVisits: $sql");
-	}
 	/*------------------------------------------------------------*/
 	private function canonize($str) {
 		$ret = $str;
