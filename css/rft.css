@@ -82,19 +82,6 @@ form input {
   text-align:center;
 }
 
-.androidHeaderAndFooter {
-  background-color:blue; 
-  color:white;
-  font: normal 20px Verdana, Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  text-align:center;
-}
-
-.androidText {
-  font: normal 30px Verdana, Arial, Helvetica, sans-serif;
-  font-weight: medium;
-}
-
 .zebra0 {
   background-color:#d0d0d0; 
 }

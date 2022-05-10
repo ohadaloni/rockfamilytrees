@@ -1,6 +1,6 @@
 <table border="0">
 		<tr class="rftHeaderRow">
-			<td>Avatars</td>
+			<td>nickname</td>
 		</tr>
 	{if $followees }
 		{* followees *}
@@ -10,9 +10,9 @@
 		{foreach from=$followees item=followee}
 			<tr class="rftRow">
 				<td>
-					{$followee.id|avatar}
+					{$followee.id|nickname}
 					<a href="/rft/userHome?userId={$followee.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$followee.id|avatar}'s home" title="{$followee.id|avatar}'s home" /></a>
+							alt="{$followee.id|nickname}'s home" title="{$followee.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -26,9 +26,9 @@
 		{foreach from=$followers item=follower}
 			<tr class="rftRow">
 				<td>
-					{$follower.id|avatar}
+					{$follower.id|nickname}
 					<a href="/rft/userHome?userId={$follower.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$follower.id|avatar}'s home" title="{$follower.id|avatar}'s home" /></a>
+							alt="{$follower.id|nickname}'s home" title="{$follower.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -42,9 +42,9 @@
 		{foreach from=$mostPopular item=popularUser}
 			<tr class="rftRow">
 				<td>
-					{$popularUser.id|avatar}
+					{$popularUser.id|nickname}
 					<a href="/rft/userHome?userId={$popularUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$popularUser.id|avatar}'s home" title="{$popularUser.id|avatar}'s home"/></a>
+							alt="{$popularUser.id|nickname}'s home" title="{$popularUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -58,9 +58,9 @@
 		{foreach from=$mostActive item=activeUser}
 			<tr class="rftRow">
 				<td>
-					{$activeUser.id|avatar}
+					{$activeUser.id|nickname}
 					<a href="/rft/userHome?userId={$activeUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$activeUser.id|avatar}'s home" title="{$activeUser.id|avatar}'s home"/></a>
+							alt="{$activeUser.id|nickname}'s home" title="{$activeUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -74,9 +74,9 @@
 		{foreach from=$latelyActive item=lAtiveUser}
 			<tr class="rftRow">
 				<td>
-					{$lAtiveUser.id|avatar}
+					{$lAtiveUser.id|nickname}
 					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$lAtiveUser.id|avatar}'s home" title="{$lAtiveUser.id|avatar}'s home"/></a>
+							alt="{$lAtiveUser.id|nickname}'s home" title="{$lAtiveUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}

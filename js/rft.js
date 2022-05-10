@@ -37,16 +37,6 @@ function rftBindAll(context)
 		$(".rftFormRow").not(this).removeClass("keepHilited");
 		$(this).addClass("keepHilited");
 	});
-
-	$(".androidArtist", context).click(function() {
-		url = "/rft/androidArtist&artistId=" + this.id ;
-		document.location = url;
-	});
-
-	$(".androidBand", context).click(function() {
-		url = "/rft/androidBand&bandId=" + this.id ;
-		document.location = url;
-	});
 }
 /*------------------------------------------------------------*/
 function verifyCaptcha() {

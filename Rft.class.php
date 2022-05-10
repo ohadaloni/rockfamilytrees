@@ -10,25 +10,19 @@ class Rft extends Mcontroller {
 		$this->init();
 		$this->setUser();
 		$this->preAuthenticate();
-		$this->Mview->register_modifier('avatar', 'avatar');
+		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
 		$this->Mview->assign('adminNumOps', $this->adminNumOps);
 	}
 	/*------------------------------------------------------------*/
 	protected function before() {
 		parent::before();
 		header('Content-type: text/html; charset=UTF-8');
-		if ( stristr($this->action, "android") )
-			$this->Mview->showTpl("androidHeader.tpl");
-		else
-			$this->Mview->showTpl("header.tpl");
+		$this->Mview->showTpl("header.tpl");
 	}
 	/*------------------------------------------------------------*/
 	protected function after() {
 		parent::after();
-		if ( stristr($this->action, "android") )
-			$this->Mview->showTpl("androidFooter.tpl");
-		else
-			$this->Mview->showTpl("footer.tpl");
+		$this->Mview->showTpl("footer.tpl");
 	}
 	/*------------------------------------------------------------*/
 	private function init() {
@@ -185,8 +179,8 @@ class Rft extends Mcontroller {
 		$this->user = $this->Mmodel->getRow($sql);
 		if ( ! $this->user )
 			return(false);
-		if ( ! $this->user['avatar'] )
-			$this->user['avatar'] = $rftId ;
+		if ( ! $this->user['nickname'] )
+			$this->user['nickname'] = $rftId ;
 		$this->user['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
 		$this->user['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
 		$this->Mview->assign("user", $this->user);
@@ -242,12 +236,12 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	public function changeAvatar() {
+	public function changenickname() {
 		$rftId = $_SESSION['rftId'];
-		$avatar = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['avatar'])));
-		if ( $avatar ) {
-			$this->Mmodel->dbUpdate("users", $rftId, array("avatar" => $avatar,));
-			$this->user['avatar'] = $avatar ;
+		$nickname = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['nickname'])));
+		if ( $nickname ) {
+			$this->Mmodel->dbUpdate("users", $rftId, array("nickname" => $nickname,));
+			$this->user['nickname'] = $nickname ;
 			$this->Mview->assign("user", $this->user);
 		}
 		$this->userHome($rftId);
@@ -330,12 +324,12 @@ class Rft extends Mcontroller {
 		} else {
 			$sql = "select * from users where id = $rftId";
 			$homeUser = $this->Mmodel->getRow($sql);
-			if ( ! $homeUser['avatar'] )
-				$homeUser['avatar'] = $homeUser['id'];
+			if ( ! $homeUser['nickname'] )
+				$homeUser['nickname'] = $homeUser['id'];
 		}
 		$bands = $this->Mmodel->getRows("select * from bands where createdBy = $rftId order by id desc");
 		$artists = $this->Mmodel->getRows("select * from artists where createdBy = $rftId order by id desc");
-		$this->setTitle("{$homeUser['avatar']}'s home");
+		$this->setTitle("{$homeUser['nickname']}'s home");
 		$homeUser['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
 		$homeUser['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
 		$this->Mview->showtpl("home.tpl", array(
@@ -398,7 +392,7 @@ class Rft extends Mcontroller {
 	}
 	/*----------------------------------------*/
 	public function switchId() {
-		$newRftId = trim($_REQUEST['avatarId']);
+		$newRftId = trim($_REQUEST['nickname']);
 		$passwd = trim($_REQUEST['passwd']);
 		if ( ! $newRftId || ! $passwd ) {
 			$this->home();
@@ -616,14 +610,14 @@ class Rft extends Mcontroller {
 			$this->artist($artistId);
 			return;
 		}
-		if ( $userId = $this->Mmodel->getInt("select id from users where avatar = '$searchTerm'") ) {
+		if ( $userId = $this->Mmodel->getInt("select id from users where nickname = '$searchTerm'") ) {
 			$this->userHome($userId);
 			return;
 		}
 			
 		$bands = $this->Mmodel->getRows("select * from bands where name like '%$searchTerm%' order by name limit 30");
 		$artists = $this->Mmodel->getRows("select * from artists where name like '%$searchTerm%' order by name limit 30");
-		$searchedUsers = $this->Mmodel->getRows("select * from users where avatar like '%$searchTerm%' order by avatar limit 30");
+		$searchedUsers = $this->Mmodel->getRows("select * from users where nickname like '%$searchTerm%' order by nickname limit 30");
 		$this->Mview->showTpl("search.tpl", array(
 			"bands" => $bands,
 			"artists" => $artists,
@@ -750,80 +744,20 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	/*------------------------------------------------------------*/
-	/*------------------------------------------------------------*/
-	public function androidBand() {
-		$bandId = $_REQUEST['bandId'];
-		$band = $this->Mmodel->getRow("select * from bands where id = $bandId");
-		$this->setTitle($band['name']);
-		$artists = $this->Mmodel->getRows("select a.* from artists a, bandArtists ba where a.id = ba.artistId and ba.bandId = $bandId order by a.name");
-		$this->Mview->showTpl("androidBand.tpl", array(
-			"band" => $band,
-			"artists" => $artists,
-		));
-	}
-	/*------------------------------------------------------------*/
-	public function androidArtist($artistId = null) {
-		if ( ! $artistId )
-			$artistId = $_REQUEST['artistId'];
-		$artist = $this->Mmodel->getRow("select * from artists where id = $artistId");
-		$this->setTitle($artist['name']);
-		$bands = $this->Mmodel->getRows("select b.* from bands b, bandArtists ba where b.id = ba.bandId and ba.artistId = $artistId order by b.name");
-		$this->Mview->showTpl("androidArtist.tpl", array(
-			"artist" => $artist,
-			"bands" => $bands,
-		));
-	}
-	/*------------------------------------------------------------*/
-	public function androidShowArtistNotFound($artist) {
-		$beatlesId = $this->Mmodel->getInt("select id from bands where name = 'The Beatles'");
-		$this->Mview->showTpl("androidArtistNotFound.tpl", array(
-			'artist' => $artist,
-			'beatlesId' => $beatlesId,
-		));
-	}
-	/*------------------------------------------------------------*/
-	public function androidShowArtist() {
-		$artist = $_REQUEST['artist'];
-		$dbArtist = $this->Mmodel->str($artist);
-		$artistId = $this->Mmodel->getInt("select id from artists where name = '$dbArtist'");
-		if ( $artistId ) {
-			$this->androidArtist($artistId);
-			return;
-		}
-		$spaced = str_replace('.', ' ', $artist);
-		$lower = strtolower($spaced);
-		$parts = explode(' ', $lower);
-		$numWords = count($parts);
-		$fname = $parts[0];
-		$lname = $parts[$numWords-1];
-
-		$likeCond = "lower(name) like '$fname%$lname%'";
-		$artistId = $this->Mmodel->getInt("select id from artists where $likeCond");
-		if ( $artistId ) {
-			$this->androidArtist($artistId);
-			return;
-		}
-
-		$this->androidShowArtistNotFound($artist);
-	}
-	/*------------------------------------------------------------*/
-}
-/*------------------------------------------------------------*/
-/*------------------------------------------------------------*/
-/*------------------------------------------------------------*/
-function avatar($rftId) {
-	global $Mmodel;
-	static $cache = array();
-	
-	if ( ! $rftId )
-		return(""); // not reached || error
-	if ( isset($cache[$rftId]) )
+	private function nickname($rftId) {
+		global $Mmodel;
+		static $cache = array();
+		
+		if ( ! $rftId )
+			return(""); // not reached || error
+		if ( isset($cache[$rftId]) )
+			return($cache[$rftId]);
+		$nickname = htmlspecialchars($Mmodel->getString("select nickname from users where id = $rftId"));
+		if ( ! $nickname )
+			$nickname = $rftId;
+		$cache[$rftId] =  $nickname;
 		return($cache[$rftId]);
-	$avatar = htmlspecialchars($Mmodel->getString("select avatar from users where id = $rftId"));
-	if ( ! $avatar )
-		$avatar = $rftId;
-	$cache[$rftId] =  $avatar;
-	return($cache[$rftId]);
+	}
+	/*------------------------------------------------------------*/
 }
 /*------------------------------------------------------------*/

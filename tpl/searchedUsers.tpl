@@ -1,13 +1,13 @@
 <table border="0">
 	<tr class="rftHeaderRow">
-		<td>Avatars ({$searchedUsers|@count})</td>
+		<td>nickname ({$searchedUsers|@count})</td>
 	</tr>
 	{foreach from=$searchedUsers item=searchedUser}
 		<tr class="rftRow">
 			<td>
-				{$searchedUser.id|avatar}
+				{$searchedUser.id|nickname}
 				<a href="/rft/userHome&amp;userId={$searchedUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-						alt="{$searchedUser.id|avatar}'s home" title="{$searchedUser.id|avatar}'s home"/></a>
+						alt="{$searchedUser.id|nickname}'s home" title="{$searchedUser.id|nickname}'s home"/></a>
 				<a href="javascript:follow({$searchedUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
 								alt="Follow" title="Follow" /></a>
 				<img border="0" src="/images/info.png" width="16" height="16"

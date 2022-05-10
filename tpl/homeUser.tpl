@@ -4,12 +4,12 @@
 		<td>{$homeUser.id}</td>
 	</tr>
 	<tr class="rftFormRow">
-		<td>Avatar</td>
+		<td>nickname</td>
 		<td>
-			{$homeUser.avatar|htmlspecialchars}
+			{$homeUser.nickname|htmlspecialchars}
 			{if $smarty.session.rftId != $homeUser.id}
 				<a href="javascript:follow({$homeUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
-					alt="Follow {$homeUser.id|avatar}" title="Follow {$homeUser.avatar}"/></a>
+					alt="Follow {$homeUser.id|nickname}" title="Follow {$homeUser.nickname}"/></a>
 			{/if}
 		</td>
 	</tr>

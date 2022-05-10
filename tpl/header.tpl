@@ -5,7 +5,7 @@
 		{if $title}
 			{$title|htmlspecialchars} - Rock Family Trees
 		{elseif $user}
-			Rock Family Trees - {$user.avatar|htmlspecialchars}
+			Rock Family Trees - {$user.nickname|htmlspecialchars}
 		{else}
 			Rock Family Trees
 		{/if}
@@ -53,7 +53,7 @@
 					<table border="0">
 						<tr>
 							<td>
-								Id: <input class="topItem required number" type="text" name="avatarId" value="{$smarty.session.rftId}" />
+								Id: <input class="topItem required number" type="text" name="nickname" value="{$smarty.session.rftId}" />
 							</td>
 							<td width="10"></td>
 							<td>
@@ -73,15 +73,15 @@
 			{if $user}
 				<td width="20"></td>
 				<td>
-					<form method="post" id="changeAvatarForm" action="/rft">
+					<form method="post" id="changenickname" action="/rft">
 						<table border="0">
 							<tr>
 								<td>
-									Avatar: <input class="topItem required" type="text" name="avatar" value="{$user.avatar|htmlspecialchars}" />
+									nickname: <input class="topItem required" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
 								</td>
 								<td>
-									<input type="hidden" class="topItem" name="action" value="changeAvatar" />
-									<input type="image" src="/images/changeAvatar.png" alt="Change my Avatar Name" title="Change my Avatar Name" />
+									<input type="hidden" class="topItem" name="action" value="changenickname" />
+									<input type="image" src="/images/changenickname.png" alt="Change my nickname Name" title="Change my nickname Name" />
 								</td>
 							</tr>
 						</table>

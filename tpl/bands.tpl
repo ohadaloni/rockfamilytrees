@@ -34,7 +34,7 @@
 						<a href="/rft/removeFavoriteBand&amp;bandId={$band.id}"><img width="16" height="16" border="0" src="/images/removeFavorite.png"
 									alt="Remove from Favorites" title="Remove from Favorites" /></a>
 					{else}
-						<img width="16" height="16" border="0" src="/images/favorite.png" alt="A {$homeUser.id|avatar}'s Favorite" title="A {$homeUser.id|avatar}'s Favorite" />
+						<img width="16" height="16" border="0" src="/images/favorite.png" alt="A {$homeUser.id|nickname}'s Favorite" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
 				{/if}
 			</td>

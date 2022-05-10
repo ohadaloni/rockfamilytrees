@@ -48,10 +48,10 @@
 	<tr class="rftFormRow">
 		<td>By</td>
 		<td>
-			{$artist.createdBy|avatar}
+			{$artist.createdBy|nickname}
 			{if $artist.createdBy != $smarty.session.rftId}
 				<a href="/rft/userHome?userId={$artist.createdBy}"><img width="16" height="16" border="0" src="/images/home.png"
-					alt="{$artist.createdBy|avatar}'s home" title="{$artist.createdBy|avatar}'s home" /></a>
+					alt="{$artist.createdBy|nickname}'s home" title="{$artist.createdBy|avatar}'s home" /></a>
 				<a href="javascript:follow({$artist.createdBy})"><img width="16" height="16" border="0" src="/images/follow.png"
 					alt="Follow {$artist.createdBy|avatar}" title="Follow {$artist.createdBy|avatar}"/></a>
 			{/if}
