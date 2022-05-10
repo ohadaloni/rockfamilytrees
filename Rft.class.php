@@ -187,7 +187,7 @@ class Rft extends Mcontroller {
 		return(true);
 	}
 	/*----------------------------------------*/
-	public function validateUser() {
+	private function validateUser() {
 		// the logic is in the templates and the js code
 		// this prevents spoofing by typing urls or programatically
 		// trying to bypass into the db
@@ -214,7 +214,7 @@ class Rft extends Mcontroller {
 		 return(true);
 	}
 	/*----------------------------------------*/
-	public function setUser($rftId = null) {
+	private function setUser($rftId = null) {
 		if ( $rftId ) {
 			// switch user to this rftId
 			$_SESSION['rftId'] = $rftId;
@@ -358,7 +358,7 @@ class Rft extends Mcontroller {
 	 * prepare for athentication
 	 * set a captcha if there is no user id
 	 */
-	public function preAuthenticate() {
+	private function preAuthenticate() {
 		if ( isset($_SESSION['rftId']) )
 			return;
 		if ( isset($_SESSION['captchaSet']) )
