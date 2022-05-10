@@ -744,7 +744,7 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	private function nickname($rftId) {
+	public function nickname($rftId) {
 		global $Mmodel;
 		static $cache = array();
 		
