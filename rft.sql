@@ -30274,7 +30274,6 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1679,71,508,'20
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1680,71,1766,'2010-11-02');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1681,71,1627,'2010-11-02');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1682,71,139,'2010-11-02');
-INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1930,10,2002,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1931,10,2003,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1932,10,2004,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1933,10,2005,NULL);
@@ -30282,12 +30281,10 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1934,10,284,NUL
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1935,10,2006,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1936,10,2007,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1937,10,2008,NULL);
-INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1938,10,2009,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1939,10,2010,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1940,10,2011,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1941,10,2012,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1942,10,2013,NULL);
-INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1944,10,2015,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1945,10,118,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1946,10,2016,NULL);
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (1947,10,2017,NULL);
