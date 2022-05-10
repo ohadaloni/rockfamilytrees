@@ -49,21 +49,20 @@
 	<table border="0" width="100%">
 		<tr>
 			<td>
-				<form method="post" id="switchUserForm" action="/rft">
+				<form method="post" action="/rft/switchId">
 					<table border="0">
 						<tr>
 							<td>
-								Id: <input class="topItem required number" type="text" name="nickname" value="{$smarty.session.rftId}" />
+								Id: <input class="topItem" type="text" name="nickname" value="{$smarty.session.rftId}" />
 							</td>
 							<td width="10"></td>
 							<td>
 								<img width="16" height="16" border="0" src="/images/lock.png" alt="{$user.passwd}" title="{$user.passwd}" />
 								Password:
-								<input class="topItem required" type="password" name="passwd" />
+								<input class="topItem" type="password" name="passwd" />
 							</td>
 							<td width="5"></td>
 							<td>
-								<input type="hidden" class="topItem" name="action" value="switchId" />
 								<input type="image" src="/images/switchUser.png" alt="Switch User" title="Switch User" />
 							</td>
 						</tr>
@@ -73,15 +72,14 @@
 			{if $user}
 				<td width="20"></td>
 				<td>
-					<form method="post" id="changenickname" action="/rft">
+					<form method="post" action="/rft/chnageNickname">
 						<table border="0">
 							<tr>
 								<td>
-									nickname: <input class="topItem required" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
+									nickname: <input class="topItem" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
 								</td>
 								<td>
-									<input type="hidden" class="topItem" name="action" value="changenickname" />
-									<input type="image" src="/images/changenickname.png" alt="Change my nickname Name" title="Change my nickname Name" />
+									<input type="image" src="/images/changeAvatar.png" alt="Change my nickname Name" title="Change my nickname Name" />
 								</td>
 							</tr>
 						</table>
@@ -97,14 +95,13 @@
 			</td>
 			<td width="30"></td>
 			<td>
-				<form method="post" id="searchForm" action="">
+				<form method="post" id="searchForm" action="/rft/search">
 					<table border="0">
 						<tr>
 							<td>
-								<input class="topItem required" type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
+								<input class="topItem" type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
 							</td>
 							<td>
-								<input type="hidden" name="action" value="search" />
 								{if ! $user}Search {/if}<input type="image" src="/images/search.png" alt="Search"  title="Search" />
 							</td>
 						</tr>
