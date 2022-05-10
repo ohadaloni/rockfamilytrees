@@ -79,7 +79,7 @@
 									nickname: <input class="topItem" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
 								</td>
 								<td>
-									<input type="image" src="/images/changeAvatar.png" alt="Change my nickname Name" title="Change my nickname Name" />
+									<input type="image" src="/images/changeAvatar.png" title="Change my Nickname" />
 								</td>
 							</tr>
 						</table>
