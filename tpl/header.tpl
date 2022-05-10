@@ -43,7 +43,7 @@
 	</table>
 </div>
 <div class="headerAndFooter">
-	<b>Rock Family Trees (cheetah)</b><br />
+	<b>Rock Family Trees</b><br />
 </div>
 <div class="topPane">
 	<table border="0" width="100%">
