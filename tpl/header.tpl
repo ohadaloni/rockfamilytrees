@@ -31,12 +31,12 @@
 	<table border="0">
 		<tr>
 			<td>
-				<a target="_blank" href="http://theora.com/"><img alt="theora.com" title="theora.com" height="50" style="border: 0px" src="/images/cortXR22.jpg" /></a>
-				<a href="/rft/home"><img  border="0" alt="Home" title="Home" height="50" src="/images/home.jpg" /></a>
-				<a target="_blank" href="http://en.wikipedia.org/wiki/Pete_Frame"><img id="rftImage" border="0" alt="Rock Family Trees" title="Rock Family Trees" height="50" src="/images/RockFamilyTrees.jpg" /></a>
+				<a target="_blank" href="http://theora.com/"><img title="theora.com" height="50" style="border: 0px" src="/images/cortXR22.jpg" /></a>
+				<a href="/rft/home"><img border="0" title="Home" height="50" src="/images/home.jpg" /></a>
+				<a target="_blank" href="http://en.wikipedia.org/wiki/Pete_Frame"><img id="rftImage" border="0" title="Rock Family Trees" height="50" src="/images/RockFamilyTrees.jpg" /></a>
 				{if $smarty.session.captchaSet }
 					<script type="text/javascript">var captchaSet = {$smarty.session.captchaSet};</script>
-					<a target="_blank" href="http://en.wikipedia.org/wiki/CAPTCHA"><img id="captchaImage" border="0" alt="Captch" title="Captch" height="30" src="{$smarty.session.captchaFile}" /></a>
+					<a target="_blank" href="http://en.wikipedia.org/wiki/CAPTCHA"><img id="captchaImage" border="0" title="Captch" height="30" src="{$smarty.session.captchaFile}" /></a>
 				{/if}
 			</td>
 		</tr>
@@ -57,13 +57,13 @@
 							</td>
 							<td width="10"></td>
 							<td>
-								<img width="16" height="16" border="0" src="/images/lock.png" alt="{$user.passwd}" title="{$user.passwd}" />
+								<img width="16" height="16" border="0" src="/images/lock.png" title="{$user.passwd}" />
 								Password:
 								<input class="topItem" type="password" name="passwd" />
 							</td>
 							<td width="5"></td>
 							<td>
-								<input type="image" src="/images/switchUser.png" alt="Switch User" title="Switch User" />
+								<input type="image" src="/images/switchUser.png" title="Switch User" />
 							</td>
 						</tr>
 					</table>
@@ -88,10 +88,10 @@
 			{/if}
 			<td width="20"></td>
 			<td>
-				<a href="javascript:addBand();"><img width="16" height="16" border="0" src="/images/addBand.png" alt="Add a band" title="Add a band" /></a>
+				<a href="javascript:addBand();"><img width="16" height="16" border="0" src="/images/addBand.png" title="Add a band" /></a>
 			</td>
 			<td>
-				<a href="javascript:addArtist();"><img width="16" height="16" border="0" src="/images/addArtist.png" alt="Add a musician" title="Add a musician" /></a>
+				<a href="javascript:addArtist();"><img width="16" height="16" border="0" src="/images/addArtist.png" title="Add a musician" /></a>
 			</td>
 			<td width="30"></td>
 			<td>
@@ -102,7 +102,7 @@
 								<input class="topItem" type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
 							</td>
 							<td>
-								{if ! $user}Search {/if}<input type="image" src="/images/search.png" alt="Search"  title="Search" />
+								{if ! $user}Search {/if}<input type="image" src="/images/search.png" title="Search" />
 							</td>
 						</tr>
 					</table>
@@ -110,7 +110,7 @@
 			</td>
 			<td width="20"></td>
 			<td>
-				<a href="/rft/home"><img border="0" width="16" height="16" src="/images/home.png" alt="Home" title="Home" /></a>
+				<a href="/rft/home"><img border="0" width="16" height="16" src="/images/home.png" title="Home" /></a>
 			</td>
 			<td width="20"></td>
 			<td>
@@ -118,7 +118,7 @@
 			</td>
 			<td width="20"></td>
 			<td>
-				<a href="/rft/help">{if ! $user}HELP {/if}<img border="0" width="16" height="16" src="/images/help.png" alt="Help" title="Help" /></a>
+				<a href="/rft/help">{if ! $user}HELP {/if}<img border="0" width="16" height="16" src="/images/help.png" title="Help" /></a>
 			</td>
 		</tr>
 	</table>
