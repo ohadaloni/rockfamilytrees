@@ -9,7 +9,7 @@
 			{$homeUser.nickname|htmlspecialchars}
 			{if $smarty.session.rftId != $homeUser.id}
 				<a href="javascript:follow({$homeUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
-					alt="Follow {$homeUser.id|nickname}" title="Follow {$homeUser.nickname}"/></a>
+					 title="Follow {$homeUser.nickname}"/></a>
 			{/if}
 		</td>
 	</tr>
@@ -32,9 +32,9 @@
 				{$homeUser.status}
 				{if $homeUser.status == "superAdmin"}
 				{elseif $homeUser.status == "Admin"}
-					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/revoke.png" border="0" title="Revoke Admin" alt="Revoke Admin" /></a>
+					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/revoke.png" border="0" title="Revoke Admin" /></a>
 				{else}
-					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/award.png" border="0" title="Award Admin" alt="Award Admin" /></a>
+					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/award.png" border="0" title="Award Admin" /></a>
 				{/if}
 			</td>
 		</tr>
