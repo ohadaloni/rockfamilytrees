@@ -3,7 +3,7 @@
 class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private $user = null;
-	private $adminNumOps = 50 ;
+	private $adminNumOps = 50;
 	/*------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
@@ -180,7 +180,7 @@ class Rft extends Mcontroller {
 		if ( ! $this->user )
 			return(false);
 		if ( ! $this->user['nickname'] )
-			$this->user['nickname'] = $rftId ;
+			$this->user['nickname'] = $rftId;
 		$this->user['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
 		$this->user['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
 		$this->Mview->assign("user", $this->user);
@@ -232,7 +232,7 @@ class Rft extends Mcontroller {
 		}
 	}
 	/*------------------------------------------------------------*/
-	public function  index() {
+	public function index() {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
@@ -241,7 +241,7 @@ class Rft extends Mcontroller {
 		$nickname = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['nickname'])));
 		if ( $nickname ) {
 			$this->Mmodel->dbUpdate("users", $rftId, array("nickname" => $nickname,));
-			$this->user['nickname'] = $nickname ;
+			$this->user['nickname'] = $nickname;
 			$this->Mview->assign("user", $this->user);
 		}
 		$this->userHome($rftId);
@@ -351,7 +351,7 @@ class Rft extends Mcontroller {
 			return;
 		if ( isset($_SESSION['captchaSet']) )
 			return;
-		$cmd = "find images/Captcha -name 'captcha.*.jpg' -amin +15 -exec rm {} \;" ;
+		$cmd = "find images/Captcha -name 'captcha.*.jpg' -amin +15 -exec rm {} \;";
 		`$cmd`;
 
 		$captcha = rand(1024, 8196)."";
@@ -459,7 +459,7 @@ class Rft extends Mcontroller {
 	private function updateStats() {
 		$rftId = $_SESSION['rftId'];
 		$today = date("Ymd");
-		$sql = "update users set numOps = numOps + 1,  lastOp = $today where id = $rftId";
+		$sql = "update users set numOps = numOps + 1, lastOp = $today where id = $rftId";
 		$this->Mmodel->_sql($sql);
 		/*	$this->user['numOps']++;	*/
 		$this->user['numOps'] = $this->Mmodel->getInt("select numOps from users where id = $rftId");
@@ -639,7 +639,7 @@ class Rft extends Mcontroller {
 		}
 		$numArtists = $this->Mmodel->getInt("select count(*) from bandArtists where bandId = $bandId");
 		// recheck as in the tpl so as to make sure nobody typed in the delete url without the proper credentials
-		if (  ( $band['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numArtists == 0 ||
+		if ( ( $band['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numArtists == 0 ||
 													$this->user['status'] == "Admin" || $this->user['status'] == "superAdmin" ) {
 			if ( $numArtists > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where bandId = $bandId");
@@ -662,7 +662,7 @@ class Rft extends Mcontroller {
 		}
 		$numBands = $this->Mmodel->getInt("select count(*) from bandArtists where artistId = $artistId");
 		// recheck as in the tpl so as to make sure nobody typed in the delete url without the proper credentials
-		if (  ( $artist['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numBands == 0 ||
+		if ( ( $artist['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numBands == 0 ||
 													$this->user['status'] == "Admin" || $this->user['status'] == "superAdmin" ) {
 			if ( $numBands > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where artistId = $artistId");
@@ -685,9 +685,9 @@ class Rft extends Mcontroller {
 			return;
 		}
 		if ( $user['status'] == "Admin" )
-			$status = "" ;
+			$status = "";
 		else
-			$status = "Admin" ;
+			$status = "Admin";
 		$this->Mmodel->dbUpdate("users", $userId, array("status" => $status, ));
 		$this->userHome($userId);
 	}
@@ -710,7 +710,7 @@ class Rft extends Mcontroller {
 		$nickname = htmlspecialchars($Mmodel->getString("select nickname from users where id = $rftId"));
 		if ( ! $nickname )
 			$nickname = $rftId;
-		$cache[$rftId] =  $nickname;
+		$cache[$rftId] = $nickname;
 		return($cache[$rftId]);
 	}
 	/*------------------------------------------------------------*/
