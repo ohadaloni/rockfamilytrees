@@ -12,7 +12,7 @@
 				<td>
 					{$followee.id|nickname}
 					<a href="/rft/userHome?userId={$followee.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$followee.id|nickname}'s home" title="{$followee.id|nickname}'s home" /></a>
+							title="{$followee.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -28,7 +28,7 @@
 				<td>
 					{$follower.id|nickname}
 					<a href="/rft/userHome?userId={$follower.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$follower.id|nickname}'s home" title="{$follower.id|nickname}'s home" /></a>
+							title="{$follower.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -44,7 +44,7 @@
 				<td>
 					{$popularUser.id|nickname}
 					<a href="/rft/userHome?userId={$popularUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$popularUser.id|nickname}'s home" title="{$popularUser.id|nickname}'s home"/></a>
+							title="{$popularUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -60,7 +60,7 @@
 				<td>
 					{$activeUser.id|nickname}
 					<a href="/rft/userHome?userId={$activeUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$activeUser.id|nickname}'s home" title="{$activeUser.id|nickname}'s home"/></a>
+							title="{$activeUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -76,7 +76,7 @@
 				<td>
 					{$lAtiveUser.id|nickname}
 					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							alt="{$lAtiveUser.id|nickname}'s home" title="{$lAtiveUser.id|nickname}'s home"/></a>
+							title="{$lAtiveUser.id|nickname}'s home"/></a>
 				</td>
 			</tr>
 		{/foreach}
