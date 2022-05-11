@@ -119,7 +119,7 @@ function unBandArtist(bandId, artistId, page) {
 	if ( page == 'band' )
 		selector = "#bandArtists";
 	else
-		selector = "#artistBands" ;
+		selector = "#artistBands";
 		
 		$(selector).html('<img border="0" src="images/ajax-loader.gif" />');
 		$(selector).load(hrf, rftBind);
@@ -134,13 +134,13 @@ function follow(userId) {
 function addArtistToFavorites(artistId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "/rft/addArtistToFavorites&artistId=" + artistId + captchaArg() ;
+	window.location.href = "/rft/addArtistToFavorites&artistId=" + artistId + captchaArg();
 }
 /*------------------------------------------------------------*/
 function addBandToFavorites(bandId) {
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "/rft/addBandToFavorites&bandId=" + bandId + captchaArg() ;
+	window.location.href = "/rft/addBandToFavorites&bandId=" + bandId + captchaArg();
 }
 /*------------------------------------------------------------*/
 function changeBand(bandId, previousName) {
@@ -149,7 +149,7 @@ function changeBand(bandId, previousName) {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "/rft/changeBand&bandId=" + bandId + "&bandName=" + escape(newName) ;
+	window.location.href = "/rft/changeBand&bandId=" + bandId + "&bandName=" + escape(newName);
 }
 /*------------------------------------------------------------*/
 function changeArtist(artistId, previousName) {
@@ -158,7 +158,7 @@ function changeArtist(artistId, previousName) {
 		return;
 	if ( ! verifyCaptcha() )
 		return;
-	window.location.href = "/rft/changeArtist&artistId=" + artistId + "&artistName=" + escape(newName) ;
+	window.location.href = "/rft/changeArtist&artistId=" + artistId + "&artistName=" + escape(newName);
 }
 /*------------------------------------------------------------*/
 function deleteBand(bandId) {
