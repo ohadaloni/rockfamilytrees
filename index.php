@@ -18,7 +18,7 @@ if (
 }
 /*------------------------------------------------------------*/
 require_once("rftConfig.php");
-$mdir = M_DIR ;
+$mdir = M_DIR;
 require_once("$mdir/mfiles.php");
 require_once("Rft.class.php");
 /*------------------------------------------------------------*/
