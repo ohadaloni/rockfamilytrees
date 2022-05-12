@@ -7,7 +7,7 @@
 			<td>
 				{$searchedUser.id|nickname}
 				<a href="/rft/userHome&amp;userId={$searchedUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-						 title="{$searchedUser.id|nickname}'s home"/></a>
+						 title="{$searchedUser.id|nickname}'s home" /></a>
 				<a href="javascript:follow({$searchedUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
 								 title="Follow" /></a>
 				<img border="0" src="/images/info.png" width="16" height="16"
