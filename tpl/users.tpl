@@ -44,7 +44,7 @@
 				<td>
 					{$popularUser.id|nickname}
 					<a href="/rft/userHome?userId={$popularUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							title="{$popularUser.id|nickname}'s home"/></a>
+							title="{$popularUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -60,7 +60,7 @@
 				<td>
 					{$activeUser.id|nickname}
 					<a href="/rft/userHome?userId={$activeUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							title="{$activeUser.id|nickname}'s home"/></a>
+							title="{$activeUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
@@ -76,7 +76,7 @@
 				<td>
 					{$lAtiveUser.id|nickname}
 					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
-							title="{$lAtiveUser.id|nickname}'s home"/></a>
+							title="{$lAtiveUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
 		{/foreach}
