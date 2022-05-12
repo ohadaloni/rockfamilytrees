@@ -9,7 +9,7 @@
 			{$homeUser.nickname|htmlspecialchars}
 			{if $smarty.session.rftId != $homeUser.id}
 				<a href="javascript:follow({$homeUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
-					 title="Follow {$homeUser.nickname}"/></a>
+					 title="Follow {$homeUser.nickname}" /></a>
 			{/if}
 		</td>
 	</tr>
