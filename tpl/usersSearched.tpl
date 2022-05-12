@@ -7,7 +7,7 @@
 			<td>
 				{$user.id|nickname}
 				<a href="/rft/userHome&userId={$user.id}"><img width="16" height="16" border="0" src="/images/home.png"
-						 title="Home Page of {$user.id|nickname}"/></a>
+						 title="Home Page of {$user.id|nickname}" /></a>
 				<a href="/rft/follow&userId={$user.id}"><img width="16" height="16" border="0" src="/images/follow.png"
 								 title="Follow" /></a>
 				<img border="0" src="/images/info.png" width="16" height="16"
