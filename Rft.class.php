@@ -9,7 +9,6 @@ class Rft extends Mcontroller {
 		parent::__construct();
 		$this->init();
 		$this->setUser();
-		$this->preAuthenticate();
 		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
 		$this->Mview->assign('adminNumOps', $this->adminNumOps);
 	}
@@ -188,24 +187,11 @@ class Rft extends Mcontroller {
 	}
 	/*----------------------------------------*/
 	private function validateUser() {
-		// the logic is in the templates and the js code
-		// this prevents spoofing by typing urls or programatically
-		// trying to bypass into the db
 		if ( isset($_SESSION['rftId']) &&
 				isset($this->user['id']) &&
 					$_SESSION['rftId'] == $this->user['id'] )
 			return(true);
 
-		$checkCaptcha = true;
-		if ( $checkCaptcha ) {
-			$captchaSet = $_SESSION['captchaSet'];
-			$captchaEntered = @$_REQUEST['captchaEntered'];
-			if ( ! $captchaSet || $captchaSet != $captchaEntered ) {
-				$this->Mview->error("Captcha incorrect");
-				return(false);
-			}
-		}
-			
 		 $rftId = $this->Mmodel->dbInsert("users", array(
 						"passwd" => "".rand(123456, 987654),
 		 				"created" => date("Ymd"),
@@ -222,12 +208,10 @@ class Rft extends Mcontroller {
 		}
 		if ( isset($_SESSION['rftId']) ) {
 			$this->loadUser();
-			unset($_SESSION['captchaSet']);
 			return;
 		}
 
 		if ( isset($_COOKIE['rftId']) && $this->loadUser($_COOKIE['rftId']) ) {
-			unset($_SESSION['captchaSet']);
 			$_SESSION['rftId'] = $_COOKIE['rftId'];
 		}
 	}
@@ -342,43 +326,6 @@ class Rft extends Mcontroller {
 			$this->visitorHome();
 	}
 	/*------------------------------------------------------------*/
-	/**
-	 * prepare for athentication
-	 * set a captcha if there is no user id
-	 */
-	private function preAuthenticate() {
-		if ( isset($_SESSION['rftId']) )
-			return;
-		if ( isset($_SESSION['captchaSet']) )
-			return;
-		$cmd = "find images/Captcha -name 'captcha.*.jpg' -amin +15 -exec rm {} \;";
-		`$cmd`;
-
-		$captcha = rand(1024, 8196)."";
-
-		$img = imagecreatefromjpeg("images/captcha.jpg");
-
-		$LineColor = imagecolorallocate($img, 0, 0, 128);
-		$TextColor = imagecolorallocate($img, 0, 0, 255);
-
-		for($i=0;$i<5;$i++)
-			imageline($img, rand(1,85), 1, rand(1,85), 32, $LineColor);
-		$n = strlen($captcha);
-		for($i=0;$i<$n;$i++)
-			imagestring($img, 6, $i*13 + 8, 10 + rand(-2,2), $captcha[$i], $TextColor);
-
-
-		$fname = "captcha.".time().".".rand(1000,9999).".jpg";
-		$fpath = "images/Captcha/$fname";
-		$created = imagejpeg($img, $fpath);
-		if ( $created ) {
-			$_SESSION['captchaSet'] = $captcha;
-			$_SESSION['captchaFile'] = $fpath;
-		} else {
-			$this->Mview->error("Cannot create captcha $fpath");
-		}
-	}
-	/*----------------------------------------*/
 	public function switchId() {
 		$newRftId = trim($_REQUEST['nickname']);
 		$passwd = trim($_REQUEST['passwd']);
