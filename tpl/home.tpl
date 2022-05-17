@@ -4,7 +4,7 @@
 	{include file="help.tpl"}
 {/if}
 *}
-<table border="0">
+<table
 	<tr>
 		{if $homeUser}
 			<td valign="top">

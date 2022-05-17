@@ -1,4 +1,4 @@
-<table border="0">
+<table>
 	<tr class="rftFormRow">
 		<td>id</td>
 		<td>{$homeUser.id}</td>
@@ -8,7 +8,7 @@
 		<td>
 			{$homeUser.nickname|htmlspecialchars}
 			{if $smarty.session.rftId != $homeUser.id}
-				<a href="javascript:follow({$homeUser.id})"><img width="16" height="16" border="0" src="/images/follow.png"
+				<a href="/rft/follow?userId={$homeUser.id}"><img src="/images/follow.png"
 					 title="Follow {$homeUser.nickname}" /></a>
 			{/if}
 		</td>
@@ -32,9 +32,9 @@
 				{$homeUser.status}
 				{if $homeUser.status == "superAdmin"}
 				{elseif $homeUser.status == "Admin"}
-					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/revoke.png" border="0" title="Revoke Admin" /></a>
+					<a href="/rft/invertStatus?userId={$homeUser.id}"><img src="/images/revoke.png" title="Revoke Admin" /></a>
 				{else}
-					<a href="javascript:invertStatus({$homeUser.id})"><img width="16" height="16" src="/images/award.png" border="0" title="Award Admin" /></a>
+					<a href="/rft/invertStatus?userId={$homeUser.id}"><img src="/images/award.png" title="Award Admin" /></a>
 				{/if}
 			</td>
 		</tr>

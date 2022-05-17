@@ -1,7 +1,7 @@
-<table border="0">
+<table>
 	<tr>
 		<td valign="top">
-			<table border="0">
+			<table>
 				<tr class="rftHeaderRow">
 					<td>Files</td>
 				</tr>

@@ -1,4 +1,4 @@
-<table border="0">
+<table>
 	<tr>
 		<td valign="top">
 			{include file="bands.tpl"}

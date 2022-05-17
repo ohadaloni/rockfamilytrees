@@ -28,16 +28,12 @@
 </head>
 <body>
 <div id="headerTpl" align="center">
-	<table border="0">
+	<table>
 		<tr>
 			<td>
 				<a target="_blank" href="http://theora.com/"><img title="theora.com" height="50" style="border: 0px" src="/images/cortXR22.jpg" /></a>
-				<a href="/rft/home"><img border="0" title="Home" height="50" src="/images/home.jpg" /></a>
-				<a target="_blank" href="http://en.wikipedia.org/wiki/Pete_Frame"><img id="rftImage" border="0" title="Rock Family Trees" height="50" src="/images/RockFamilyTrees.jpg" /></a>
-				{if $smarty.session.captchaSet }
-					<script type="text/javascript">var captchaSet = {$smarty.session.captchaSet};</script>
-					<a target="_blank" href="http://en.wikipedia.org/wiki/CAPTCHA"><img id="captchaImage" border="0" title="Captch" height="30" src="{$smarty.session.captchaFile}" /></a>
-				{/if}
+				<a href="/rft/home"><img title="Home" height="50" src="/images/home.jpg" /></a>
+				<a target="_blank" href="http://en.wikipedia.org/wiki/Pete_Frame"><img id="rftImage" title="Rock Family Trees" height="50" src="/images/RockFamilyTrees.jpg" /></a>
 			</td>
 		</tr>
 	</table>
@@ -46,18 +42,18 @@
 	<b>Rock Family Trees</b><br />
 </div>
 <div class="topPane">
-	<table border="0" width="100%">
+	<table width="100%">
 		<tr>
 			<td>
 				<form method="post" action="/rft/switchId">
-					<table border="0">
+					<table>
 						<tr>
 							<td>
 								Id: <input class="topItem" type="text" name="nickname" value="{$smarty.session.rftId}" />
 							</td>
 							<td width="10"></td>
 							<td>
-								<img width="16" height="16" border="0" src="/images/lock.png" title="{$user.passwd}" />
+								<img src="/images/lock.png" title="{$user.passwd}" />
 								Password:
 								<input class="topItem" type="password" name="passwd" />
 							</td>
@@ -73,7 +69,7 @@
 				<td width="20"></td>
 				<td>
 					<form method="post" action="/rft/chnageNickname">
-						<table border="0">
+						<table>
 							<tr>
 								<td>
 									nickname: <input class="topItem" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
@@ -88,15 +84,15 @@
 			{/if}
 			<td width="20"></td>
 			<td>
-				<a href="javascript:addBand();"><img width="16" height="16" border="0" src="/images/addBand.png" title="Add a band" /></a>
+				<a href="/rft/addBand"><img src="/images/addBand.png" title="Add a band" /></a>
 			</td>
 			<td>
-				<a href="javascript:addArtist();"><img width="16" height="16" border="0" src="/images/addArtist.png" title="Add a musician" /></a>
+				<a href="/rft/addArtist"><img src="/images/addArtist.png" title="Add a musician" /></a>
 			</td>
 			<td width="30"></td>
 			<td>
 				<form method="post" id="searchForm" action="/rft/search">
-					<table border="0">
+					<table>
 						<tr>
 							<td>
 								<input class="topItem" type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
@@ -110,15 +106,15 @@
 			</td>
 			<td width="20"></td>
 			<td>
-				<a href="/rft/home"><img border="0" width="16" height="16" src="/images/home.png" title="Home" /></a>
+				<a href="/rft/home"><img src="/images/home.png" title="Home" /></a>
 			</td>
 			<td width="20"></td>
 			<td>
-				<a target="showSource" href="/showSource"><img border="0" width="16" height="16" src="/images/list.png" title="Show Source" /></a>
+				<a target="showSource" href="/showSource"><img src="/images/list.png" title="Show Source" /></a>
 			</td>
 			<td width="20"></td>
 			<td>
-				<a href="/rft/help">{if ! $user}HELP {/if}<img border="0" width="16" height="16" src="/images/help.png" title="Help" /></a>
+				<a href="/rft/help">{if ! $user}HELP {/if}<img src="/images/help.png" title="Help" /></a>
 			</td>
 		</tr>
 	</table>

@@ -1,4 +1,4 @@
-<table border="0">
+<table>
 		<tr class="rftHeaderRow">
 			<td>nickname</td>
 		</tr>
@@ -11,7 +11,7 @@
 			<tr class="rftRow">
 				<td>
 					{$followee.id|nickname}
-					<a href="/rft/userHome?userId={$followee.id}"><img width="16" height="16" border="0" src="/images/home.png"
+					<a href="/rft/userHome?userId={$followee.id}"><img src="/images/home.png"
 							title="{$followee.id|nickname}'s home" /></a>
 				</td>
 			</tr>
@@ -27,7 +27,7 @@
 			<tr class="rftRow">
 				<td>
 					{$follower.id|nickname}
-					<a href="/rft/userHome?userId={$follower.id}"><img width="16" height="16" border="0" src="/images/home.png"
+					<a href="/rft/userHome?userId={$follower.id}"><img src="/images/home.png"
 							title="{$follower.id|nickname}'s home" /></a>
 				</td>
 			</tr>
@@ -43,7 +43,7 @@
 			<tr class="rftRow">
 				<td>
 					{$popularUser.id|nickname}
-					<a href="/rft/userHome?userId={$popularUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
+					<a href="/rft/userHome?userId={$popularUser.id}"><img src="/images/home.png"
 							title="{$popularUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
@@ -59,7 +59,7 @@
 			<tr class="rftRow">
 				<td>
 					{$activeUser.id|nickname}
-					<a href="/rft/userHome?userId={$activeUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
+					<a href="/rft/userHome?userId={$activeUser.id}"><img src="/images/home.png"
 							title="{$activeUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
@@ -75,7 +75,7 @@
 			<tr class="rftRow">
 				<td>
 					{$lAtiveUser.id|nickname}
-					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img width="16" height="16" border="0" src="/images/home.png"
+					<a href="/rft/userHome?userId={$lAtiveUser.id}"><img src="/images/home.png"
 							title="{$lAtiveUser.id|nickname}'s home" /></a>
 				</td>
 			</tr>
