@@ -27323,6 +27323,7 @@ INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2071,'Syndicats','202
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2072,'Edwin Birdsong Band 1970','2020-09-03',472419);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2073,'Yellow Matter Custard','2021-05-20',472423);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2074,'The Analogues','2021-05-20',472423);
+INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2075,'Beatles','2022-05-17',10);
 /*!40000 ALTER TABLE bands ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30354,6 +30355,7 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2005,472422,207
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2006,472419,2072,'2020-09-03');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2007,472423,2073,'2021-05-20');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2008,472423,2074,'2021-05-20');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2009,10,2075,'2022-05-17');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30437,7 +30439,7 @@ INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (7,'Norah','403680',NULL,'2010-05-09',13,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (8,'Fredder','265214',NULL,'2010-05-09',15,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (9,'Cougar','931482',NULL,'2010-05-09',1,'2010-05-09');
-INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (10,'Neo','824681','superAdmin','2010-05-09',20995,'2022-05-17');
+INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (10,'Neo','824681','superAdmin','2010-05-09',20997,'2022-05-17');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (11,'Crimson','848705',NULL,'2010-05-09',1,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (12,'Bronze','760976',NULL,'2010-05-09',1,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (13,'Angie','671665',NULL,'2010-05-10',89,'2010-05-11');
