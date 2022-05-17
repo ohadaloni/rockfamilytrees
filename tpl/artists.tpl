@@ -1,4 +1,4 @@
-<table border="0">
+<table>
 	<tr class="rftHeaderRow">
 		<td colspan="3">
 			{if $band}
@@ -8,24 +8,20 @@
 			{/if}
 				({$artists|@count})
 			{if $band}
-				<a href="javascript:addArtistToBand({$band.id}, '{$band.name|htmlspecialchars|msuJsStr}');"><img width="16" height="16" border="0"
+				<a href="/rft/addArtistToBand?bandId={$band.id}&, '{$band.name|htmlspecialchars|msuJsStr}');"><img 
 					src="/images/addArtist.png" title="Add a member to {$band.name|htmlspecialchars}" /></a>
 			{else}
-				<a href="javascript:addArtist();"><img width="16" height="16" border="0" src="/images/addArtist.png" title="Add a musician" /></a>
-				{if ! $user }
-					{* visitors also see explicit link *}
-					<a href="javascript:addArtist();">Add a musician</a>
-				{/if}
+				<a href="/rft/addArtist"><img src="/images/addArtist.png" title="Add a musician" /></a>
 			{/if}
 		</td>
 	</tr>
 	{foreach from=$artists item=artist}
 		<tr class="rftRow{if $artist.id == $currentArtist} currentArtist{/if}">
 			<td>
-				<a {* {if $band}{/if} *} href="/rft/artist&amp;artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
+				<a {* {if $band}{/if} *} href="/rft/artist&artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
 				{* in a band page remove a tie to the artist *}
 				{if $band && ( $artist.createdBy == $user.id || $user.numOps > $adminNumOps || $user.status == "Admin" || $user.status == "superAdmin" ) }
-					<a href="javascript:unBandArtist({$band.id}, {$artist.id}, 'band')"><img width="16" height="16" border="0" src="/images/delete.png"
+					<a href="/rft/unBandArtist?bandId={$band.id}&artistId={$artist.id}"><img src="/images/delete.png"
 						
 						title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars}" /></a>
 				{/if}
@@ -33,10 +29,10 @@
 
 				{if $homeUser.favoriteArtists && in_array($artist.id, $homeUser.favoriteArtists)}
 					{if $homeUser.id == $user.id}
-						<a href="/rft/removeFavoriteArtist&amp;artistId={$artist.id}"><img width="16" height="16" border="0" src="/images/removeFavorite.png"
+						<a href="/rft/removeFavoriteArtist&artistId={$artist.id}"><img src="/images/removeFavorite.png"
 									 title="Remove from Favorites" /></a>
 					{else}
-						<img width="16" height="16" border="0" src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
+						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
 				{/if}
 			</td>
@@ -48,7 +44,7 @@
 				<form method="post" id="newArtistForm" action="/rft/addArtistToBand">
 					<input type="text" size="30" name="artistName" />
 					<input type="hidden" name="bandId" value="{$band.id}" />
-					<input type="image" width="16" height="16" border="0" src="/images/addArtist.png" title="Add a member to {$band.name|htmlspecialchars}" />
+					<input type="image" src="/images/addArtist.png" title="Add a member to {$band.name|htmlspecialchars}" />
 				</form>
 			</td>
 		</tr>
