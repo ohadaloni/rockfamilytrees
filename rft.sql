@@ -10678,6 +10678,8 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10757,'Felix Maginn
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10758,'Diederik Nomden','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10759,'Bart Van Poppel','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10760,'Jan Van Der Meij','2021-05-20',472423);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10761,'ZDSFASDF','2022-05-17',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10762,'Qwerty','2022-05-17',10);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25298,6 +25300,7 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14858,2074,10758,'2021-05-20',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14859,2074,10759,'2021-05-20',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14860,2074,10760,'2021-05-20',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14862,2013,10762,'2022-05-17',NULL);
 /*!40000 ALTER TABLE bandArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29855,6 +29858,8 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12080,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12081,472423,10758,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12082,472423,10759,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12083,472423,10760,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12084,10,10761,'2022-05-17');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12085,10,10762,'2022-05-17');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30432,7 +30437,7 @@ INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (7,'Norah','403680',NULL,'2010-05-09',13,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (8,'Fredder','265214',NULL,'2010-05-09',15,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (9,'Cougar','931482',NULL,'2010-05-09',1,'2010-05-09');
-INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (10,'Neo','824681','superAdmin','2010-05-09',20991,'2011-08-26');
+INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (10,'Neo','824681','superAdmin','2010-05-09',20995,'2022-05-17');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (11,'Crimson','848705',NULL,'2010-05-09',1,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (12,'Bronze','760976',NULL,'2010-05-09',1,'2010-05-09');
 INSERT INTO users (id, nickname, passwd, status, created, numOps, lastOp) VALUES (13,'Angie','671665',NULL,'2010-05-10',89,'2010-05-11');
