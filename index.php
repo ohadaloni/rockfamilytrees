@@ -25,9 +25,11 @@ require_once("Rft.class.php");
 global $Mview;
 global $Mmodel;
 $Mview = new Mview;
+$Mview->holdOutput();
 $Mmodel = new Mmodel;
 $rft = new Rft;
 $rft->setStartTime($startTime);
 $rft->control();
+$Mview->flushOutput();
 /*------------------------------------------------------------*/
 ?>
