@@ -236,8 +236,6 @@ class Rft extends Mcontroller {
 		$this->Mview->showTpl("home.tpl", array(
 			'bands' => $bands,
 			'artists' => $artists,
-			'mostActive' => $this->mostActive(),
-			'latelyActive' => $this->latelyActive(),
 		));
 	}
 	/*----------------------------------------*/
@@ -271,12 +269,6 @@ class Rft extends Mcontroller {
 		return($followees);
 	}
 	/*------------------------------*/
-	private function latelyActive() {
-		$sql = "select * from users order by lastOp desc limit 5";
-		$users = $this->Mmodel->getRows($sql);
-		return($users);
-	}
-	/*------------------------------*/
 	public function userHome($rftId = null) {
 		if ( ! $rftId && ! isset($_REQUEST['userId']) ) {
 			$this->Mview->error("userHome: No userId");
@@ -305,8 +297,6 @@ class Rft extends Mcontroller {
 			'artists' => $this->userArtists($rftId),
 			'followees' => $this->followees($rftId),
 			'followers' => $this->followers($rftId),
-			'mostActive' => $this->mostActive(),
-			'latelyActive' => $this->latelyActive(),
 		));
 		return(true);
 	}
@@ -566,7 +556,7 @@ class Rft extends Mcontroller {
 			$this->home();
 		}
 		$numArtists = $this->Mmodel->getInt("select count(*) from bandArtists where bandId = $bandId");
-		if ( ( $band['createdBy'] == $this->user['id'] && $numArtists == 0 ) {
+		if ( $band['createdBy'] == $this->user['id'] && $numArtists == 0 ) {
 			if ( $numArtists > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where bandId = $bandId");
 			$this->Mmodel->dbDelete("bands", $bandId);
@@ -587,33 +577,13 @@ class Rft extends Mcontroller {
 			$this->home();
 		}
 		$numBands = $this->Mmodel->getInt("select count(*) from bandArtists where artistId = $artistId");
-		if ( ( $artist['createdBy'] == $this->user['id'] && $numBands == 0 ) {
+		if ( $artist['createdBy'] == $this->user['id'] && $numBands == 0 ) {
 			if ( $numBands > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where artistId = $artistId");
 			$this->Mmodel->dbDelete("artists", $artistId);
 			$this->Mview->msg("{$artist['name']}: Deleted");
 		}
 		$this->home();
-	}
-	/*------------------------------------------------------------*/
-	public function invertStatus() {
-		if ( ! $this->validateUser() ) {
-			$this->home();
-			return;
-		}
-		$userId = $_REQUEST['userId'];
-		$user = $this->Mmodel->getRow("select id, status from users where id = $userId");
-		if ( $user['status'] == "superAdmin" ) {
-			$this->Mview->error("Can not change superAdmin status");
-			$this->home();
-			return;
-		}
-		if ( $user['status'] == "Admin" )
-			$status = "";
-		else
-			$status = "Admin";
-		$this->Mmodel->dbUpdate("users", $userId, array("status" => $status, ));
-		$this->userHome($userId);
 	}
 	/*------------------------------------------------------------*/
 	public function unFavoriteAll() {
