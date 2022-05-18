@@ -3,14 +3,12 @@
 class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private $user = null;
-	private $adminNumOps = 50;
 	/*------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
 		$this->init();
 		$this->setUser();
 		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
-		$this->Mview->assign('adminNumOps', $this->adminNumOps);
 	}
 	/*------------------------------------------------------------*/
 	protected function before() {
@@ -273,12 +271,6 @@ class Rft extends Mcontroller {
 		return($followees);
 	}
 	/*------------------------------*/
-	private function mostActive() {
-		$sql = "select * from users order by numOps desc limit 5";
-		$users = $this->Mmodel->getRows($sql);
-		return($users);
-	}
-	/*------------------------------*/
 	private function latelyActive() {
 		$sql = "select * from users order by lastOp desc limit 5";
 		$users = $this->Mmodel->getRows($sql);
@@ -401,17 +393,6 @@ class Rft extends Mcontroller {
 		$ret = trim($ret, ", ");
 		$ret = ucwords($ret);
 		return($ret);
-	}
-	/*------------------------------------------------------------*/
-	private function updateStats() {
-		$rftId = $_SESSION['rftId'];
-		$today = date("Ymd");
-		$sql = "update users set numOps = numOps + 1, lastOp = $today where id = $rftId";
-		$this->Mmodel->_sql($sql);
-		/*	$this->user['numOps']++;	*/
-		$this->user['numOps'] = $this->Mmodel->getInt("select numOps from users where id = $rftId");
-		$this->Mview->assign("user", $this->user);
-		
 	}
 	/*------------------------------------------------------------*/
 	private function getArtist($artistName) {
@@ -585,9 +566,7 @@ class Rft extends Mcontroller {
 			$this->home();
 		}
 		$numArtists = $this->Mmodel->getInt("select count(*) from bandArtists where bandId = $bandId");
-		// recheck as in the tpl so as to make sure nobody typed in the delete url without the proper credentials
-		if ( ( $band['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numArtists == 0 ||
-													$this->user['status'] == "Admin" || $this->user['status'] == "superAdmin" ) {
+		if ( ( $band['createdBy'] == $this->user['id'] && $numArtists == 0 ) {
 			if ( $numArtists > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where bandId = $bandId");
 			$this->Mmodel->dbDelete("bands", $bandId);
@@ -608,9 +587,7 @@ class Rft extends Mcontroller {
 			$this->home();
 		}
 		$numBands = $this->Mmodel->getInt("select count(*) from bandArtists where artistId = $artistId");
-		// recheck as in the tpl so as to make sure nobody typed in the delete url without the proper credentials
-		if ( ( $artist['createdBy'] == $this->user['id'] || $this->user['numOps'] > $this->adminNumOps ) && $numBands == 0 ||
-													$this->user['status'] == "Admin" || $this->user['status'] == "superAdmin" ) {
+		if ( ( $artist['createdBy'] == $this->user['id'] && $numBands == 0 ) {
 			if ( $numBands > 0 )
 				$this->Mmodel->_sql("delete from bandArtists where artistId = $artistId");
 			$this->Mmodel->dbDelete("artists", $artistId);
