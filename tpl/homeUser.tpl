@@ -13,8 +13,4 @@
 		<td>Member Since</td>
 		<td>{$homeUser.created|msuDateFmt}</td>
 	</tr>
-	<tr class="rftFormRow">
-		<td>Last Entry</td>
-		<td>{$homeUser.lastOp|msuDateFmt}</td>
-	</tr>
 </table>

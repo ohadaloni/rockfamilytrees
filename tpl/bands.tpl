@@ -2,12 +2,6 @@
 	<tr class="rftHeaderRow">
 		<td colspan="3">
 			Bands ({$bands|@count})
-			{if $artist}
-				<a href="/rft/addBandToArtist?artistId={$artist.id},'{$artist.name|htmlspecialchars|msuJsStr}');"><img 
-					src="/images/addBand.png" title="Add a band to {$artist.name|htmlspecialchars}" /></a>
-			{else}
-				<a href="/rft/addBand"><img src="/images/addBand.png" title="Add a band" /></a>
-			{/if}
 			{if $user && ! $artist}
 				{* home page shows link to delete all favorites from favorite list *}
 				<a href="/rft/unFavoriteAll"><img src="/images/delete.png"
@@ -18,16 +12,24 @@
 	{foreach from=$bands item=band}
 		<tr class="rftRow{if $band.id == $currentBand} currentBand{/if}">
 			<td>
-				<a {* {if $artist}{/if} *}href="/rft/band&amp;bandId={$band.id}">{$band.name|htmlspecialchars}</a>
+				<a href="/rft/band&bandId={$band.id}">{$band.name|htmlspecialchars}</a>
+			</td>
+			<td>
 				{* in an artist page remove a tie to the artist *}
 				{if $artist && $band.createdBy == $user.id}
-					<a href="/rft/unBandArtist?bandId={$band.id}&artistId={$artist.id}"><img src="/images/delete.png"
-						
-						title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars}" /></a>
+					<form action="/rft/unBandArtist">
+						<input type ="checkbox" name="ok" />
+						<input type ="hidden" name="bandId" value="{$band.id}" />
+						<input type ="hidden" name="artistId" value="{$artist.id}" />
+						<input type ="hidden" name="page" value="artist" />
+						<input type="image" src="/images/delete.png"
+							title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars} (check the box to confirm)"
+						/>
+					</form>
 				{/if}
 				{if $homeUser.favoriteBands && in_array($band.id, $homeUser.favoriteBands)}
 					{if $homeUser.id == $user.id}
-						<a href="/rft/removeFavoriteBand&amp;bandId={$band.id}"><img src="/images/removeFavorite.png"
+						<a href="/rft/removeFavoriteBand&bandId={$band.id}"><img src="/images/removeFavorite.png"
 									 title="Remove from Favorites" /></a>
 					{else}
 						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />

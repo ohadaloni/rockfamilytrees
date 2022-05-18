@@ -6,8 +6,5 @@
 		<td valign="top">
 			{include file="artists.tpl"}
 		</td>
-		<td valign="top">
-			{include file="searchedUsers.tpl"}
-		</td>
 	</tr>
 </table>

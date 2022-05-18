@@ -1,5 +1,5 @@
 <h2>{$artist.name|htmlspecialchars}</h2>
-<table
+<table>
 	<tr class="rftFormRow">
 		<td>
 			<a href="/rft/artist?artistId={$artist.id}"><img src="/images/refresh.png" title="Reload" /></a>
@@ -19,7 +19,7 @@
 			<a target="_blank" href="http://www.youtube.com/results?search_query={$artist.name|urlencode}"><img
 				src="/images/youtube.png" title="Search {$artist.name|htmlspecialchars} on YouTube"
 					/></a>
-			<a target="_blank" href="http://en.wikipedia.org/w/index.php?title=Special%3ASearch&amp;search={$artist.name|urlencode}"><img
+			<a target="_blank" href="http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search={$artist.name|urlencode}"><img
 				src="/images/wikipedia.png" title="Search {$artist.name|htmlspecialchars} in the Wikipedia"
 					/></a>
 			<a target="_blank" href="http://www.google.com/search?q={$searchQuery|urlencode}"><img
