@@ -20,7 +20,7 @@
 			<td>
 				<a {* {if $artist}{/if} *}href="/rft/band&amp;bandId={$band.id}">{$band.name|htmlspecialchars}</a>
 				{* in an artist page remove a tie to the artist *}
-				{if $artist && ( $band.createdBy == $user.id || $user.numOps > $adminNumOps || $user.status == "Admin" || $user.status == "superAdmin" ) }
+				{if $artist && $band.createdBy == $user.id}
 					<a href="/rft/unBandArtist?bandId={$band.id}&artistId={$artist.id}"><img src="/images/delete.png"
 						
 						title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars}" /></a>

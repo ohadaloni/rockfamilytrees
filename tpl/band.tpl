@@ -1,11 +1,8 @@
 <h2>{$band.name|htmlspecialchars}</h2>
 <table>
 	<tr class="rftFormRow">
-		<td colspan="2">
+		<td>
 			<a href="/rft/band&bandId={$band.id}"><img src="/images/refresh.png" title="Reload" /></a>
-			{if ( $band.createdBy == $user.id || $user.numOps > $adminNumOps ) && $artists|@count == 0 || $user.status == "Admin" || $user.status == "superAdmin"}
-				<a href="/rft/deleteBand?bandId={$band.id}"><img src="/images/delete.png" title="Delete" /></a>
-			{/if}
 
 			{if $isFavorite}
 				<a href="/rft/removeFavoriteBand&bandId={$band.id}"><img src="/images/removeFavorite.png"
@@ -30,8 +27,13 @@
 				src="/images/googleWiki.png" title="synthesized Search" /></a>
 
 		</td>
+		<td>
+			{if ( $band.createdBy == $user.id && $artists|@count == 0}
+				<a href="/rft/deleteBand?bandId={$band.id}"><img src="/images/delete.png" title="Delete" /></a>
+			{/if}
+		</td>
 	</tr>
-	{if $band.createdBy == $user.id || $user.status == "Admin" || $user.status == "superAdmin" || $user.numOps > $adminNumOps}
+	{if $band.createdBy == $user.id}
 		<tr class="rftFormRow">
 			<td colspan="2">
 					<form method="post" id="changeBandForm" action="/rft/changeBand">

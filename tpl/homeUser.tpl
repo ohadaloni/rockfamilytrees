@@ -21,22 +21,4 @@
 		<td>Last Entry</td>
 		<td>{$homeUser.lastOp|msuDateFmt}</td>
 	</tr>
-	<tr class="rftFormRow">
-		<td>Total Entries</td>
-		<td>{$homeUser.numOps}</td>
-	</tr>
-	{if $user.status == "superAdmin"}
-		<tr class="rftFormRow">
-			<td>Status</td>
-			<td>
-				{$homeUser.status}
-				{if $homeUser.status == "superAdmin"}
-				{elseif $homeUser.status == "Admin"}
-					<a href="/rft/invertStatus?userId={$homeUser.id}"><img src="/images/revoke.png" title="Revoke Admin" /></a>
-				{else}
-					<a href="/rft/invertStatus?userId={$homeUser.id}"><img src="/images/award.png" title="Award Admin" /></a>
-				{/if}
-			</td>
-		</tr>
-	{/if}
 </table>

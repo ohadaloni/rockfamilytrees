@@ -12,7 +12,7 @@
 								 title="Follow" /></a>
 				<img src="/images/info.png"
 					
-					title="Member since {$searchedUser.created|msuDateFmt}{if $searchedUser.numOps}, last entry on {$searchedUser.lastOp|msuDateFmt},total: {$searchedUser.numOps}{/if}" />
+					title="Member since {$searchedUser.created|msuDateFmt}" />
 			</td>
 		</tr>
 	{/foreach}

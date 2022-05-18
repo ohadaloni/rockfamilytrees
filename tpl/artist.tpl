@@ -1,11 +1,8 @@
 <h2>{$artist.name|htmlspecialchars}</h2>
 <table
 	<tr class="rftFormRow">
-		<td colspan="2">
+		<td>
 			<a href="/rft/artist?artistId={$artist.id}"><img src="/images/refresh.png" title="Reload" /></a>
-			{if ( $artist.createdBy == $user.id || $user.numOps > $adminNumOps ) && $artists|@count == 0 || $user.status == "Admin" || $user.status == "superAdmin"}
-				<a href="/rft/deleteArtist&artistId={$artist.id}"><img src="/images/delete.png" title="Delete" /></a>
-			{/if}
 
 
 
@@ -28,8 +25,13 @@
 			<a target="_blank" href="http://www.google.com/search?q={$searchQuery|urlencode}"><img
 				src="/images/googleWiki.png" title="synthesized Search" /></a>
 		</td>
+		<td>
+			{if $artist.createdBy == $user.id && $bands|@count == 0 }
+				<a href="/rft/deleteArtist&artistId={$artist.id}"><img src="/images/delete.png" title="Delete" /></a>
+			{/if}
+		</td>
 	</tr>
-	{if $artist.createdBy == $user.id || $user.status == "Admin" || $user.status == "superAdmin" || $user.numOps > $adminNumOps}
+	{if $artist.createdBy == $user.id}
 		<tr class="rftFormRow">
 			<td colspan="2">
 					<form method="post" id="changeArtistForm" action="/rft/changeArtist">
