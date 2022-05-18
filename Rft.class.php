@@ -6,7 +6,6 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
-		$this->init();
 		$this->setUser();
 		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
 	}
@@ -15,37 +14,12 @@ class Rft extends Mcontroller {
 		parent::before();
 		header('Content-type: text/html; charset=UTF-8');
 		$this->Mview->showTpl("header.tpl");
+		$this->Mview->showMsgs();
 	}
 	/*------------------------------------------------------------*/
 	protected function after() {
 		parent::after();
 		$this->Mview->showTpl("footer.tpl");
-	}
-	/*------------------------------------------------------------*/
-	private function init() {
-		$tables = array(
-			"users",
-			"followees",
-			"bands",
-			"artists",
-			"bandArtists",
-			"favoriteBands",
-			"favoriteArtists",
-		);
-		foreach ( $tables as $t )
-			if ( ! $this->Mmodel->isTable($t) ) {
-				Mview::msg("Creating table $t");
-				$sql = file_get_contents("sql/$t.crtable.sql");
-				$this->Mmodel->_sql($sql);
-				$dataFile = "sql/$t.data.sql";
-				if ( file_exists($dataFile) ) {
-					$lines = Mutils::Mfile($dataFile);
-					$cnt = count($lines);
-					Mview::msg("Loading $cnt rows from $dataFile");
-					foreach ( $lines as $line )
-						$this->Mmodel->_sql($line);
-				}
-			}
 	}
 	/*------------------------------------------------------------*/
 	private function setTitle($title) {
@@ -92,10 +66,17 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------*/
 	public function removeFavoriteArtist() {
+		Mview::print_r($_REQUEST, "_REQUEST", basename(__FILE__), __LINE__, null, false);
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("removeFavoriteArtist: box not checked. ignoring.");
+			$this->redirect("/rft/home");
+			return;
+		}
 		$rftId = $_SESSION['rftId'];
 		$artistId = $_REQUEST['artistId'];
 		$sql = "delete from favoriteArtists where rftId = $rftId and artistId = $artistId";
-		$this->Mmodel->_sql($sql);
+		$this->Mmodel->sql($sql);
 		$ind = array_search($artistId, $this->user['favoriteArtists']);
 		unset($this->user['favoriteArtists'][$ind]);
 		$this->Mview->assign("user", $this->user);
@@ -103,10 +84,16 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------*/
 	public function removeFavoriteBand() {
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("removeFavoriteBand: box not checked. ignoring.");
+			$this->redirect("/rft/home");
+			return;
+		}
 		$rftId = $_SESSION['rftId'];
 		$bandId = $_REQUEST['bandId'];
 		$sql = "delete from favoriteBands where rftId = $rftId and bandId = $bandId";
-		$this->Mmodel->_sql($sql);
+		$this->Mmodel->sql($sql);
 		$ind = array_search($bandId, $this->user['favoriteBands']);
 		unset($this->user['favoriteBands'][$ind]);
 		$this->Mview->assign("user", $this->user);
@@ -143,7 +130,7 @@ class Rft extends Mcontroller {
 		$rftId = $_SESSION['rftId'];
 		$followee = $_REQUEST['userId'];
 		$sql = "delete from followees where rftId = $rftId and followee = $followee";
-		$this->Mmodel->_sql($sql);
+		$this->Mmodel->sql($sql);
 		$this->userHome($rftId);
 	}
 	/*------------------------------*/
@@ -396,7 +383,6 @@ class Rft extends Mcontroller {
 			"createdOn" => date("Ymd"),
 			"createdBy" => @$_SESSION['rftId'],
 		));
-		$this->updateStats();
 		return($ret);
 	}
 	/*------------------------------------------------------------*/
@@ -411,7 +397,6 @@ class Rft extends Mcontroller {
 			"createdOn" => date("Ymd"),
 			"createdBy" => @$_SESSION['rftId'],
 		));
-		$this->updateStats();
 		return($ret);
 	}
 	/*------------------------------------------------------------*/
@@ -426,7 +411,7 @@ class Rft extends Mcontroller {
 		$dbStr = $this->Mmodel->str($canonical);
 		$is = $this->Mmodel->getInt("select id from bands where name = '$dbStr'");
 		if ( $is == $bandId )
-			$this->Mview->msg("$canonical: No change");
+			$this->Mview->msgLater("$canonical: No change");
 		elseif ( $is )
 			$this->Mview->error("$canonical already exists");
 		else
@@ -503,7 +488,6 @@ class Rft extends Mcontroller {
 		if ( $id )
 			return($id);
 		$id = $this->Mmodel->dbInsert("bandArtists", array("bandId" => $bandId, "artistId" => $artistId));
-		$this->updateStats();
 		return($id);
 	}
 	/*------------------------------*/
@@ -537,7 +521,14 @@ class Rft extends Mcontroller {
 		$artistId = $_REQUEST['artistId'];
 		$bandId = $_REQUEST['bandId'];
 		$page = $_REQUEST['page'];
-		$this->Mmodel->_sql("delete from bandArtists where bandId = $bandId and artistId = $artistId");
+		$ok = @$_REQUEST['ok'];
+		if ( $ok == "on" ) {
+			$conds = "bandId = $bandId and artistId = $artistId";
+			$sql = "delete from bandArtists where $conds";
+			$this->Mmodel->sql($sql);
+		} else {
+			$this->Mview->msgLater("unBandArtist: box not checked. ignoring.");
+		}
 		if ( $page == 'band' )
 			$this->band($bandId);
 		else
@@ -550,6 +541,12 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$bandId = $_REQUEST['bandId'];
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("deleteBand: box not checked. ignoring.");
+			$this->redirect("/rft/band?bandId=$bandId");
+			return;
+		}
 		$band = $this->Mmodel->getRow("select * from bands where id = $bandId");
 		if ( ! $band ) {
 			$this->Mview->error("Band Not Found");
@@ -558,9 +555,9 @@ class Rft extends Mcontroller {
 		$numArtists = $this->Mmodel->getInt("select count(*) from bandArtists where bandId = $bandId");
 		if ( $band['createdBy'] == $this->user['id'] && $numArtists == 0 ) {
 			if ( $numArtists > 0 )
-				$this->Mmodel->_sql("delete from bandArtists where bandId = $bandId");
+				$this->Mmodel->sql("delete from bandArtists where bandId = $bandId");
 			$this->Mmodel->dbDelete("bands", $bandId);
-			$this->Mview->msg("{$band['name']}: Deleted");
+			$this->Mview->msgLater("{$band['name']}: Deleted");
 		}
 		$this->home();
 	}
@@ -571,6 +568,12 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$artistId = $_REQUEST['artistId'];
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("deleteArtist: box not checked. ignoring.");
+			$this->redirect("/rft/artist?artistId=$artistId");
+			return;
+		}
 		$artist = $this->Mmodel->getRow("select * from artists where id = $artistId");
 		if ( ! $artist ) {
 			$this->Mview->error("Artist Not Found");
@@ -579,14 +582,20 @@ class Rft extends Mcontroller {
 		$numBands = $this->Mmodel->getInt("select count(*) from bandArtists where artistId = $artistId");
 		if ( $artist['createdBy'] == $this->user['id'] && $numBands == 0 ) {
 			if ( $numBands > 0 )
-				$this->Mmodel->_sql("delete from bandArtists where artistId = $artistId");
+				$this->Mmodel->sql("delete from bandArtists where artistId = $artistId");
 			$this->Mmodel->dbDelete("artists", $artistId);
-			$this->Mview->msg("{$artist['name']}: Deleted");
+			$this->Mview->msgLater("{$artist['name']}: Deleted");
 		}
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
 	public function unFavoriteAll() {
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("unFavoriteAll: box not checked. ignoring.");
+			$this->home();
+			return;
+		}
 		$rftId = $_SESSION['rftId'];
 		$this->Mmodel->sql("delete from favoriteArtists where rftId = $rftId");
 		$this->Mmodel->sql("delete from favoriteBands where rftId = $rftId");
