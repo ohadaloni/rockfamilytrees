@@ -19,10 +19,6 @@
 	<img src="/images/wikipedia.png" title="Search in the Wikipedia" /></a> Wikipedia or
 	<img src="/images/youtube.png" title="Search on YouTube" /> Youtube
 	for bands and musicians with a single click.<br />
-	<img src="/images/follow.png" title="Follow"/>
-	Follow friends and others to see their home pages with their favorite bands and musicians.<br />
-	<img src="/images/follow.png" title="Follow"/>
-	Have firends and others follow you and see your home page with your favorite bands and musicians.<br />
 	<img src="/images/home.png" title="Home"/>
 	Go back to your home page, or to the home of the creator of a band or musician<br />
 	<img src="/images/help.png" title="Help"/>

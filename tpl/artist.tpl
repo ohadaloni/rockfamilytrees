@@ -53,8 +53,6 @@
 			{if $artist.createdBy != $smarty.session.rftId}
 				<a href="/rft/userHome?userId={$artist.createdBy}"><img src="/images/home.png"
 					title="{$artist.createdBy|nickname}'s home" /></a>
-				<a href="/rft/follow?userId={$artist.createdBy}"><img src="/images/follow.png"
-					title="Follow {$artist.createdBy|nickname}"/></a>
 			{/if}
 		</td>
 	</tr>

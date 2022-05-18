@@ -28,7 +28,7 @@
 
 		</td>
 		<td>
-			{if ( $band.createdBy == $user.id && $artists|@count == 0}
+			{if $band.createdBy == $user.id && $artists|@count == 0}
 				<a href="/rft/deleteBand?bandId={$band.id}"><img src="/images/delete.png" title="Delete" /></a>
 			{/if}
 		</td>
@@ -55,8 +55,6 @@
 			{if $band.createdBy != $smarty.session.rftId}
 				<a href="/rft/userHome&userId={$band.createdBy}"><img src="/images/home.png"
 					title="{$band.createdBy|nickname}'s home"/></a>
-				<a href="/rft/follow?userId={$band.createdBy}"><img src="/images/follow.png"
-					title="Follow {$band.createdBy|nickname}"/></a>
 			{/if}
 		</td>
 	</tr>
