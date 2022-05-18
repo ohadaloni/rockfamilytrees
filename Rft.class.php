@@ -121,34 +121,6 @@ class Rft extends Mcontroller {
 		$this->Mview->assign("user", $this->user);
 		$this->userHome($rftId);
 	}
-	/*------------------------------*/
-	public function unfollow() {
-		if ( ! $this->validateUser() ) {
-			$this->home();
-			return;
-		}
-		$rftId = $_SESSION['rftId'];
-		$followee = $_REQUEST['userId'];
-		$sql = "delete from followees where rftId = $rftId and followee = $followee";
-		$this->Mmodel->sql($sql);
-		$this->userHome($rftId);
-	}
-	/*------------------------------*/
-	public function follow() {
-		if ( ! $this->validateUser() ) {
-			$this->home();
-			return;
-		}
-		$rftId = $_SESSION['rftId'];
-		$followee = $_REQUEST['userId'];
-		$is = $this->Mmodel->getInt("select count(*) from followees where rftId = $rftId and followee = $followee");
-		if ( ! $is )
-			$this->Mmodel->dbInsert("followees", array(
-				"rftId" => $rftId,
-				"followee" => $followee,
-			));
-		$this->userHome($rftId);
-	}
 	/*------------------------------------------------------------*/
 	private function loadUser($rftId = null) {
 		if ( ! $rftId )
@@ -205,17 +177,6 @@ class Rft extends Mcontroller {
 		$this->home();
 	}
 	/*------------------------------------------------------------*/
-	public function changeNickname() {
-		$rftId = $_SESSION['rftId'];
-		$nickname = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['nickname'])));
-		if ( $nickname ) {
-			$this->Mmodel->dbUpdate("users", $rftId, array("nickname" => $nickname,));
-			$this->user['nickname'] = $nickname;
-			$this->Mview->assign("user", $this->user);
-		}
-		$this->userHome($rftId);
-	}
-	/*------------------------------------------------------------*/
 	private function visitorHome() {
 		$bands = $this->Mmodel->getRows("select * from bands order by name limit 20");
 		$artists = $this->Mmodel->getRows("select * from artists order by name limit 20");
@@ -244,18 +205,6 @@ class Rft extends Mcontroller {
 		return(array_merge($favorites, $myLatest, $latest));
 	}
 	/*------------------------------*/
-	private function followers($rftId) {
-		$sql = "select u.* from users u, followees f where u.id = f.rftId and f.followee = $rftId order by id desc";
-		$followers = $this->Mmodel->getRows($sql);
-		return($followers);
-	}
-	/*------------------------------*/
-	private function followees($rftId) {
-		$sql = "select u.* from users u, followees f where u.id = f.followee and f.rftId = $rftId order by id desc";
-		$followees = $this->Mmodel->getRows($sql);
-		return($followees);
-	}
-	/*------------------------------*/
 	public function userHome($rftId = null) {
 		if ( ! $rftId && ! isset($_REQUEST['userId']) ) {
 			$this->Mview->error("userHome: No userId");
@@ -282,8 +231,6 @@ class Rft extends Mcontroller {
 			'homeUser' => $homeUser,
 			'bands' => $this->userBands($rftId),
 			'artists' => $this->userArtists($rftId),
-			'followees' => $this->followees($rftId),
-			'followers' => $this->followers($rftId),
 		));
 		return(true);
 	}
@@ -533,6 +480,23 @@ class Rft extends Mcontroller {
 			$this->band($bandId);
 		else
 			$this->artist($artistId);
+	}
+	/*------------------------------------------------------------*/
+	public function changeNickname() {
+		$ok = @$_REQUEST['ok'];
+		if ( $ok != "on" ) {
+			$this->Mview->msgLater("changeNickname: box not checked. ignoring.");
+			$this->redirect("/rft/home");
+			return;
+		}
+		$rftId = $_SESSION['rftId'];
+		$nickname = trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['nickname'])));
+		if ( $nickname ) {
+			$this->Mmodel->dbUpdate("users", $rftId, array("nickname" => $nickname,));
+			$this->user['nickname'] = $nickname;
+			$this->Mview->assign("user", $this->user);
+		}
+		$this->userHome($rftId);
 	}
 	/*------------------------------------------------------------*/
 	public function deleteBand() {
