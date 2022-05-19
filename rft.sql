@@ -30173,6 +30173,7 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2013,10,1,'2022
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2014,10,28,'2022-05-19');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2015,10,53,'2022-05-19');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2016,10,20,'2022-05-19');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2017,10,1468,'2022-05-19');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
