@@ -1,7 +1,10 @@
 <table>
 	<tr class="rftHeaderRow">
+		<td colspan="2">
+			Bands
+		</td>
 		<td>
-			Bands ({$bands|@count})
+			<a style="decoration:none;" title="#Members">#</a>
 		</td>
 		<td>
 			{if $user && ! $artist}
@@ -14,17 +17,38 @@
 			{/if}
 		</td>
 	</tr>
-	<tr class="rftHeaderRow">
-		<td colspan="2">
-			<form action="/rft/addBand">
-				<input type="text" size="30" name="bandName" placeholder="New Band" />
-			</form>
-		</td>
-	</tr>
-	{foreach from=$bands item=band}
+	{if $user && ! $artist}
+		<tr class="rftHeaderRow">
+			<td colspan="4">
+				<form action="/rft/addBand">
+					<input type="text" size="35" name="bandName" placeholder="Band Name" />
+					<input type="image" src="/images/addBand.png" title="New band" />
+				</form>
+			</td>
+		</tr>
+	{/if}
+	{if $artist && $smarty.session.rftId}
+		<tr class="rftHeaderRow">
+			<td colspan=4">
+				<form method="post" id="newArtistForm" action="/rft/addBandToArtist">
+					<input type="text" size="35" name="bandName" placeholder="Band Name" />
+					<input type="hidden" name="artistId" value="{$artist.id}" />
+					<input type="image" src="/images/addArtist.png" title="Add a band to {$artist.name|htmlspecialchars}" />
+				</form>
+			</td>
+		</tr>
+	{/if}
+	{foreach from=$bands key=key item=band}
+		{assign var=No value=`$key+1`}
 		<tr class="rftRow{if $band.id == $currentBand} currentBand{/if}">
 			<td>
+				{$No}
+			</td>
+			<td>
 				<a href="/rft/band?bandId={$band.id}">{$band.name|htmlspecialchars}</a>
+			</td>
+			<td>
+				{$band.numArtists}
 			</td>
 			<td>
 				{* in an artist page remove a tie to the artist *}
@@ -54,15 +78,4 @@
 			</td>
 		</tr>
 	{/foreach}
-	{if $artist && $smarty.session.rftId}
-		<tr class="rftHeaderRow">
-			<td>
-				<form method="post" id="newArtistForm" action="/rft/addBandToArtist">
-					<input type="text" size="30" name="bandName" />
-					<input type="hidden" name="artistId" value="{$artist.id}" />
-					<input type="image" src="/images/addArtist.png" title="Add a band to {$artist.name|htmlspecialchars}" />
-				</form>
-			</td>
-		</tr>
-	{/if}
 </table>
