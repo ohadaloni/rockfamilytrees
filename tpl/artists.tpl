@@ -1,12 +1,22 @@
 <table>
 	<tr class="rftHeaderRow">
-		<td colspan="3">
+		<td>
 			{if $band}
 				Members
 			{else}
 				Musicians
 			{/if}
 				({$artists|@count})
+		</td>
+		<td>
+			{if $user && ! $band}
+				<form action="/rft/unFavoriteAllArtists">
+					<input type ="checkbox" name="ok" />
+					<input type="image" src="/images/delete.png"
+						title="Wipe out my favorite musicians list (check the box to confirm)"
+					/>
+				</form>
+			{/if}
 		</td>
 	</tr>
 	<tr class="rftHeaderRow">
@@ -19,7 +29,7 @@
 	{foreach from=$artists item=artist}
 		<tr class="rftRow{if $artist.id == $currentArtist} currentArtist{/if}">
 			<td>
-				<a {* {if $band}{/if} *} href="/rft/artist&artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
+				<a {* {if $band}{/if} *} href="/rft/artist?artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
 			</td>
 			<td>
 				{* in a band page remove a tie to the artist *}
