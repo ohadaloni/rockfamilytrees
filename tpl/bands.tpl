@@ -1,12 +1,25 @@
 <table>
 	<tr class="rftHeaderRow">
-		<td colspan="3">
+		<td>
 			Bands ({$bands|@count})
+		</td>
+		<td>
 			{if $user && ! $artist}
 				{* home page shows link to delete all favorites from favorite list *}
-				<a href="/rft/unFavoriteAll"><img src="/images/delete.png"
-					 title="Wipe out my favorite lists" /></a>
+				<form action="/rft/unFavoriteAll">
+					<input type ="checkbox" name="ok" />
+					<input type="image" src="/images/delete.png"
+						title="Wipe out my favorite lists (check the box to confirm)"
+					/>
+				</form>
 			{/if}
+		</td>
+	</tr>
+	<tr class="rftHeaderRow">
+		<td colspan="2">
+			<form action="/rft/addBand">
+				<input type="text" size="30" name="bandName" placeholder="New Band" />
+			</form>
 		</td>
 	</tr>
 	{foreach from=$bands item=band}
@@ -29,8 +42,12 @@
 				{/if}
 				{if $homeUser.favoriteBands && in_array($band.id, $homeUser.favoriteBands)}
 					{if $homeUser.id == $user.id}
-						<a href="/rft/removeFavoriteBand&bandId={$band.id}"><img src="/images/removeFavorite.png"
-									 title="Remove from Favorites" /></a>
+						<form action="/rft/removeFavoriteBand">
+							<input type ="checkbox" name="ok" />
+							<input type ="hidden" name="bandId" value="{$band.id}" />
+							<input type="image" src="/images/removeFavorite.png"
+								title="Remove from Favorites (check the box to confirm)" />
+						</form>
 					{else}
 						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
