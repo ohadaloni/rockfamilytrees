@@ -66,7 +66,6 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------*/
 	public function removeFavoriteArtist() {
-		Mview::print_r($_REQUEST, "_REQUEST", basename(__FILE__), __LINE__, null, false);
 		$ok = @$_REQUEST['ok'];
 		if ( $ok != "on" ) {
 			$this->Mview->msgLater("removeFavoriteArtist: box not checked. ignoring.");
