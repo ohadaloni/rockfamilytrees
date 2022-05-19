@@ -27,7 +27,13 @@
 		</td>
 		<td>
 			{if $artist.createdBy == $user.id && $bands|@count == 0 }
-				<a href="/rft/deleteArtist&artistId={$artist.id}"><img src="/images/delete.png" title="Delete" /></a>
+					<form action="/rft/deleteArtist">
+						<input type ="checkbox" name="ok" />
+						<input type ="hidden" name="artistId" value="{$artist.id}" />
+						<input type="image" src="/images/delete.png"
+							title="Delete Artist (check the box to confirm)"
+						/>
+					</form>
 			{/if}
 		</td>
 	</tr>
