@@ -2,10 +2,13 @@
 /*------------------------------------------------------------*/
 class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
-	private $user = null;
+	/*	private $rftId;	*/
+	private $user;
+	private $numsTtl;
 	/*------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
+		$this->numsTtl = 30*60;
 		$this->setUser();
 		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
 	}
@@ -174,7 +177,9 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private function visitorHome() {
 		$bands = $this->Mmodel->getRows("select * from bands order by name limit 20");
+		$this->ammendBands($bands);
 		$artists = $this->Mmodel->getRows("select * from artists order by name limit 20");
+		$this->ammendArtists($bands);
 		$this->setTitle("Visitor");
 		$this->Mview->showTpl("home.tpl", array(
 			'bands' => $bands,
@@ -222,10 +227,14 @@ class Rft extends Mcontroller {
 		$this->setTitle("{$homeUser['nickname']}'s home");
 		$homeUser['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
 		$homeUser['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
+		$bands = $this->userBands($rftId);
+		$this->ammendBands($bands);
+		$artists = $this->userArtists($rftId);
+		$this->ammendArtists($bands);
 		$this->Mview->showtpl("home.tpl", array(
 			'homeUser' => $homeUser,
-			'bands' => $this->userBands($rftId),
-			'artists' => $this->userArtists($rftId),
+			'bands' => $bands,
+			'artists' => $artists,
 		));
 		return(true);
 	}
@@ -457,7 +466,7 @@ class Rft extends Mcontroller {
 			$this->Mview->msgLater("Band Not Found");
 			$this->redir();
 		}
-		$numArtists = $this->Mmodel->getInt("select count(*) from bandArtists where bandId = $bandId");
+		$numArtists = $this->numArtists($bandId, true);
 		if ( $band['createdBy'] == $this->user['id'] && $numArtists == 0 ) {
 			if ( $numArtists > 0 )
 				$this->Mmodel->sql("delete from bandArtists where bandId = $bandId");
@@ -484,7 +493,7 @@ class Rft extends Mcontroller {
 			$this->Mview->msgLater("Artist Not Found");
 			$this->home();
 		}
-		$numBands = $this->Mmodel->getInt("select count(*) from bandArtists where artistId = $artistId");
+		$numBands = $this->numBands($artistId, true);
 		if ( $artist['createdBy'] == $this->user['id'] && $numBands == 0 ) {
 			if ( $numBands > 0 )
 				$this->Mmodel->sql("delete from bandArtists where artistId = $artistId");
@@ -579,6 +588,31 @@ class Rft extends Mcontroller {
 		$cache[$rftId] = $nickname;
 		return($cache[$rftId]);
 	}
+	/*------------------------------------------------------------*/
+	private function ammendArtists(&$artists) {
+		foreach ( $artists as $key => $artist ) {
+			$artists[$key]['numBands'] = $this->numBands($artist['id']);
+		}
+	}
+	/*------------------------------------------------------------*/
+	private function ammendBands(&$bands) {
+		foreach ( $bands as $key => $band ) {
+			$bands[$key]['numArtists'] = $this->numArtists($band['id']);
+		}
+	}
+	/*------------------------------------------------------------*/
+	private function numArtists($bandId, $noCache = false) {
+		$sql =  "select count(*) from bandArtists where bandId = $bandId";
+		$numArtists = $this->Mmodel->getInt($sql, $noCache ? null : $this->numsTtl);
+		return($numArtists);
+	}
+	/*------------------------------------------------------------*/
+	private function numBands($artistId, $noCache = false) {
+		$sql = "select count(*) from bandArtists where artistId = $artistId";
+		$numBands = $this->Mmodel->getInt($sql, $noCache ? null : $this->numsTtl);
+		return($numBands);
+	}
+	/*------------------------------------------------------------*/
 	/*------------------------------------------------------------*/
 	private function redir2artist($artistId) {
 		$this->redirect("/rft/artist?artistId=$artistId");
