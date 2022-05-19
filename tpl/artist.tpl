@@ -7,8 +7,12 @@
 
 
 			{if $isFavorite}
-				<a href="/rft/removeFavoriteArtist?artistId={$artist.id}"><img 
-							 /></a>
+				<form action="/rft/removeFavoriteArtist">
+					<input type ="checkbox" name="ok" />
+					<input type ="hidden" name="artistId" value="{$artist.id}" />
+					<input type="image" src="/images/removeFavorite.png"
+						title="Remove from Favorites (check the box to confirm)" />
+				</form>
 			{else}
 				<a href="/rft/addArtistToFavorites?artistId={$artist.id}"><img src="/images/addFavorite.png"
 						title="Add {$artist.name|htmlspecialchars} to My Favorites" /></a>
