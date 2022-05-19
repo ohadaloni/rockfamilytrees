@@ -2,8 +2,6 @@
 <img src="/images/search.png" title="Search" />
 Use Search to find your favoirites bands and musicians.<br />
 <img src="/images/addFavorite.png" title="Add to My Favorites" /> Add your favorite bands and musicians to the list of favorite bands and musicians on your home page.<br />
-<a href="/rft/addBand"><img src="/images/addBand.png" title="Add a band" /></a>
-<a href="/rft/addBand">Add your favorite band</a> to the <b>Rock Family Trees</b> database.<br />
 
 <a href="/rft/addArtist"><img src="/images/addArtist.png" title="Add an artist" /></a>
 <a href="/rft/addArtist">Add your favorite musician</a> to the <b>Rock Family Trees</b> database.<br />
