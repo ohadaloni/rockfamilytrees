@@ -29704,6 +29704,7 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12080,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12081,472423,10758,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12082,472423,10759,'2021-05-20');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12083,472423,10760,'2021-05-20');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12097,10,2,'2022-05-19');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
