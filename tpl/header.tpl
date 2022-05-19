@@ -82,14 +82,7 @@
 					</form>
 				</td>
 			{/if}
-			<td width="20"></td>
-			<td>
-				<a href="/rft/addBand"><img src="/images/addBand.png" title="Add a band" /></a>
-			</td>
-			<td>
-				<a href="/rft/addArtist"><img src="/images/addArtist.png" title="Add a musician" /></a>
-			</td>
-			<td width="30"></td>
+			<td width="100"></td>
 			<td>
 				<form method="post" id="searchForm" action="/rft/search">
 					<table>
