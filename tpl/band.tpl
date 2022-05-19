@@ -2,11 +2,15 @@
 <table>
 	<tr class="rftFormRow">
 		<td>
-			<a href="/rft/band&bandId={$band.id}"><img src="/images/refresh.png" title="Reload" /></a>
+			<a href="/rft/band?bandId={$band.id}"><img src="/images/refresh.png" title="Reload" /></a>
 
 			{if $isFavorite}
-				<a href="/rft/removeFavoriteBand&bandId={$band.id}"><img src="/images/removeFavorite.png"
-							title="Remove from Favorites" /></a>
+					<form action="/rft/removeFavoriteBand">
+						<input type ="checkbox" name="ok" />
+						<input type ="hidden" name="bandId" value="{$band.id}" />
+						<input type="image" src="/images/removeFavorite.png"
+							title="Remove from Favorites" />
+					</form>
 			{else}
 				<a href="/rft/addBandToFavorites?bandId={$band.id}"><img src="/images/addFavorite.png"
 					
@@ -58,7 +62,7 @@
 		<td>
 			{$band.createdBy|nickname}
 			{if $band.createdBy != $smarty.session.rftId}
-				<a href="/rft/userHome&userId={$band.createdBy}"><img src="/images/home.png"
+				<a href="/rft/userHome?userId={$band.createdBy}"><img src="/images/home.png"
 					title="{$band.createdBy|nickname}'s home"/></a>
 			{/if}
 		</td>
