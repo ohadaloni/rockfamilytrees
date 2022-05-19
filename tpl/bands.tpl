@@ -5,11 +5,10 @@
 		</td>
 		<td>
 			{if $user && ! $artist}
-				{* home page shows link to delete all favorites from favorite list *}
-				<form action="/rft/unFavoriteAll">
+				<form action="/rft/unFavoriteAllBands">
 					<input type ="checkbox" name="ok" />
 					<input type="image" src="/images/delete.png"
-						title="Wipe out my favorite lists (check the box to confirm)"
+						title="Wipe out my favorite bands list (check the box to confirm)"
 					/>
 				</form>
 			{/if}
@@ -25,7 +24,7 @@
 	{foreach from=$bands item=band}
 		<tr class="rftRow{if $band.id == $currentBand} currentBand{/if}">
 			<td>
-				<a href="/rft/band&bandId={$band.id}">{$band.name|htmlspecialchars}</a>
+				<a href="/rft/band?bandId={$band.id}">{$band.name|htmlspecialchars}</a>
 			</td>
 			<td>
 				{* in an artist page remove a tie to the artist *}
