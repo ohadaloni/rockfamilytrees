@@ -1,12 +1,11 @@
 <table>
 	<tr class="rftHeaderRow">
-		<td>
+		<td colspan="2">
 			{if $band}
 				Members
 			{else}
 				Musicians
 			{/if}
-				({$artists|@count})
 		</td>
 		<td>
 			{if $user && ! $band}
@@ -19,17 +18,35 @@
 			{/if}
 		</td>
 	</tr>
-	<tr class="rftHeaderRow">
-		<td colspan="2">
-			<form action="/rft/addArtist">
-				<input type="text" size="30" name="artistName" placeholder="New Musician" />
-			</form>
-		</td>
-	</tr>
-	{foreach from=$artists item=artist}
+	{if $user && ! $band}
+		<tr class="rftHeaderRow">
+			<td colspan="3">
+				<form action="/rft/addArtist">
+					<input type="text" size="30" name="artistName" placeholder="Musician Name" />
+					<input type="image" src="/images/addArtist.png" title="New Musician" />
+				</form>
+			</td>
+		</tr>
+	{/if}
+	{if $band && $smarty.session.rftId}
+		<tr class="rftHeaderRow">
+			<td colspan="3">
+				<form method="post" id="newArtistForm" action="/rft/addArtistToBand">
+					<input type="text" size="30" name="artistName" placeholder="New Member" />
+					<input type="hidden" name="bandId" value="{$band.id}" />
+					<input type="image" src="/images/addArtist.png" title="Add a member to {$band.name|htmlspecialchars}" />
+				</form>
+			</td>
+		</tr>
+	{/if}
+	{foreach from=$artists key=key item=artist}
+		{assign var=No value=`$key+1`}
 		<tr class="rftRow{if $artist.id == $currentArtist} currentArtist{/if}">
 			<td>
-				<a {* {if $band}{/if} *} href="/rft/artist?artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
+				{$No}
+			</td>
+			<td>
+				<a href="/rft/artist?artistId={$artist.id}">{$artist.name|htmlspecialchars}</a>
 			</td>
 			<td>
 				{* in a band page remove a tie to the artist *}
@@ -61,15 +78,4 @@
 			</td>
 		</tr>
 	{/foreach}
-	{if $band && $smarty.session.rftId}
-		<tr class="rftHeaderRow">
-			<td>
-				<form method="post" id="newArtistForm" action="/rft/addArtistToBand">
-					<input type="text" size="30" name="artistName" />
-					<input type="hidden" name="bandId" value="{$band.id}" />
-					<input type="image" src="/images/addArtist.png" title="Add a member to {$band.name|htmlspecialchars}" />
-				</form>
-			</td>
-		</tr>
-	{/if}
 </table>
