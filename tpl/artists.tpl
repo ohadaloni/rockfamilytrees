@@ -9,6 +9,13 @@
 				({$artists|@count})
 		</td>
 	</tr>
+	<tr class="rftHeaderRow">
+		<td colspan="2">
+			<form action="/rft/addArtist">
+				<input type="text" size="30" name="artistName" placeholder="New Musician" />
+			</form>
+		</td>
+	</tr>
 	{foreach from=$artists item=artist}
 		<tr class="rftRow{if $artist.id == $currentArtist} currentArtist{/if}">
 			<td>
@@ -19,8 +26,8 @@
 				{if $band && $artist.createdBy == $user.id}
 					<form action="/rft/unBandArtist">
 						<input type ="checkbox" name="ok" />
-						<input type ="hidden" name="bandId" value="{$band.id}" />
 						<input type ="hidden" name="artistId" value="{$artist.id}" />
+						<input type ="hidden" name="bandId" value="{$band.id}" />
 						<input type ="hidden" name="page" value="band" />
 						<input type="image" src="/images/delete.png"
 							title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars} (check the box to confirm)"
@@ -31,8 +38,12 @@
 
 				{if $homeUser.favoriteArtists && in_array($artist.id, $homeUser.favoriteArtists)}
 					{if $homeUser.id == $user.id}
-						<a href="/rft/removeFavoriteArtist&artistId={$artist.id}"><img src="/images/removeFavorite.png"
-									 title="Remove from Favorites" /></a>
+						<form action="/rft/removeFavoriteArtist">
+							<input type ="checkbox" name="ok" />
+							<input type ="hidden" name="artistId" value="{$artist.id}" />
+							<input type="image" src="/images/removeFavorite.png"
+								title="Remove from Favorites (check the box to confirm)" />
+						</form>
 					{else}
 						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
