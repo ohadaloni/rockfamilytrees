@@ -106,9 +106,6 @@
 				<a target="showSource" href="/showSource"><img src="/images/list.png" title="Show Source" /></a>
 			</td>
 			<td width="20"></td>
-			<td>
-				<a href="/rft/help"><img src="/images/help.png" title="Help" /></a>
-			</td>
 		</tr>
 	</table>
 </div>
