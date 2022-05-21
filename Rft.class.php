@@ -43,7 +43,8 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private function _addArtistToFavorites($artistId) {
 		$rftId = $this->rftId;
-		$is = $this->Mmodel->getInt("select count(*) from favoriteArtists where rftId = $rftId and artistId = $artistId");
+		$sql = "select count(*) from favoriteArtists where rftId = $rftId and artistId = $artistId";
+		$is = $this->Mmodel->getInt($sql);
 		if ( ! $is )
 			$this->Mmodel->dbInsert("favoriteArtists", array(
 				"rftId" => $rftId,
@@ -95,7 +96,8 @@ class Rft extends Mcontroller {
 	/*------------------------------*/
 	private function _addBandToFavorites($bandId) {
 		$rftId = $this->rftId;
-		$is = $this->Mmodel->getInt("select count(*) from favoriteBands where rftId = $rftId and bandId = $bandId");
+		$sql = "select count(*) from favoriteBands where rftId = $rftId and bandId = $bandId";
+		$is = $this->Mmodel->getInt($sql);
 		if ( ! $is )
 			$this->Mmodel->dbInsert("favoriteBands", array(
 				"rftId" => $rftId,
