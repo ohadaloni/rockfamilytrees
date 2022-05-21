@@ -49,13 +49,13 @@
 					<table>
 						<tr>
 							<td>
-								Id: <input class="topItem" type="text" name="nickname" value="{$smarty.session.rftId}" />
+								Id: <input type="text" name="nickname" value="{$rftId}" />
 							</td>
 							<td width="10"></td>
 							<td>
 								<img src="/images/lock.png" title="{$user.passwd}" />
 								Password:
-								<input class="topItem" type="password" name="passwd" />
+								<input type="password" name="passwd" />
 							</td>
 							<td width="5"></td>
 							<td>
@@ -68,11 +68,14 @@
 			{if $user}
 				<td width="20"></td>
 				<td>
-					<form method="post" action="/rft/chnageNickname">
+					<form method="post" action="/rft/changeNickname">
 						<table>
 							<tr>
 								<td>
-									nickname: <input class="topItem" type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
+									nickname: <input type="text" name="nickname" value="{$user.nickname|htmlspecialchars}" />
+								</td>
+								<td>
+									<input type ="checkbox" name="ok" />
 								</td>
 								<td>
 									<input type="image" src="/images/changeAvatar.png" title="Change my Nickname" />
@@ -88,7 +91,7 @@
 					<table>
 						<tr>
 							<td>
-								<input class="topItem" type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
+								<input type="text" name="searchTerm" value="{$smarty.request.searchTerm}" />
 							</td>
 							<td>
 								{if ! $user}Search {/if}<input type="image" src="/images/search.png" title="Search" />
