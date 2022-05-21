@@ -27,7 +27,7 @@
 			</td>
 		</tr>
 	{/if}
-	{if $artist && $smarty.session.rftId}
+	{if $artist && $rftId}
 		<tr class="rftHeaderRow">
 			<td colspan=4">
 				<form method="post" id="newArtistForm" action="/rft/addBandToArtist">
@@ -63,7 +63,7 @@
 						/>
 					</form>
 				{/if}
-				{if $homeUser.favoriteBands && in_array($band.id, $homeUser.favoriteBands)}
+				{if $band.isFavoraite }
 					{if $homeUser.id == $user.id}
 						<form action="/rft/removeFavoriteBand">
 							<input type ="checkbox" name="ok" />
