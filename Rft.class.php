@@ -2,19 +2,19 @@
 /*------------------------------------------------------------*/
 class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
-	/*	private $rftId;	*/
+	private $rftId;
 	private $user;
 	private $numsTtl;
 	/*------------------------------------------------------------*/
 	public function __construct() {
 		parent::__construct();
 		$this->numsTtl = 30*60;
-		$this->setUser();
 		$this->Mview->register_modifier('nickname', array($this, 'nickname',));
 	}
 	/*------------------------------------------------------------*/
 	protected function before() {
 		parent::before();
+		$this->setUser();
 		header('Content-type: text/html; charset=UTF-8');
 		$this->Mview->showTpl("header.tpl");
 		$this->Mview->showMsgs();
