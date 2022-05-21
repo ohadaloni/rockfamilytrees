@@ -36,7 +36,7 @@ class Rft extends Mcontroller {
 		$this->Mview->assign("metaTitle", $title);
 		$this->Mview->assign("metaKeywords", "$title, $wordsList");
 		$this->Mview->assign("metaDescription", "$title: $wordsList");
-		$searchWords = $u->array_slice($words,0,  4);
+		$searchWords = array_slice($words,0,  4);
 		$searchWordList = implode(" ", $searchWords);
 		$this->Mview->assign("searchQuery", "wikipedia +\"$title\" $searchWordList");
 	}
@@ -74,7 +74,6 @@ class Rft extends Mcontroller {
 		$artistId = $_REQUEST['artistId'];
 		$sql = "delete from favoriteArtists where rftId = $rftId and artistId = $artistId";
 		$this->Mmodel->sql($sql);
-		$ind = array_search($artistId, $this->user['favoriteArtists']);
 		$this->redir();
 	}
 	/*------------------------------*/
@@ -89,8 +88,6 @@ class Rft extends Mcontroller {
 		$bandId = $_REQUEST['bandId'];
 		$sql = "delete from favoriteBands where rftId = $rftId and bandId = $bandId";
 		$this->Mmodel->sql($sql);
-		$ind = array_search($bandId, $this->user['favoriteBands']);
-		unset($this->user['favoriteBands'][$ind]);
 		$this->redir();
 	}
 	/*------------------------------*/
@@ -113,7 +110,6 @@ class Rft extends Mcontroller {
 		$rftId = $this->rftId;
 		$bandId = $_REQUEST['bandId'];
 		$this->_addBandToFavorites($bandId);
-		$this->user['favoriteBands'][] = $bandId;
 		$this->redir();
 	}
 	/*------------------------------------------------------------*/
@@ -131,30 +127,26 @@ class Rft extends Mcontroller {
 	/*----------------------------------------*/
 	private function setUser($rftId = null) {
 		if ( $rftId ) {
-			$this->rftId = $rftId;
 			$this->Mview->setCookie("rftId", $rftId);
-		}
-		elseif ( isset($_COOKIE['rftId']) ) {
 			$this->rftId = $rftId;
-			return;
+		} elseif ( isset($_COOKIE['rftId']) ) {
+			$this->rftId = $_COOKIE['rftId'];;
 		} else {
 			error_log::error("setUser: rftId not set");
 			return;
 		}
+		$rftId = $this->rftId;
 		if ( $this->user && $this->user['id'] == $rftId )
 			return;
 		$this->user = $this->Mmodel->getById("users", $rftId);
-		if ( ! $this->user )
+		if ( ! $this->user ) {
 			return;
+		}
 		if ( ! $this->user['nickname'] )
 			$this->user['nickname'] = $rftId;
-		$where = "where rftId = $rftId";
-		$orderBy = "order by name";
-		$favoriteBandsSql = "select bandId from favoriteBands $where $orderBy";
-		$favoriteArtistsSql = "select artistId from favoriteArtists $where $orderBy";
-		$this->user['favoriteBands'] = $this->Mmodel->getStrings($favoriteBandsSql);
-		$this->user['favoriteArtists'] = $this->Mmodel->getStrings($favoriteArtistsSql);
+
 		$this->Mview->assign("user", $this->user);
+		$this->Mview->assign("rftId", $this->rftId);
 	}
 	/*------------------------------------------------------------*/
 	public function index() {
@@ -174,47 +166,92 @@ class Rft extends Mcontroller {
 	}
 	/*----------------------------------------*/
 	private function userBands($rftId) {
-		$favInSql = "select bandId from favoriteBands where rftId = $rftId";
-		$favorites = $this->Mmodel->getRows("select * from bands where id in ( $favInSql ) order by name");
-		$userLatest = $this->Mmodel->getRows("select * from bands where createdBy = $rftId and id not in ( $favInSql ) order by id desc limit 10");
-		// it is very unlikely for a latest to also be most popular
-		$latest = $this->Mmodel->getRows("select * from bands where id not in ( $favInSql ) and createdBy != $rftId order by id desc limit 5");
-		return(array_merge($favorites, $userLatest, $latest));
+		$favSql = "select bandId from favoriteBands where rftId = $rftId";
+		$favoriteIds = $this->Mmodel->getStrings($favSql);
+		if ( $favoriteIds )
+			$favorites = $this->Mmodel->getRows("select * from bands where id in ( $favSql )");
+		else
+			$favorites = array();
+		$userLatest = $this->Mmodel->getRows("select * from bands where createdBy = $rftId order by id desc limit 10");
+		$latest = $this->Mmodel->getRows("select * from bands where createdBy != $rftId order by id desc limit 10");
+		$userBands = array();
+		foreach ( $favorites as $band ) {
+			$band['isFavoraite'] = true;
+			$bandId = $band['id'];
+			$userBands[$bandId] = $band;
+		}
+		foreach ( $userLatest as $band ) {
+			$bandId = $band['id'];
+			if ( ! @$userBands[$bandId] )
+				$userBands[$bandId] = $band;
+		}
+		foreach ( $latest as $band ) {
+			$bandId = $band['id'];
+			if ( ! @$userBands[$bandId] )
+				$userBands[$bandId] = $band;
+		}
+		$userBands = array_values($userBands);
+		usort($userBands, array($this, "byName"));
+		$this->ammendBands($userBands);
+		return($userBands);
+	}
+	/*------------------------------*/
+	private function byName($a, $b) {
+		return(strcmp($a['name'], $b['name']));
 	}
 	/*------------------------------*/
 	private function userArtists($rftId) {
-		$favInSql = "select artistId from favoriteArtists where rftId = $rftId";
-		$favorites = $this->Mmodel->getRows("select * from artists where id in ( $favInSql ) order by name");
-		$userLatest = $this->Mmodel->getRows("select * from artists where createdBy = $rftId and id not in ( $favInSql ) order by id desc limit 10");
-		// it is very unlikely for a latest to also be most popular
-		$latest = $this->Mmodel->getRows("select * from artists where id not in ( $favInSql ) and createdBy != $rftId order by id desc limit 5");
-		return(array_merge($favorites, $userLatest, $latest));
+		$favSql = "select artistId from favoriteArtists where rftId = $rftId";
+		$favoriteIds = $this->Mmodel->getStrings($favSql);
+		if ( $favoriteIds )
+			$favorites = $this->Mmodel->getRows("select * from artists where id in ( $favSql )");
+		else
+			$favorites = array();
+		$userLatest = $this->Mmodel->getRows("select * from artists where createdBy = $rftId order by id desc limit 10");
+		$latest = $this->Mmodel->getRows("select * from artists where createdBy != $rftId order by id desc limit 10");
+		$userArtists = array();
+		foreach ( $favorites as $artist ) {
+			$artist['isFavoraite'] = true;
+			$artistId = $artist['id'];
+			$userArtists[$artistId] = $artist;
+		}
+		foreach ( $userLatest as $artist ) {
+			$artistId = $artist['id'];
+			if ( ! @$userArtists[$artistId] )
+				$userArtists[$artistId] = $artist;
+		}
+		foreach ( $latest as $artist ) {
+			$artistId = $artist['id'];
+			if ( ! @$userArtists[$artistId] )
+				$userArtists[$artistId] = $artist;
+		}
+		$userArtists = array_values($userArtists);
+		usort($userArtists, array($this, "byName"));
+		$this->ammendArtists($userArtists);
+		return($userArtists);
 	}
 	/*------------------------------*/
 	public function userHome($rftId = null) {
-		if ( ! $rftId && ! isset($_REQUEST['userId']) ) {
-			$this->Mview->error("userHome: No userId");
+		if ( ! $rftId ) {
+			if ( @$_REQUEST['userId'] )
+				$rftId = $_REQUEST['userId'];
+			elseif ( $this->rftId )
+				$rftId = $this->rftId;
+		} else {
+			$this->Mview->msgLater("userHome: No userId");
 			$this->visitorHome();
 			return;
 		}
-		if ( ! $rftId )
-			$rftId = $_REQUEST['userId'];
-
 		if ( $this->user && $this->user['id'] == $rftId ) {
 			$homeUser = $this->user;
 		} else {
-			$sql = "select * from users where id = $rftId";
-			$homeUser = $this->Mmodel->getRow($sql);
+			$homeUser = $this->Mmodel->getById("users", $rftId);
 			if ( ! $homeUser['nickname'] )
 				$homeUser['nickname'] = $homeUser['id'];
 		}
 		$this->setTitle("{$homeUser['nickname']}'s home");
-		$homeUser['favoriteBands'] = $this->Mmodel->getStrings("select bandId from favoriteBands where rftId = $rftId");
-		$homeUser['favoriteArtists'] = $this->Mmodel->getStrings("select artistId from favoriteArtists where rftId = $rftId");
 		$bands = $this->userBands($rftId);
-		$this->ammendBands($bands);
 		$artists = $this->userArtists($rftId);
-		$this->ammendArtists($bands);
 		$this->Mview->showtpl("home.tpl", array(
 			'homeUser' => $homeUser,
 			'bands' => $bands,
@@ -251,7 +288,7 @@ class Rft extends Mcontroller {
 	public function band($bandId = null) {
 		if ( ! $bandId )
 			$bandId = $_REQUEST['bandId'];
-		$band = $this->Mmodel->getRow("select * from bands where id = $bandId");
+		$band = $this->Mmodel->getById("bands", $bandId);
 		$this->setTitle($band['name']);
 		$artists = $this->Mmodel->getRows("select a.* from artists a, bandArtists ba where a.id = ba.artistId and ba.bandId = $bandId order by a.name");
 		$artistNames = Mutils::arrayColumn($artists, "name");
@@ -271,7 +308,7 @@ class Rft extends Mcontroller {
 	public function artist($artistId = null) {
 		if ( ! $artistId )
 			$artistId = $_REQUEST['artistId'];
-		$artist = $this->Mmodel->getRow("select * from artists where id = $artistId");
+		$artist = $this->Mmodel->getById("artists", $artistId);
 		$this->setTitle($artist['name']);
 		$bands = $this->Mmodel->getRows("select b.* from bands b, bandArtists ba where b.id = ba.bandId and ba.artistId = $artistId order by b.name");
 		$bandNames =  Mutils::arrayColumn($bands, "name");
@@ -497,7 +534,7 @@ class Rft extends Mcontroller {
 			$this->redir2artist($artistId);
 			return;
 		}
-		$numBands = $this->numBands($bandId, true);
+		$numBands = $this->numBands($artistId, true);
 		if ( $numBands > 0 ) {
 			$s = $numBands == 1 ? "" : "s";
 			$this->Mview->msgLater("deleteArtist: $bandName: un-tie $numBands band$s first");
