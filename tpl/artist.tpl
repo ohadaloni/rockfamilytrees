@@ -63,7 +63,7 @@
 		<td colspan="3">By</td>
 		<td colspan="4">
 			{$artist.createdBy|nickname}
-			{if $artist.createdBy != $smarty.session.rftId}
+			{if $artist.createdBy != $rftId}
 				<a href="/rft/userHome?userId={$artist.createdBy}"><img src="/images/home.png"
 					title="{$artist.createdBy|nickname}'s home" /></a>
 			{/if}
