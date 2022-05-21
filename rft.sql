@@ -10667,7 +10667,6 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10747,'Ciro Medina'
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10748,'Pabel Anselm','2020-07-13',472420);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10749,'Anthony Minervino','2020-07-13',472420);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10750,'Testing','2020-08-26',472421);
-INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10751,'Ffffffffffff','2020-08-26',472421);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10752,'Rrrrrrrrrrrrrrrrrr','2020-08-26',472421);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10753,'Mike Portnoy','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10754,'Neal Morse','2021-05-20',472423);
