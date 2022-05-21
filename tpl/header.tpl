@@ -49,7 +49,7 @@
 					<table>
 						<tr>
 							<td>
-								Id: <input type="text" name="nickname" value="{$rftId}" />
+								Id: <input type="text" name="rftId" value="{$rftId}" />
 							</td>
 							<td width="10"></td>
 							<td>
@@ -103,6 +103,9 @@
 			<td width="20"></td>
 			<td>
 				<a href="/rft/home"><img src="/images/home.png" title="Home" /></a>
+			</td>
+			<td>
+				<a href="/rft/logout"><img src="/images/logout.png" title="Log Off {$user.nickname}" /></a>
 			</td>
 			<td width="20"></td>
 			<td>
