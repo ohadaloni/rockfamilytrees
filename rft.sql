@@ -10666,7 +10666,6 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10746,'Robert Mansf
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10747,'Ciro Medina','2020-07-13',472420);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10748,'Pabel Anselm','2020-07-13',472420);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10749,'Anthony Minervino','2020-07-13',472420);
-INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10750,'Testing','2020-08-26',472421);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10753,'Mike Portnoy','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10754,'Neal Morse','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10755,'Jac Bico','2021-05-20',472423);
@@ -27311,7 +27310,6 @@ INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2071,'Syndicats','202
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2072,'Edwin Birdsong Band 1970','2020-09-03',472419);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2073,'Yellow Matter Custard','2021-05-20',472423);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2074,'The Analogues','2021-05-20',472423);
-INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2077,'TestBand','2022-05-21',10);
 /*!40000 ALTER TABLE bands ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29704,6 +29702,7 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12083,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12097,10,2,'2022-05-19');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12098,472421,10765,'2022-05-21');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12099,10,10750,'2022-05-21');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12100,472421,10750,'2022-05-21');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30175,6 +30174,7 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2016,10,20,'202
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2017,10,1468,'2022-05-19');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2018,10,143,'2022-05-19');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2019,10,2077,'2022-05-21');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2020,472421,2077,'2022-05-21');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
