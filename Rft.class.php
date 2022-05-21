@@ -132,7 +132,6 @@ class Rft extends Mcontroller {
 		} elseif ( isset($_COOKIE['rftId']) ) {
 			$this->rftId = $_COOKIE['rftId'];;
 		} else {
-			error_log::error("setUser: rftId not set");
 			return;
 		}
 		$rftId = $this->rftId;
@@ -267,8 +266,23 @@ class Rft extends Mcontroller {
 			$this->visitorHome();
 	}
 	/*------------------------------------------------------------*/
+	public function logOut() {
+		if ( ! $this->rftId ) {
+			$this->Mview->msgLater("logOut: Not Logged In");
+			$this->redir();
+			return;
+		}
+		$nickname = $this->user['nickname'];
+		$id = $this->user['id'];
+		$passwd = $this->user['passwd'];
+		$msg =  "$nickname:  Logged out. To login use id $id, password $passwd";
+		$this->Mview->msgLater($msg);
+		$this->Mview->setCookie("rftId", -1, -1);
+		$this->redir();
+	}
+	/*------------------------------------------------------------*/
 	public function switchId() {
-		$newRftId = trim($_REQUEST['nickname']);
+		$newRftId = trim($_REQUEST['rftId']);
 		$passwd = trim($_REQUEST['passwd']);
 		if ( ! $newRftId || ! $passwd ) {
 			$this->redir();
