@@ -27326,7 +27326,8 @@ CREATE TABLE favoriteArtists (
   artistId int(11) DEFAULT NULL,
   createdOn date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY rftId (rftId,artistId)
+  UNIQUE KEY rftId (rftId,artistId),
+  KEY artistId (artistId)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -29720,7 +29721,8 @@ CREATE TABLE favoriteBands (
   bandId int(11) DEFAULT NULL,
   createdOn date DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY rftId (rftId,bandId)
+  UNIQUE KEY rftId (rftId,bandId),
+  KEY bandId (bandId)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -30178,52 +30180,6 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2019,10,2077,'2
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2020,472421,2077,'2022-05-21');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2021,10,285,'2022-05-22');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `followees`
---
-
-DROP TABLE IF EXISTS followees;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE followees (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  rftId int(11) DEFAULT NULL,
-  followee int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY rftId (rftId,followee),
-  KEY followee (followee)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `followees`
---
-
-LOCK TABLES followees WRITE;
-/*!40000 ALTER TABLE followees DISABLE KEYS */;
-INSERT INTO followees (id, rftId, followee) VALUES (14,1,2);
-INSERT INTO followees (id, rftId, followee) VALUES (15,1,4);
-INSERT INTO followees (id, rftId, followee) VALUES (13,2,4);
-INSERT INTO followees (id, rftId, followee) VALUES (4,3,1);
-INSERT INTO followees (id, rftId, followee) VALUES (6,4,1);
-INSERT INTO followees (id, rftId, followee) VALUES (17,5,1);
-INSERT INTO followees (id, rftId, followee) VALUES (16,5,4);
-INSERT INTO followees (id, rftId, followee) VALUES (18,5,6);
-INSERT INTO followees (id, rftId, followee) VALUES (20,12,4);
-INSERT INTO followees (id, rftId, followee) VALUES (19,12,6);
-INSERT INTO followees (id, rftId, followee) VALUES (22,14,6);
-INSERT INTO followees (id, rftId, followee) VALUES (21,14,13);
-INSERT INTO followees (id, rftId, followee) VALUES (23,17,16);
-INSERT INTO followees (id, rftId, followee) VALUES (26,19,5);
-INSERT INTO followees (id, rftId, followee) VALUES (25,19,6);
-INSERT INTO followees (id, rftId, followee) VALUES (27,20,6);
-INSERT INTO followees (id, rftId, followee) VALUES (28,44,1);
-INSERT INTO followees (id, rftId, followee) VALUES (29,472411,10);
-INSERT INTO followees (id, rftId, followee) VALUES (30,472412,472391);
-INSERT INTO followees (id, rftId, followee) VALUES (31,472422,10);
-/*!40000 ALTER TABLE followees ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
