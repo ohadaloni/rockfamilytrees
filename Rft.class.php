@@ -26,6 +26,7 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	private function setTitle($title) {
+		$this->Mview->assign("title", $title); // is used in the html, like Neo's home
 		$this->Mview->jsTitle("$title - Rock Family Trees");
 	}
 	/*------------------------------------------------------------*/
