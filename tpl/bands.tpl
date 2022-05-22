@@ -7,16 +7,16 @@
 			<a style="decoration:none;" title="#Members">#</a>
 		</td>
 		<td>
+		</td>
+		<td>
 			{if $user && ! $artist}
 				<form action="/rft/unFavoriteAllBands">
 					<input type ="checkbox" name="ok" />
-					<input type="image" src="/images/delete.png"
+					<input type="image" src="/images/removeFavorite.png"
 						title="Wipe out my favorite bands list (check the box to confirm)"
 					/>
 				</form>
 			{/if}
-		</td>
-		<td>
 		</td>
 	</tr>
 	{if $user && ! $artist}
