@@ -1,21 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
-		{if $metaTitle}
-			{$metaTitle|htmlspecialchars} - Rock Family Trees
-		{elseif $user}
-			{$user.nickname|htmlspecialchars} - Rock Family Trees
-		{else}
-			Rock Family Trees
-		{/if}
-	</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	{if $metaTitle}
-		<meta name="title" content="{$metaTitle|htmlspecialchars}" />
-		<meta name="keywords" content="{$metaKeywords|htmlspecialchars}" />
-		<meta name="description" content="{$metaDescription|htmlspecialchars}" />
-	{/if}
+	{* title is later replaced by a js setTitle() *}
+	<title>Rock Family Trees</title>
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.hoverClass.js"></script>
 
