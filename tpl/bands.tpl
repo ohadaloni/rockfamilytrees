@@ -23,7 +23,7 @@
 		<tr class="rftHeaderRow">
 			<td colspan="5">
 				<form action="/rft/addBand">
-					<input type="text" size="35" name="bandName" placeholder="Band Name" />
+					<input type="text" size="40" name="bandName" placeholder="Band Name" />
 					<input type="image" src="/images/addBand.png" title="New band" />
 				</form>
 			</td>
@@ -33,7 +33,7 @@
 		<tr class="rftHeaderRow">
 			<td colspan=5">
 				<form method="post" id="newArtistForm" action="/rft/addBandToArtist">
-					<input type="text" size="35" name="bandName" placeholder="Band Name" />
+					<input type="text" size="40" name="bandName" placeholder="Band Name" />
 					<input type="hidden" name="artistId" value="{$artist.id}" />
 					<input type="image" src="/images/addArtist.png" title="Add a band to {$artist.name|htmlspecialchars}" />
 				</form>
