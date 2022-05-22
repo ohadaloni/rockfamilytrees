@@ -531,6 +531,7 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$this->Mmodel->dbDelete("bands", $bandId);
+		$this->gcBand($bandId);
 		$this->Mview->msgLater("$bandName: Deleted");
 		$this->redir();
 	}
@@ -568,6 +569,7 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$this->Mmodel->dbDelete("artists", $artistId);
+		$this->gcArtist($artistId);
 		$this->Mview->msgLater("$artistName: Deleted");
 		$this->redir();
 	}
@@ -596,6 +598,29 @@ class Rft extends Mcontroller {
 		$this->redir();
 	}
 	/*------------------------------------------------------------*/
+	/*------------------------------------------------------------*/
+	// Sun May 22 06:11:25 IDT 2022
+	/* when a band/artist are deleted, gc from favorites for all rftId's */
+	/*------------------------------*/
+	private function gcArtist($artistId) {
+		$artist = $this->Mmodel->getById("artists", $artistId);
+		if ( $artist ) {
+			$artistName = $artist['name'];
+			error_log("gcArtist: artist $artistName ($artistId) exists");
+			return;
+		}
+		$this->Mmodel->sql("delete from favoriteArtists where artistId = $artistId");
+	}
+	/*------------------------------*/
+	private function gcBand($bandId) {
+		$band = $this->Mmodel->getById("bands", $bandId);
+		if ( $band ) {
+			$bandName = $band['name'];
+			error_log("gcBand: band $bandName ($bandId) exists");
+			return;
+		}
+		$this->Mmodel->sql("delete from favoriteBands where bandId = $bandId");
+	}
 	/*------------------------------------------------------------*/
 	private function canonize($str) {
 		$ret = $str;
