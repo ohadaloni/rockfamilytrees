@@ -10674,6 +10674,8 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10757,'Felix Maginn
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10758,'Diederik Nomden','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10759,'Bart Van Poppel','2021-05-20',472423);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10760,'Jan Van Der Meij','2021-05-20',472423);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10767,'Avril Lavigne','2022-05-22',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10768,'Jason Mraz','2022-05-22',10);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29713,6 +29715,9 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12106,10,40
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12107,10,39,'2022-05-22');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12108,10,33,'2022-05-22');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12109,10,48,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12111,10,63,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12112,10,10767,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12113,10,10768,'2022-05-22');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
