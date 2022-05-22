@@ -677,14 +677,14 @@ class Rft extends Mcontroller {
 		if ( ! $rftId )
 			return(""); // not reached || error
 		if ( isset($cache[$rftId]) ) {
-			error_log("nickname($rftId): from cache: {$cache[$rftId]}");
+			/*	error_log("nickname($rftId): from cache: {$cache[$rftId]}");	*/
 			return($cache[$rftId]);
 		}
 		$nickname = htmlspecialchars($Mmodel->getString("select nickname from users where id = $rftId"));
 		if ( ! $nickname )
 			$nickname = $rftId;
 		$cache[$rftId] = $nickname;
-		error_log("nickname($rftId): not from cache: {$cache[$rftId]}");
+		/*	error_log("nickname($rftId): not from cache: {$cache[$rftId]}");	*/
 		return($cache[$rftId]);
 	}
 	/*------------------------------------------------------------*/
