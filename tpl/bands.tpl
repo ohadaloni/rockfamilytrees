@@ -16,10 +16,12 @@
 				</form>
 			{/if}
 		</td>
+		<td>
+		</td>
 	</tr>
 	{if $user && ! $artist}
 		<tr class="rftHeaderRow">
-			<td colspan="4">
+			<td colspan="5">
 				<form action="/rft/addBand">
 					<input type="text" size="35" name="bandName" placeholder="Band Name" />
 					<input type="image" src="/images/addBand.png" title="New band" />
@@ -29,7 +31,7 @@
 	{/if}
 	{if $artist && $rftId}
 		<tr class="rftHeaderRow">
-			<td colspan=4">
+			<td colspan=5">
 				<form method="post" id="newArtistForm" action="/rft/addBandToArtist">
 					<input type="text" size="35" name="bandName" placeholder="Band Name" />
 					<input type="hidden" name="artistId" value="{$artist.id}" />
@@ -48,21 +50,24 @@
 				<a href="/rft/band?bandId={$band.id}">{$band.name|htmlspecialchars}</a>
 			</td>
 			<td>
-				{$band.numArtists}
+				<a style="decoration:none;" title="#members">{$band.numArtists}</a>
 			</td>
 			<td>
-				{* in an artist page remove a tie to the artist *}
-				{if $artist && $band.createdBy == $user.id}
-					<form action="/rft/unBandArtist">
-						<input type ="checkbox" name="ok" />
-						<input type ="hidden" name="bandId" value="{$band.id}" />
-						<input type ="hidden" name="artistId" value="{$artist.id}" />
-						<input type ="hidden" name="page" value="artist" />
-						<input type="image" src="/images/delete.png"
-							title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars} (check the box to confirm)"
-						/>
-					</form>
+				{if $artist}
+					{if $band.createdBy == $user.id}
+						<form action="/rft/unBandArtist">
+							<input type ="checkbox" name="ok" />
+							<input type ="hidden" name="bandId" value="{$band.id}" />
+							<input type ="hidden" name="artistId" value="{$artist.id}" />
+							<input type ="hidden" name="page" value="artist" />
+							<input type="image" src="/images/untie.png"
+								title="Un-tie {$band.name|htmlspecialchars} and {$artist.name|htmlspecialchars} (check the box to confirm)"
+							/>
+						</form>
+					{/if}
 				{/if}
+			</td>
+			<td>
 				{if $band.isFavoraite }
 					{if $homeUser.id == $user.id}
 						<form action="/rft/removeFavoriteBand">
@@ -74,6 +79,14 @@
 					{else}
 						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
+				{elseif $band.myLatest}
+					<img src="/images/person.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
+				{elseif $band.latest}
+					<img src="/images/clock.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
+				{elseif $artist}
+					<img src="/images/info.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
+				{else}
+					<img src="/images/help.png" title="Unexpected Status!" />
 				{/if}
 			</td>
 		</tr>
