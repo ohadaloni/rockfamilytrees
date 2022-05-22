@@ -26,25 +26,18 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	private function setTitle($title) {
-		$this->Mview->assign("title", $title);
+		$this->Mview->jsTitle("$title - Rock Family Trees");
 	}
 	/*------------------------------------------------------------*/
-	private function setMeta($title, $words) {
-		$this->Mview->assign("metaTitle", $title);
+	private function setSearchQuery($title, $words) {
 		if ( $words ) {
 			$wordsList = implode(", ", $words);
-			$description = "$title: $wordsList";
-			$keywords = "$title, $wordsList";
-			$searchWords = array_slice($words,0,  4);
+			$searchWords = array_slice($words, 0,  4);
 			$searchWordList = implode(" ", $searchWords);
 			$searchQuery = "wikipedia +\"$title\" $searchWordList";
 		} else {
-			$description = "$title";
-			$keywords = "$title";
 			$searchQuery = "wikipedia +\"$title\"";
 		}
-		$this->Mview->assign("metaDescription", $description);
-		$this->Mview->assign("metaKeywords", $keywords);
 		$this->Mview->assign("searchQuery", $searchQuery);
 	}
 	/*------------------------------------------------------------*/
@@ -259,7 +252,8 @@ class Rft extends Mcontroller {
 			if ( ! $homeUser['nickname'] )
 				$homeUser['nickname'] = $homeUser['id'];
 		}
-		$this->setTitle("{$homeUser['nickname']}'s home");
+		$title = "{$homeUser['nickname']}'s home";
+		$this->setTitle($title);
 		$bands = $this->userBands($rftId);
 		$artists = $this->userArtists($rftId);
 		$this->Mview->showtpl("home.tpl", array(
@@ -318,7 +312,7 @@ class Rft extends Mcontroller {
 		$artists = $this->Mmodel->getRows("select a.* from artists a, bandArtists ba where a.id = ba.artistId and ba.bandId = $bandId order by a.name");
 		$this->ammendArtists($artists);
 		$artistNames = Mutils::arrayColumn($artists, "name");
-		$this->setMeta($band['name'], $artistNames);
+		$this->setSearchQuery($band['name'], $artistNames);
 		if ( $this->user ) {
 			$userId = $this->user['id'];
 			$isFavorite = $this->Mmodel->getInt("select id from favoriteBands where rftId = $userId and bandId = $bandId");
@@ -339,7 +333,7 @@ class Rft extends Mcontroller {
 		$bands = $this->Mmodel->getRows("select b.* from bands b, bandArtists ba where b.id = ba.bandId and ba.artistId = $artistId order by b.name");
 		$this->ammendBands($bands);
 		$bandNames =  Mutils::arrayColumn($bands, "name");
-		$this->setMeta($artist['name'], $bandNames);
+		$this->setSearchQuery($artist['name'], $bandNames);
 		if ( $this->user ) {
 			$userId = $this->user['id'];
 			$isFavorite = $this->Mmodel->getInt("select id from favoriteArtists where rftId = $userId and artistId = $artistId");
