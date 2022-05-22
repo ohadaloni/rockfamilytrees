@@ -30,15 +30,22 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	private function setMeta($title, $words) {
-		if ( ! $words )
-			return;
-		$wordsList = implode(", ", $words);
 		$this->Mview->assign("metaTitle", $title);
-		$this->Mview->assign("metaKeywords", "$title, $wordsList");
-		$this->Mview->assign("metaDescription", "$title: $wordsList");
-		$searchWords = array_slice($words,0,  4);
-		$searchWordList = implode(" ", $searchWords);
-		$this->Mview->assign("searchQuery", "wikipedia +\"$title\" $searchWordList");
+		if ( $words ) {
+			$wordsList = implode(", ", $words);
+			$description = "$title: $wordsList";
+			$keywords = "$title, $wordsList";
+			$searchWords = array_slice($words,0,  4);
+			$searchWordList = implode(" ", $searchWords);
+			$searchQuery = "wikipedia +\"$title\" $searchWordList";
+		} else {
+			$description = "$title";
+			$keywords = "$title";
+			$searchQuery = "wikipedia +\"$title\"";
+		}
+		$this->Mview->assign("metaDescription", $description);
+		$this->Mview->assign("metaKeywords", $keywords);
+		$this->Mview->assign("searchQuery", $searchQuery);
 	}
 	/*------------------------------------------------------------*/
 	private function _addArtistToFavorites($artistId) {
@@ -60,7 +67,7 @@ class Rft extends Mcontroller {
 		$rftId = $this->rftId;
 		$artistId = $_REQUEST['artistId'];
 		$this->_addArtistToFavorites($artistId);
-		$this->redir();
+		$this->redir2artist($artistId);
 	}
 	/*------------------------------*/
 	public function removeFavoriteArtist() {
@@ -110,7 +117,7 @@ class Rft extends Mcontroller {
 		$rftId = $this->rftId;
 		$bandId = $_REQUEST['bandId'];
 		$this->_addBandToFavorites($bandId);
-		$this->redir();
+		$this->redir2band($bandId);
 	}
 	/*------------------------------------------------------------*/
 	private function validateUser() {
@@ -674,12 +681,15 @@ class Rft extends Mcontroller {
 		
 		if ( ! $rftId )
 			return(""); // not reached || error
-		if ( isset($cache[$rftId]) )
+		if ( isset($cache[$rftId]) ) {
+			error_log("nickname($rftId): from cache: {$cache[$rftId]}");
 			return($cache[$rftId]);
+		}
 		$nickname = htmlspecialchars($Mmodel->getString("select nickname from users where id = $rftId"));
 		if ( ! $nickname )
 			$nickname = $rftId;
 		$cache[$rftId] = $nickname;
+		error_log("nickname($rftId): not from cache: {$cache[$rftId]}");
 		return($cache[$rftId]);
 	}
 	/*------------------------------------------------------------*/
