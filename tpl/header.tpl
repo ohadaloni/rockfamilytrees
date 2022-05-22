@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>
-		{if $title}
-			{$title|htmlspecialchars} - Rock Family Trees
+		{if $metaTitle}
+			{$metaTitle|htmlspecialchars} - Rock Family Trees
 		{elseif $user}
-			Rock Family Trees - {$user.nickname|htmlspecialchars}
+			{$user.nickname|htmlspecialchars} - Rock Family Trees
 		{else}
 			Rock Family Trees
 		{/if}
