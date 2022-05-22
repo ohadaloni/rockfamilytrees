@@ -29705,6 +29705,14 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12098,47242
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12099,10,10750,'2022-05-21');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12100,472421,10750,'2022-05-21');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12101,10,41,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12102,10,151,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12103,10,393,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12104,10,997,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12105,10,38,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12106,10,40,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12107,10,39,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12108,10,33,'2022-05-22');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12109,10,48,'2022-05-22');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30179,6 +30187,13 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2018,10,143,'20
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2019,10,2077,'2022-05-21');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2020,472421,2077,'2022-05-21');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2021,10,285,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2022,10,43,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2023,10,2074,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2024,10,93,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2025,10,475,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2026,10,9,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2027,10,8,'2022-05-22');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2028,10,129,'2022-05-22');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
