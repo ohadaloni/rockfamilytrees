@@ -181,11 +181,13 @@ class Rft extends Mcontroller {
 		}
 		foreach ( $userLatest as $band ) {
 			$bandId = $band['id'];
+			$band['myLatest'] = true;
 			if ( ! @$userBands[$bandId] )
 				$userBands[$bandId] = $band;
 		}
 		foreach ( $latest as $band ) {
 			$bandId = $band['id'];
+			$band['latest'] = true;
 			if ( ! @$userBands[$bandId] )
 				$userBands[$bandId] = $band;
 		}
@@ -210,17 +212,19 @@ class Rft extends Mcontroller {
 		$latest = $this->Mmodel->getRows("select * from artists where createdBy != $rftId order by id desc limit 10");
 		$userArtists = array();
 		foreach ( $favorites as $artist ) {
-			$artist['isFavoraite'] = true;
 			$artistId = $artist['id'];
+			$artist['isFavoraite'] = true;
 			$userArtists[$artistId] = $artist;
 		}
 		foreach ( $userLatest as $artist ) {
 			$artistId = $artist['id'];
+			$artist['myLatest'] = true;
 			if ( ! @$userArtists[$artistId] )
 				$userArtists[$artistId] = $artist;
 		}
 		foreach ( $latest as $artist ) {
 			$artistId = $artist['id'];
+			$artist['latest'] = true;
 			if ( ! @$userArtists[$artistId] )
 				$userArtists[$artistId] = $artist;
 		}
@@ -305,6 +309,7 @@ class Rft extends Mcontroller {
 		$band = $this->Mmodel->getById("bands", $bandId);
 		$this->setTitle($band['name']);
 		$artists = $this->Mmodel->getRows("select a.* from artists a, bandArtists ba where a.id = ba.artistId and ba.bandId = $bandId order by a.name");
+		$this->ammendArtists($artists);
 		$artistNames = Mutils::arrayColumn($artists, "name");
 		$this->setMeta($band['name'], $artistNames);
 		if ( $this->user ) {
@@ -325,6 +330,7 @@ class Rft extends Mcontroller {
 		$artist = $this->Mmodel->getById("artists", $artistId);
 		$this->setTitle($artist['name']);
 		$bands = $this->Mmodel->getRows("select b.* from bands b, bandArtists ba where b.id = ba.bandId and ba.artistId = $artistId order by b.name");
+		$this->ammendBands($bands);
 		$bandNames =  Mutils::arrayColumn($bands, "name");
 		$this->setMeta($artist['name'], $bandNames);
 		if ( $this->user ) {
