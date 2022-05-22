@@ -88,7 +88,7 @@
 				{elseif $artist.latest}
 					<img src="/images/clock.png" title="Created on {$artist.createdOn} by {$artist.createdBy|nickname}" />
 				{elseif $band}
-					<img src="/images/info.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
+					<img src="/images/info.png" title="Created on {$artist.createdOn} by {$artist.createdBy|nickname}" />
 				{else}
 					<img src="/images/help.png" title="Unexpected Status!" />
 				{/if}
