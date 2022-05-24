@@ -10687,6 +10687,8 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10776,'Ricky Chance
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10777,'Wick Larsen','2022-05-24',10);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10778,'Ella Brown Avery','2022-05-24',10);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10779,'Leslie Hawkins','2022-05-24',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10780,'Marshall Smith','2022-05-24',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10781,'Larry Berwald','2022-05-24',10);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25307,6 +25309,8 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14876,2037,10777,'2022-05-24',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14877,2037,10778,'2022-05-24',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14878,2037,10779,'2022-05-24',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14879,2037,10780,'2022-05-24',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14880,2037,10781,'2022-05-24',NULL);
 /*!40000 ALTER TABLE bandArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -29741,6 +29745,8 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12122,10,10
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12123,10,10777,'2022-05-24');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12124,10,10778,'2022-05-24');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12125,10,10779,'2022-05-24');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12126,10,10780,'2022-05-24');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12127,10,10781,'2022-05-24');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
