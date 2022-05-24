@@ -80,7 +80,7 @@
 						<img src="/images/favorite.png" title="A {$homeUser.id|nickname}'s Favorite" />
 					{/if}
 				{elseif $band.myLatest}
-					<img src="/images/person.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
+					<img src="/images/user.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
 				{elseif $band.latest}
 					<img src="/images/clock.png" title="Created on {$band.createdOn} by {$band.createdBy|nickname}" />
 				{elseif $artist}
