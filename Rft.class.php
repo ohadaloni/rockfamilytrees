@@ -679,6 +679,20 @@ class Rft extends Mcontroller {
 		$id = $this->Mmodel->getInt("select id from bands where name = '$dbStr'");
 		if ( $id )
 			return($id);
+		$pfx4 = strtolower(substr($canonical, 0, 4));
+		if ( $pfx4 == 'the ') {
+			$notThe = substr($canonical, 4);
+			$sql = "select id from bands where name = '$notThe'";
+			$id = $this->Mmodel->getInt($sql);
+			if ( $id )
+				return($id);
+		} else {
+			$theName = "The $canonical";
+			$sql = "select id from bands where name = '$theName'";
+			$id = $this->Mmodel->getInt($sql);
+			if ( $id )
+				return($id);
+		}
 		$id = $this->Mmodel->dbInsert("bands", array(
 			"name" => $canonical,
 			"createdOn" => date("Y-m-d"),
