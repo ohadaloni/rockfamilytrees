@@ -417,20 +417,22 @@ class Rft extends Mcontroller {
 		$searchTerm = $this->Mmodel->str(trim(ucwords(preg_replace('/\s+/', ' ', $_REQUEST['searchTerm']))));
 
 		if ( $bandId = $this->Mmodel->getInt("select id from bands where name = '$searchTerm'") ) {
-			$this->band($bandId);
+			$this->redir2band($bandId);
 			return;
 		}
 		if ( $artistId = $this->Mmodel->getInt("select id from artists where name = '$searchTerm'") ) {
-			$this->artist($artistId);
+			$this->redir2artist($artistId);
 			return;
 		}
 		if ( $userId = $this->Mmodel->getInt("select id from users where nickname = '$searchTerm'") ) {
-			$this->userHome($userId);
+			$this->redir();
 			return;
 		}
 			
 		$bands = $this->Mmodel->getRows("select * from bands where name like '%$searchTerm%' order by name limit 30");
 		$artists = $this->Mmodel->getRows("select * from artists where name like '%$searchTerm%' order by name limit 30");
+		$this->ammendBands($bands);
+		$this->ammendArtists($artists);
 		$searchedUsers = $this->Mmodel->getRows("select * from users where nickname like '%$searchTerm%' order by nickname limit 30");
 		$this->Mview->showTpl("search.tpl", array(
 			"bands" => $bands,
