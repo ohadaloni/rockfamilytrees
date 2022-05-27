@@ -22,16 +22,16 @@
 				src="/images/youtube.png" title="Search {$band.name|htmlspecialchars} on YouTube" /></a>
 		</td>
 		<td>
-			<a target="_blank" href="http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search={$band.name|urlencode}"><img
+			<a target="_blank" href="http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search={$band.name|urlencode}+(band)"><img
 				src="/images/wikipedia.png" title="Search {$band.name|htmlspecialchars} in the Wikipedia" /></a>
 		</td>
 		<td>
-			<a target="_blank" href="http://www.google.com/search?q={$band.name|urlencode}"><img
+			<a target="_blank" href="http://www.google.com/search?q=band+{$band.name|urlencode}"><img
 				src="/images/google.png" title="Google search {$band.name|htmlspecialchars}"
 					 /></a>
 		</td>
 		<td>
-			<a target="_blank" href="http://www.google.com/search?q={$searchQuery|urlencode}"><img
+			<a target="_blank" href="http://www.google.com/search?q=band+{$searchQuery|urlencode}"><img
 				src="/images/googleWiki.png" title="synthesized Search" /></a>
 		</td>
 		<td>
