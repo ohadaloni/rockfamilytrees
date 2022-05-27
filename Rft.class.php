@@ -391,8 +391,12 @@ class Rft extends Mcontroller {
 		}
 
 		$bandId = $this->getBand($_REQUEST['bandName']);
-		$this->_addBandToFavorites($bandId);
-		$this->redir2band($bandId);
+		if ( $bandId ) {
+			$this->_addBandToFavorites($bandId);
+			$this->redir2band($bandId);
+		} else {
+			$this->redir();
+		}
 	}
 	/*------------------------------------------------------------*/
 	public function addArtist() {
@@ -401,8 +405,12 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$artistId = $this->getArtist($_REQUEST['artistName']);
-		$this->_addArtistToFavorites($artistId);
-		$this->redir2artist($artistId);
+		if ( $artistId ) {
+			$this->_addArtistToFavorites($artistId);
+			$this->redir2artist($artistId);
+		} else {
+			$this->redir();
+		}
 	}
 	/*------------------------------------------------------------*/
 	public function search() {
@@ -438,6 +446,10 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$artistId = $this->getArtist($_REQUEST['artistName']);
+		if ( ! $artistId ) {
+			$this->redir2band($bandId);
+			return;
+		}
 		$this->addBandArtist($bandId, $artistId);
 		$this->_addBandToFavorites($bandId);
 		$this->_addArtistToFavorites($artistId);
@@ -451,6 +463,10 @@ class Rft extends Mcontroller {
 			return;
 		}
 		$bandId = $this->getBand($_REQUEST['bandName']);
+		if ( ! $bandId ) {
+			$this->redir2artist($artistId);
+			return;
+		}
 		$this->addBandArtist($bandId, $artistId);
 		$this->_addArtistToFavorites($artistId);
 		$this->_addBandToFavorites($bandId);
@@ -635,30 +651,38 @@ class Rft extends Mcontroller {
 	/*------------------------------------------------------------*/
 	private function getArtist($artistName) {
 		$canonical = $this->canonize($artistName);
+		if ( $canonical == "" ) {
+			$this->Mview->msgLater("getArtist: Name empty after canonizing");
+			return(null);
+		}
 		$dbStr = $this->Mmodel->str($canonical);
 		$id = $this->Mmodel->getInt("select id from artists where name = '$dbStr'");
 		if ( $id )
 			return($id);
-		$ret = $this->Mmodel->dbInsert("artists", array(
+		$id = $this->Mmodel->dbInsert("artists", array(
 			"name" => $canonical,
 			"createdOn" => date("Y-m-d"),
 			"createdBy" => $this->user['id'],
 		));
-		return($ret);
+		return($id);
 	}
 	/*------------------------------------------------------------*/
 	private function getBand($bandName) {
 		$canonical = $this->canonize($bandName);
+		if ( $canonical == "" ) {
+			$this->Mview->msgLater("getBand: Name empty after canonizing");
+			return(null);
+		}
 		$dbStr = $this->Mmodel->str($canonical);
 		$id = $this->Mmodel->getInt("select id from bands where name = '$dbStr'");
 		if ( $id )
 			return($id);
-		$ret = $this->Mmodel->dbInsert("bands", array(
+		$id = $this->Mmodel->dbInsert("bands", array(
 			"name" => $canonical,
 			"createdOn" => date("Y-m-d"),
 			"createdBy" => $this->rftId,
 		));
-		return($ret);
+		return($id);
 	}
 	/*------------------------------------------------------------*/
 	private function addBandArtist($bandId, $artistId) {
