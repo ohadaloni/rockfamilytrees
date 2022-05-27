@@ -18,7 +18,7 @@
 			{/if}
 		</td>
 		<td>
-			<a target="_blank" href="http://www.google.com/search?q={$artist.name|urlencode}"><img
+			<a target="_blank" href="http://www.google.com/search?q=musician+{$artist.name|urlencode}"><img
 				src="/images/google.png" title="Google search {$artist.name|htmlspecialchars}" /></a>
 		</td>
 		<td>
@@ -30,7 +30,7 @@
 				src="/images/wikipedia.png" title="Search {$artist.name|htmlspecialchars} in the Wikipedia" /></a>
 		</td>
 		<td>
-			<a target="_blank" href="http://www.google.com/search?q={$searchQuery|urlencode}"><img
+			<a target="_blank" href="http://www.google.com/search?q=musician+{$searchQuery|urlencode}"><img
 				src="/images/googleWiki.png" title="synthesized Search" /></a>
 		</td>
 		<td>
