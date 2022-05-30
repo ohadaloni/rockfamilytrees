@@ -10614,7 +10614,6 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10694,'Blair Thornt
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10695,'Billy Chapman','2011-05-24',1);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10696,'Robbie Bachman','2011-05-24',1);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10697,'Tim Bachman','2011-05-24',1);
-INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10698,'Alan Freed','2011-06-04',1);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10699,'Kiki Dee','2011-06-07',1);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10700,'Justin Bieber','2011-06-17',1);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10701,'Paul Waaktaar-Savoy','2011-06-18',1);
@@ -10843,6 +10842,12 @@ INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10932,'John Pennell
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10933,'Mike Harman','2022-05-30',10);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10934,'Jeff White','2022-05-30',10);
 INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10935,'Tony Markellis','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10936,'Russ Lawton','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10937,'Charles Bullen','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10938,'Jimmy O\'Neill','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10939,'Gary Farr','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10940,'Mick Woodmansey','2022-05-30',10);
+INSERT INTO artists (id, name, createdOn, createdBy) VALUES (10941,'Peter Brabbs','2022-05-30',10);
 /*!40000 ALTER TABLE artists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -25436,7 +25441,6 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (148
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14834,2064,10747,'2020-07-13',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14835,2064,10748,'2020-07-13',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14836,2064,10749,'2020-07-13',NULL);
-INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14843,2067,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14845,2069,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14846,2070,5917,'2020-09-01',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (14850,2073,10753,'2021-05-20',NULL);
@@ -25653,6 +25657,20 @@ INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (150
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15076,238,10933,'2022-05-30',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15077,238,10934,'2022-05-30',NULL);
 INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15078,956,10935,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15079,956,10936,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15080,956,158,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15081,267,10937,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15082,267,6458,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15083,398,10938,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15084,2039,2027,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15085,2040,2027,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15086,16,10939,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15087,914,81,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15088,128,10940,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15089,128,2423,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15090,128,1686,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15091,318,429,'2022-05-30',NULL);
+INSERT INTO bandArtists (id, bandId, artistId, createdOn, createdBy) VALUES (15092,927,10941,'2022-05-30',NULL);
 /*!40000 ALTER TABLE bandArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -27616,7 +27634,6 @@ INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2025,'Stiltskin','201
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2026,'Stardust','2011-01-01',10);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2027,'Together','2011-01-01',10);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2028,'Bachman Turner Overdrive','2011-05-24',1);
-INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2029,'Sultans Of Swing','2011-06-04',1);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2030,'Bad Meets Evil','2011-06-07',1);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2032,'A-ha','2011-06-18',1);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2034,'The Mamas & The Papas','2011-06-22',1);
@@ -27645,7 +27662,6 @@ INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2058,'The Gems','2020
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2062,'Mighty Joe Young','2020-06-21',472419);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2064,'Rudie Crew','2020-07-13',472420);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2065,'The Allentons','2020-07-13',472420);
-INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2067,'The Worrying Kynde','2020-09-01',472422);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2069,'Hooky','2020-09-01',472422);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2070,'The Persuasions','2020-09-01',472422);
 INSERT INTO bands (id, name, createdOn, createdBy) VALUES (2073,'Yellow Matter Custard','2021-05-20',472423);
@@ -30058,6 +30074,19 @@ INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12320,10,10
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12321,10,10933,'2022-05-30');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12322,10,10934,'2022-05-30');
 INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12323,10,10935,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12324,10,10936,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12325,10,158,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12326,10,10937,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12327,10,6458,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12328,10,10938,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12329,10,2027,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12330,10,10939,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12331,10,81,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12332,10,10940,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12333,10,2423,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12334,10,1686,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12335,10,429,'2022-05-30');
+INSERT INTO favoriteArtists (id, rftId, artistId, createdOn) VALUES (12336,10,10941,'2022-05-30');
 /*!40000 ALTER TABLE favoriteArtists ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -30523,6 +30552,15 @@ INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2080,10,2086,'2
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2081,10,888,'2022-05-30');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2082,10,238,'2022-05-30');
 INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2083,10,956,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2084,10,267,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2085,10,398,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2086,10,2039,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2087,10,2040,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2088,10,16,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2089,10,914,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2090,10,128,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2091,10,318,'2022-05-30');
+INSERT INTO favoriteBands (id, rftId, bandId, createdOn) VALUES (2092,10,927,'2022-05-30');
 /*!40000 ALTER TABLE favoriteBands ENABLE KEYS */;
 UNLOCK TABLES;
 
