@@ -9,29 +9,35 @@ class Gc extends Mcontroller {
 			$sql = "select * from $table where $conds";
 			$rows =  $this->Mmodel->getRows($sql);
 			if ( $rows ) {
-				echo "$table - empty names\n";
+				echo "$table - empty names:\n";
 				Mview::print_r($rows, "rows", basename(__FILE__), __LINE__, null, false);
 			}
 		}
 		// bands with no members
-		$sql = "select * from bands left join bandArtists on bands.id = bandArtists.bandId where bandArtists.artistId is null";
-		echo "$sql;\n";
+		$sql = "select bands.* from bands left join bandArtists on bands.id = bandArtists.bandId where bandArtists.artistId is null";
+		/*	echo "$sql;\n";	*/
 		$rows =  $this->Mmodel->getRows($sql);
 			if ( $rows ) {
-				echo "bands with no members\n";
-				Mview::print_r($rows, "rows", basename(__FILE__), __LINE__, null, false);
+				echo "\nBands with no members:\n";
+				 foreach ( $rows as $key => $row ) {
+					$str = sprintf("%3d %6d %s", $key+1, $row['id'], $row['name']);
+				 	echo "$str\n";
+				 }
 			}
 
 		// bands with 1 member.
 		$sql = "select bandId,count(*) from bands, bandArtists where bands.id = bandArtists.bandId group by bands.id having count(*) = 1";
 		$rows =  $this->Mmodel->getRows($sql);
 			if ( $rows ) {
-				echo "bands with one members\n";
+				echo "\nBands with one member:\n";
 				$ids = Mutils::arrayColumn($rows, "bandId");
 				$inlist = implode(", ", $ids);
 				$sql = "select * from bands where id in ( $inlist) order by name";
 				$rows =  $this->Mmodel->getRows($sql);
-				Mview::print_r($rows, "rows", basename(__FILE__), __LINE__, null, false);
+				 foreach ( $rows as $key => $row ) {
+					$str = sprintf("%3d %6d %s", $key+1, $row['id'], $row['name']);
+				 	echo "$str\n";
+				 }
 			}
 
 	}
