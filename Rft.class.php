@@ -619,7 +619,6 @@ class Rft extends Mcontroller {
 	}
 	/*------------------------------------------------------------*/
 	/*------------------------------------------------------------*/
-	// Sun May 22 06:11:25 IDT 2022
 	/* when a band/artist are deleted, gc from favorites for all rftId's */
 	/*------------------------------*/
 	private function gcArtist($artistId) {
